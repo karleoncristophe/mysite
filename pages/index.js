@@ -4,6 +4,7 @@ import SEO from '../common/SEO';
 
 const Wrapper = styled.div`
   display: flex;
+  background: #1c1c1c;
   flex-direction: column;
   width: 100%;
   height: 100vh;
