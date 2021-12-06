@@ -9,7 +9,6 @@ const Page = () => (
       <meta lang="pt-br" />
       <meta property="og:type" content="website" />
       <meta property="og:title" content="Karleon Cristophe" />
-      <meta property="og:url" content="https://venancioavila.com.br/" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <NextSeo
