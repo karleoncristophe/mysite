@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import Header from '../common/components/Header';
+import Main from '../common/components/Main';
 import SEO from '../common/SEO';
 
 const Wrapper = styled.div`
   display: flex;
-  background: ${props => (props.darkMode ? ' #1c1c1c' : ' #fffff')};
+  background: ${props => (props.darkMode ? ' #fffff' : '#1c1c1c')};
   transition: 1s;
   flex-direction: column;
   width: 100%;
@@ -16,11 +17,11 @@ export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
 
   const handleDarkMode = () => {
-    setDarkMode(true);
+    setDarkMode(false);
   };
 
   const handleLightMode = () => {
-    setDarkMode(false);
+    setDarkMode(true);
   };
 
   return (
@@ -30,6 +31,7 @@ export default function Home() {
         handleDarkMode={handleDarkMode}
         handleLightMode={handleLightMode}
       />
+      <Main />
       <SEO />
     </Wrapper>
   );
