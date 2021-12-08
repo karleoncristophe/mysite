@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { useDarkMode } from '../../context/DarkMode';
+
 const Wrapper = styled.header`
   display: flex;
   align-items: center;
@@ -15,7 +17,8 @@ const Figure = styled.figure`
 `;
 
 const SocialMedia = styled.img`
-  height: 30px;
+  height: 100%;
+  border-radius: 50%;
   &:hover {
     transform: scale(1.2);
     transform: rotate(360deg);
@@ -28,44 +31,72 @@ const ButtonContent = styled.figure`
 `;
 
 const DarkMode = styled.button`
-  height: 40px;
-  width: 40px;
-  background: url('https://cdn-icons-png.flaticon.com/512/3094/3094159.png')
-    no-repeat;
+  height: 50px;
+  width: 50px;
+  background: url('/moon.png') no-repeat;
+
   background-position: center;
-  background-size: 30px;
-  border: 1px solid white;
+  background-size: 32px;
+  border: ${props => (props.darkMode ? ' none' : ' 3px solid #7B2CBF')};
   border-left: none;
+  border-right: none;
+  border-top: none;
   cursor: pointer;
 `;
 
 const LightMode = styled.button`
-  height: 40px;
-  width: 40px;
-  background: url('https://cdn-icons.flaticon.com/png/512/3073/premium/3073665.png?token=exp=1638821600~hmac=d0f848549aa5fac2871290eea7ff72b0')
-    no-repeat;
+  height: 50px;
+  width: 50px;
+  background: url('/sun.png') no-repeat;
   background-position: center;
-  background-size: 30px;
-  border: 1px solid white;
+  background-size: 40px;
+  border: ${props => (props.darkMode ? ' 3px solid #7B2CBF' : ' none')};
+  border-left: none;
+  border-right: none;
+  border-top: none;
   cursor: pointer;
 `;
 
-const Header = ({ darkMode, handleLightMode, handleDarkMode }) => {
+const Link = styled.a`
+  width: 40px;
+  height: 40px;
+  background: #7b2cbf;
+  border-radius: 50%;
+`;
+
+const socialLogo = [
+  {
+    id: 0,
+    image: '/facebook.svg',
+  },
+  { id: 1, image: '/github.svg' },
+  { id: 2, image: '/instagram.svg' },
+  { id: 3, image: '/linkedin.svg' },
+  { id: 4, image: '/twitter.svg' },
+];
+
+const Header = () => {
+  const { darkMode, setDarkMode } = useDarkMode(false);
+
+  const handleDarkMode = () => {
+    setDarkMode(false);
+  };
+
+  const handleLightMode = () => {
+    setDarkMode(true);
+  };
   return (
     <Wrapper darkMode={darkMode}>
       <Figure>
-        <SocialMedia src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg" />
-        <SocialMedia
-          src={darkMode ? '/githubLight.svg' : '/githubLight.svg'}
-          style={{ height: '40px' }}
-        />
-        <SocialMedia src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg" />
-        <SocialMedia src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" />{' '}
-        <SocialMedia src="https://cdn-icons.flaticon.com/png/512/3938/premium/3938036.png?token=exp=1638820565~hmac=fc30d1be8119d3e324cc891a6de908b2" />
+        {socialLogo.map((item, index) => (
+          <Link key={item.id + index.toString()}>
+            <SocialMedia src={item.image} />
+          </Link>
+        ))}
       </Figure>
       <ButtonContent>
-        <LightMode onClick={handleLightMode} />
-        <DarkMode onClick={handleDarkMode} />
+        <LightMode onClick={handleLightMode} darkMode={darkMode} />
+        <DarkMode onClick={handleDarkMode} darkMode={darkMode} />
       </ButtonContent>
     </Wrapper>
   );

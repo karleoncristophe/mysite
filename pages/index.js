@@ -20,24 +20,12 @@ const Content = styled.div`
 `;
 
 export default function Home() {
-  const { darkMode, setDarkMode } = useDarkMode(false);
-
-  const handleDarkMode = () => {
-    setDarkMode(false);
-  };
-
-  const handleLightMode = () => {
-    setDarkMode(true);
-  };
+  const { darkMode } = useDarkMode();
 
   return (
     <Wrapper darkMode={darkMode}>
       <Content>
-        <Header
-          arkMode={darkMode}
-          handleDarkMode={handleDarkMode}
-          handleLightMode={handleLightMode}
-        />
+        <Header />
         <Main />
       </Content>
       <SEO />

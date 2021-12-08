@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { useDarkMode } from '../../context/DarkMode';
 const Wrapper = styled.main`
   display: flex;
 
@@ -22,6 +22,7 @@ const Article = styled.article`
 const Title = styled.h1`
   color: #fff;
   font-size: 4rem;
+  color: ${props => (props.darkMode ? ' #1c1c1c' : ' #fffff')};
   /* font-family: 'Inter', sans-serif; */
   font-weight: 600;
   margin: 0;
@@ -29,12 +30,13 @@ const Title = styled.h1`
 `;
 
 const Text = styled.p`
-  font-size: 1.5rem;
-  color: #b1b1b1;
+  font-size: 1.4rem;
+  color: ${props => (props.darkMode ? ' #313131' : '#5f5f5f')};
 `;
 
 const Figure = styled.figure`
   display: flex;
+
   margin: 0;
 `;
 
@@ -44,15 +46,16 @@ const Image = styled.img`
 `;
 
 const Main = () => {
+  const { darkMode } = useDarkMode(false);
   return (
     <Wrapper>
       <Section>
         <Article>
-          <Title>
+          <Title darkMode={darkMode}>
             Olá!! <br />
             eu sou o Karleon Cristophe
           </Title>
-          <Text>
+          <Text darkMode={darkMode}>
             Um NEET japonês de 34 anos não identificado é despejado de sua casa
             após a morte de seus pais. Após alguma auto-introspecção, ele
             conclui que sua vida foi, em última análise, sem sentido. ... Ele
@@ -61,7 +64,7 @@ const Main = () => {
           </Text>
         </Article>
         <Figure>
-          <Image src="/undraw.svg" />
+          <Image src="/programming.svg" />
         </Figure>
       </Section>
     </Wrapper>
