@@ -1,17 +1,17 @@
 import styled from 'styled-components';
-import GitHubDarkImage from '../../public/githubDark.png';
-import GitHubLigthImage from '../../public/githubLight.png';
 const Wrapper = styled.header`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   color: ${props => (props.darkMode ? ' #1c1c1c' : ' #fffff')};
   width: 100%;
+  padding-top: 20px;
 `;
 const Figure = styled.figure`
   display: flex;
   justify-content: space-between;
   width: 250px;
+  margin: 0;
 `;
 
 const SocialMedia = styled.img`
@@ -23,7 +23,9 @@ const SocialMedia = styled.img`
   }
 `;
 
-const ButtonContent = styled.figure``;
+const ButtonContent = styled.figure`
+  margin: 0;
+`;
 
 const DarkMode = styled.button`
   height: 40px;
@@ -53,7 +55,10 @@ const Header = ({ darkMode, handleLightMode, handleDarkMode }) => {
     <Wrapper darkMode={darkMode}>
       <Figure>
         <SocialMedia src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg" />
-        <SocialMedia src={darkMode ? '/githubLight.png' : '/githubDark.png'} />
+        <SocialMedia
+          src={darkMode ? '/githubLight.svg' : '/githubLight.svg'}
+          style={{ height: '40px' }}
+        />
         <SocialMedia src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg" />
         <SocialMedia src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" />{' '}
         <SocialMedia src="https://cdn-icons.flaticon.com/png/512/3938/premium/3938036.png?token=exp=1638820565~hmac=fc30d1be8119d3e324cc891a6de908b2" />

@@ -2,20 +2,46 @@ import styled from 'styled-components';
 
 const Wrapper = styled.main`
   display: flex;
-  background: red;
+
   width: 100%;
   height: 100%;
 `;
 
-const Section = styled.section``;
-
-const Article = styled.article``;
-
-const Title = styled.h1`
-  font-size: 2rem;
+const Section = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
-const Text = styled.p``;
+const Article = styled.article`
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+`;
+
+const Title = styled.h1`
+  color: #fff;
+  font-size: 4rem;
+  /* font-family: 'Inter', sans-serif; */
+  font-weight: 600;
+  margin: 0;
+  margin-bottom: 10px;
+`;
+
+const Text = styled.p`
+  font-size: 1.5rem;
+  color: #b1b1b1;
+`;
+
+const Figure = styled.figure`
+  display: flex;
+  margin: 0;
+`;
+
+const Image = styled.img`
+  width: 500px;
+  height: 500px;
+`;
 
 const Main = () => {
   return (
@@ -34,6 +60,9 @@ const Main = () => {
             passada para sua nova vida como Rudeus Greyrat.
           </Text>
         </Article>
+        <Figure>
+          <Image src="/undraw.svg" />
+        </Figure>
       </Section>
     </Wrapper>
   );
