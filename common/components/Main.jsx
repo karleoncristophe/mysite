@@ -40,7 +40,7 @@ const Figure = styled.figure`
   margin: 0;
 `;
 
-const Image = styled.img`
+const Drawing = styled.img`
   width: 500px;
   height: 500px;
 `;
@@ -52,8 +52,7 @@ const Main = () => {
       <Section>
         <Article>
           <Title darkMode={darkMode}>
-            Olá!! <br />
-            eu sou o Karleon Cristophe
+            Hello!! <br />I am Karleon Cristophe
           </Title>
           <Text darkMode={darkMode}>
             Um NEET japonês de 34 anos não identificado é despejado de sua casa
@@ -64,7 +63,7 @@ const Main = () => {
           </Text>
         </Article>
         <Figure>
-          <Image src="/programming.svg" />
+          <Drawing src="/programming.svg" />
         </Figure>
       </Section>
     </Wrapper>
