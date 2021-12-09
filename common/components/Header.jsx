@@ -9,6 +9,7 @@ const Wrapper = styled.header`
   width: 100%;
   padding-top: 20px;
 `;
+
 const Figure = styled.figure`
   display: flex;
   justify-content: space-between;
@@ -34,7 +35,6 @@ const DarkMode = styled.button`
   height: 50px;
   width: 50px;
   background: url('/moon.png') no-repeat;
-
   background-position: center;
   background-size: 32px;
   border: ${props => (props.darkMode ? ' none' : ' 3px solid #7B2CBF')};
