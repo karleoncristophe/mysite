@@ -33,7 +33,8 @@ const Title = styled.h1`
 
 const Text = styled.p`
   font-size: 1.4rem;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Mitr', sans-serif;
+  line-height: 25px;
   font-weight: 400;
   color: ${props => (props.darkMode ? ' #313131' : '#5f5f5f')};
 `;
@@ -44,8 +45,8 @@ const Figure = styled.figure`
 `;
 
 const Drawing = styled.img`
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
 `;
 
 const Main = () => {
