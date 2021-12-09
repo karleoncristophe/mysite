@@ -25,14 +25,16 @@ const Title = styled.h1`
   font-size: 4rem;
   transition: 1s;
   color: ${props => (props.darkMode ? ' #1c1c1c' : ' #fffff')};
-  /* font-family: 'Inter', sans-serif; */
-  font-weight: 600;
+  font-family: 'Patua One', cursive;
+  font-weight: 400;
   margin: 0;
   margin-bottom: 10px;
 `;
 
 const Text = styled.p`
   font-size: 1.4rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
   color: ${props => (props.darkMode ? ' #313131' : '#5f5f5f')};
 `;
 
