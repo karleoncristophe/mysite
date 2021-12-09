@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { useDarkMode } from '../../context/DarkMode';
+import Contact from './Contact';
+
 const Wrapper = styled.main`
   display: flex;
-
   width: 100%;
   height: 100%;
 `;
@@ -22,6 +23,7 @@ const Article = styled.article`
 const Title = styled.h1`
   color: #fff;
   font-size: 4rem;
+  transition: 1s;
   color: ${props => (props.darkMode ? ' #1c1c1c' : ' #fffff')};
   /* font-family: 'Inter', sans-serif; */
   font-weight: 600;
@@ -36,7 +38,6 @@ const Text = styled.p`
 
 const Figure = styled.figure`
   display: flex;
-
   margin: 0;
 `;
 
@@ -61,6 +62,7 @@ const Main = () => {
             resolve ter sucesso em sua nova vida, descartando sua identidade
             passada para sua nova vida como Rudeus Greyrat.
           </Text>
+          <Contact />
         </Article>
         <Figure>
           <Drawing src="/programming.svg" />
