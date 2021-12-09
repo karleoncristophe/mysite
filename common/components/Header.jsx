@@ -17,9 +17,24 @@ const Figure = styled.figure`
   margin: 0;
 `;
 
-const SocialMedia = styled.img`
+const Link = styled.a`
+  width: 40px;
+  height: 40px;
+  background: #7b2cbf;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:active {
+    transform: scale(1);
+  }
+  &:hover {
+    transform: scale(1.2);
+  }
+`;
+const Social = styled.img`
   height: 100%;
   border-radius: 50%;
+
   &:hover {
     transform: scale(1.2);
     transform: rotate(360deg);
@@ -27,16 +42,14 @@ const SocialMedia = styled.img`
   }
 `;
 
-const ButtonContent = styled.figure`
-  margin: 0;
-`;
+const ButtonContent = styled.div``;
 
 const DarkMode = styled.button`
   height: 50px;
   width: 50px;
   background: url('/moon.png') no-repeat;
-  background-position: center;
   background-size: 32px;
+  background-position: center;
   border: ${props => (props.darkMode ? ' none' : ' 3px solid #7B2CBF')};
   border-left: none;
   border-right: none;
@@ -49,19 +62,12 @@ const LightMode = styled.button`
   width: 50px;
   background: url('/sun.png') no-repeat;
   background-position: center;
-  background-size: 40px;
+  background-size: 38px;
   border: ${props => (props.darkMode ? ' 3px solid #7B2CBF' : ' none')};
   border-left: none;
   border-right: none;
   border-top: none;
   cursor: pointer;
-`;
-
-const Link = styled.a`
-  width: 40px;
-  height: 40px;
-  background: #7b2cbf;
-  border-radius: 50%;
 `;
 
 const socialLogo = [
@@ -90,7 +96,7 @@ const Header = () => {
       <Figure>
         {socialLogo.map((item, index) => (
           <Link key={item.id + index.toString()}>
-            <SocialMedia src={item.image} />
+            <Social src={item.image} />
           </Link>
         ))}
       </Figure>

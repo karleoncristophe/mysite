@@ -24,11 +24,19 @@ const Title = styled.h1`
   color: #fff;
   font-size: 4rem;
   transition: 1s;
-  color: ${props => (props.darkMode ? ' #1c1c1c' : ' #fffff')};
+  color: ${props => (props.darkMode ? ' #1c1c1c' : ' #9D4EDD')};
   font-family: 'Patua One', cursive;
   font-weight: 400;
   margin: 0;
-  margin-bottom: 10px;
+`;
+
+const Subtitle = styled.span`
+  font-size: 1.8rem;
+  margin-top: -20px;
+  font-family: 'Patua One', cursive;
+  text-align: end;
+  width: 100%;
+  color: #b991da;
 `;
 
 const Text = styled.p`
@@ -37,6 +45,7 @@ const Text = styled.p`
   line-height: 25px;
   font-weight: 400;
   color: ${props => (props.darkMode ? ' #313131' : '#5f5f5f')};
+  transition: 1s;
 `;
 
 const Figure = styled.figure`
@@ -56,14 +65,16 @@ const Main = () => {
       <Section>
         <Article>
           <Title darkMode={darkMode}>
-            Hello!! <br />I am Karleon Cristophe
+            Olá! <br />
+            Eu sou o Karleon Cristophe
           </Title>
+          <Subtitle>_Fullstack developer_</Subtitle>
           <Text darkMode={darkMode}>
-            Um NEET japonês de 34 anos não identificado é despejado de sua casa
-            após a morte de seus pais. Após alguma auto-introspecção, ele
-            conclui que sua vida foi, em última análise, sem sentido. ... Ele
-            resolve ter sucesso em sua nova vida, descartando sua identidade
-            passada para sua nova vida como Rudeus Greyrat.
+            Atualmente estudando e trabalhando com Mobile, Frontend e Backend.
+            Amo aprender novas tecnologias e enfrentar novos desafios na
+            programação. Iniciei a carreira visando desenvolvimento de jogos,
+            que é algo que gosto muito, mas com o decorrer do tempo me
+            interessei em desenvolvimento Web e Mobile.
           </Text>
           <Contact />
         </Article>
