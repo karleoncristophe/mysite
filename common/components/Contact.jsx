@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useDarkMode } from '../../context/DarkMode';
 
-const Wrapper = styled.section`
+const Wrapper = styled.footer`
   display: flex;
   margin-top: 15px;
   width: 100%;
