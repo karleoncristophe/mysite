@@ -4,7 +4,11 @@ import { useDarkMode } from '../../context/DarkMode';
 const Wrapper = styled.footer`
   display: flex;
   margin-top: 15px;
+  margin-bottom: 20px;
   width: 100%;
+  @media (max-width: 425px) {
+    justify-content: center;
+  }
 `;
 
 const WppButton = styled.button`
@@ -21,6 +25,12 @@ const WppButton = styled.button`
   &:hover {
     color: #7b2cbf;
     background: none;
+    transition: 1s;
+  }
+  @media (max-width: 1281px) {
+    font-size: 1.1rem;
+    height: 40px;
+    width: 130px;
     transition: 1s;
   }
 `;
@@ -41,6 +51,12 @@ const TelButton = styled.button`
     color: #7b2cbf;
     background: #ffffff;
     transition: 1s;
+  }
+  @media (max-width: 1281px) {
+    transition: 1s;
+    font-size: 1.1rem;
+    height: 40px;
+    width: 130px;
   }
 `;
 

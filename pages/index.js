@@ -10,13 +10,28 @@ const Wrapper = styled.div`
   transition: 1s;
   flex-direction: column;
   align-items: center;
+  height: 100%;
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
+  width: 88%;
+  padding-left: 10px;
+  padding-right: 10px;
   height: 100vh;
-  width: 85%;
+
+  @media (max-width: 1200px) {
+    width: 96%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  @media (max-width: 908px) {
+    width: 95%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 `;
 
 export default function Home() {

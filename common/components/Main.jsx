@@ -1,23 +1,37 @@
 import styled from 'styled-components';
 import { useDarkMode } from '../../context/DarkMode';
 import Contact from './Contact';
+import media from '../components/BREAK_POINT';
 
 const Wrapper = styled.main`
   display: flex;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 `;
 
 const Section = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  overflow: scroll;
+  @media (max-width: 1025px) {
+  }
+  @media (max-width: 908px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 const Article = styled.article`
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 45%;
+
+  @media (max-width: 908px) {
+    display: flex;
+    width: 100%;
+  }
 `;
 
 const Title = styled.h1`
@@ -28,6 +42,24 @@ const Title = styled.h1`
   font-family: 'Patua One', cursive;
   font-weight: 400;
   margin: 0;
+
+  @media (max-width: 1025px) {
+    font-size: 2.5rem;
+    transition: 1s;
+  }
+
+  @media (max-width: 1281px) {
+    margin-bottom: 10px;
+    font-size: 3rem;
+    transition: 1s;
+  }
+  @media (max-width: 908px) {
+    margin-top: 40px;
+    margin-bottom: 12px;
+  }
+  @media (max-width: 425px) {
+    margin-bottom: 15px;
+  }
 `;
 
 const Subtitle = styled.span`
@@ -37,6 +69,17 @@ const Subtitle = styled.span`
   text-align: end;
   width: 100%;
   color: #b991da;
+  transition: 1s;
+  @media (max-width: 908px) {
+    margin-top: 40px;
+  }
+  @media (max-width: 1025px) {
+    margin-top: -10px;
+    font-size: 1.1rem;
+  }
+  @media (max-width: 1281px) {
+    font-size: 1.4rem;
+  }
 `;
 
 const Text = styled.p`
@@ -46,6 +89,20 @@ const Text = styled.p`
   font-weight: 400;
   color: ${props => (props.darkMode ? ' #414141' : '#5f5f5f')};
   transition: 1s;
+
+  @media (max-width: 1025px) {
+    margin: 0;
+    margin-top: 10px;
+    font-size: 1rem;
+    transition: 1s;
+  }
+
+  @media (max-width: 1281px) {
+    margin: 0;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    transition: 1s;
+  }
 `;
 
 const Figure = styled.figure`
@@ -56,6 +113,25 @@ const Figure = styled.figure`
 const Drawing = styled.img`
   width: 600px;
   height: 600px;
+  transition: 1s;
+  @media (max-width: 1025px) {
+    width: 400px;
+    height: 400px;
+  }
+
+  @media (max-width: 1281px) {
+    width: 450px;
+    height: 450px;
+  }
+  @media (max-width: 908px) {
+    width: 300px;
+    height: 300px;
+  }
+
+  @media (max-width: 320px) {
+    width: 250px;
+    height: 250px;
+  }
 `;
 
 const Main = () => {

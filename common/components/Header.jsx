@@ -15,6 +15,12 @@ const Figure = styled.figure`
   justify-content: space-between;
   width: 250px;
   margin: 0;
+  @media (max-width: 425px) {
+    width: 200px;
+  }
+  @media (max-width: 320px) {
+    width: 150px;
+  }
 `;
 
 const Link = styled.a`
@@ -29,6 +35,14 @@ const Link = styled.a`
   }
   &:hover {
     transform: scale(1.2);
+  }
+  @media (max-width: 425px) {
+    width: 35px;
+    height: 35px;
+  }
+  @media (max-width: 320px) {
+    width: 28px;
+    height: 28px;
   }
 `;
 const Social = styled.img`
@@ -55,6 +69,11 @@ const DarkMode = styled.button`
   border-right: none;
   border-top: none;
   cursor: pointer;
+  @media (max-width: 425px) {
+    background-size: 35px;
+    height: 40px;
+    width: 40px;
+  }
 `;
 
 const LightMode = styled.button`
@@ -68,6 +87,10 @@ const LightMode = styled.button`
   border-right: none;
   border-top: none;
   cursor: pointer;
+  @media (max-width: 425px) {
+    height: 40px;
+    width: 40px;
+  }
 `;
 
 const socialLogo = [
