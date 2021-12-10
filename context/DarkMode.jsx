@@ -14,7 +14,7 @@ export default function DarkModeProvider({ children }) {
 export function useDarkMode() {
   const darkmode = useContext(DarkModeContext);
   if (!darkmode)
-    throw new Error('useDarkMode must be used within a DarkModerovider');
+    throw new Error('useDarkMode must be used within a DarkModeProvider');
   const { darkMode, setDarkMode } = darkmode;
   return { darkMode, setDarkMode };
 }

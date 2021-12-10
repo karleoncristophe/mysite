@@ -44,7 +44,7 @@ const Text = styled.p`
   font-family: 'Mitr', sans-serif;
   line-height: 25px;
   font-weight: 400;
-  color: ${props => (props.darkMode ? ' #313131' : '#5f5f5f')};
+  color: ${props => (props.darkMode ? ' #414141' : '#5f5f5f')};
   transition: 1s;
 `;
 
@@ -70,11 +70,12 @@ const Main = () => {
           </Title>
           <Subtitle>_Fullstack developer_</Subtitle>
           <Text darkMode={darkMode}>
-            Atualmente estudando e trabalhando com Mobile, Frontend e Backend.
-            Amo aprender novas tecnologias e enfrentar novos desafios na
+            Atualmente estudando/trabalhando com Mobile, Frontend e Backend. Amo
+            aprender novas tecnologias e enfrentar novos desafios na
             programação. Iniciei a carreira visando desenvolvimento de jogos,
             que é algo que gosto muito, mas com o decorrer do tempo me
-            interessei em desenvolvimento Web e Mobile.
+            interessei em desenvolvimento Web e Mobile. Trabalho/Estudo com
+            ReactJS, React Native e NodeJS.
           </Text>
           <Contact />
         </Article>
