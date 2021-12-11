@@ -6,7 +6,8 @@ const Wrapper = styled.footer`
   margin-top: 15px;
   margin-bottom: 20px;
   width: 100%;
-  @media (max-width: 425px) {
+
+  @media (max-width: 600px) {
     justify-content: center;
   }
 `;
@@ -22,11 +23,13 @@ const WppButton = styled.button`
   color: ${props => (props.darkMode ? ' #f7f7f7' : '#7b2cbf')};
   transition: 1s;
   background: ${props => (props.darkMode ? ' #7b2cbf' : '#ffff')};
+
   &:hover {
     color: #7b2cbf;
     background: none;
     transition: 1s;
   }
+
   @media (max-width: 1281px) {
     font-size: 1.1rem;
     height: 40px;
@@ -47,11 +50,13 @@ const TelButton = styled.button`
   background: ${props => (props.darkMode ? ' #7b2cbf' : 'none')};
   color: #ffff;
   transition: 1s;
+
   &:hover {
     color: #7b2cbf;
     background: #ffffff;
     transition: 1s;
   }
+
   @media (max-width: 1281px) {
     transition: 1s;
     font-size: 1.1rem;

@@ -7,7 +7,9 @@ const Wrapper = styled.header`
   justify-content: space-between;
   color: ${props => (props.darkMode ? ' #1c1c1c' : ' #fffff')};
   width: 100%;
-  margin-top: 10px;
+
+  margin-top: 15px;
+  margin-bottom: 10px;
 `;
 
 const Figure = styled.figure`
@@ -15,11 +17,17 @@ const Figure = styled.figure`
   justify-content: space-between;
   width: 250px;
   margin: 0;
+
   @media (max-width: 425px) {
     width: 200px;
   }
+
   @media (max-width: 320px) {
     width: 150px;
+  }
+
+  @media (max-width: 300px) {
+    width: 130px;
   }
 `;
 
@@ -33,16 +41,24 @@ const Link = styled.a`
   &:active {
     transform: scale(1);
   }
+
   &:hover {
     transform: scale(1.2);
   }
+
   @media (max-width: 425px) {
     width: 35px;
     height: 35px;
   }
+
   @media (max-width: 320px) {
     width: 28px;
     height: 28px;
+  }
+
+  @media (max-width: 300px) {
+    width: 23px;
+    height: 23px;
   }
 `;
 const Social = styled.img`
@@ -70,23 +86,17 @@ const DarkMode = styled.button`
   border-left: none;
   border-right: none;
   border-top: none;
-
-  @keyframes slidein {
-    from {
-      margin-left: 100%;
-      width: 300%;
-    }
-
-    to {
-      margin-left: 0%;
-      width: 100%;
-    }
-  }
   cursor: pointer;
-  @media (max-width: 425px) {
-    background-size: 35px;
-    height: 40px;
-    width: 40px;
+
+  @media (max-width: 430px) {
+    background-size: 30px;
+    width: 35px;
+    height: 35px;
+  }
+  @media (max-width: 300px) {
+    background-size: 25px;
+    width: 30px;
+    height: 30px;
   }
 `;
 
@@ -100,11 +110,17 @@ const LightMode = styled.button`
   border-left: none;
   border-right: none;
   border-top: none;
-
   cursor: pointer;
-  @media (max-width: 425px) {
-    height: 40px;
-    width: 40px;
+
+  @media (max-width: 430px) {
+    background-size: 30px;
+    width: 35px;
+    height: 35px;
+  }
+  @media (max-width: 300px) {
+    background-size: 25px;
+    width: 30px;
+    height: 33px;
   }
 `;
 
@@ -120,7 +136,7 @@ const socialLogo = [
 ];
 
 const Header = () => {
-  const { darkMode, setDarkMode } = useDarkMode(false);
+  const { darkMode, setDarkMode } = useDarkMode();
 
   const handleDarkMode = () => {
     setDarkMode(false);

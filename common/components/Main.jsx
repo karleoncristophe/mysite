@@ -6,18 +6,17 @@ const Wrapper = styled.main`
   display: flex;
   width: 100%;
   height: 100%;
-  overflow: hidden;
 `;
 
 const Section = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  overflow: scroll;
 
+  height: 100%;
+  width: 100%;
   @media (max-width: 908px) {
     flex-direction: column;
-    width: 100%;
   }
 `;
 
@@ -35,49 +34,55 @@ const Article = styled.article`
 const Title = styled.h1`
   color: #fff;
   font-size: 4rem;
-  transition: 1s;
+  transition: 0.5s;
   color: ${props => (props.darkMode ? ' #1c1c1c' : ' #9D4EDD')};
   font-family: 'Patua One', cursive;
   font-weight: 400;
   margin: 0;
-  margin-bottom: 10px;
 
   @media (max-width: 1025px) {
     font-size: 2.5rem;
-    transition: 1s;
   }
 
   @media (max-width: 1281px) {
-    margin-bottom: 10px;
     font-size: 3rem;
-    transition: 1s;
   }
   @media (max-width: 908px) {
     margin-top: 40px;
     margin-bottom: 12px;
   }
+  @media (max-width: 600px) {
+    text-align: center;
+  }
   @media (max-width: 425px) {
+    font-size: 2.5rem;
+    text-align: center;
     margin-bottom: 15px;
   }
 `;
 
 const Subtitle = styled.span`
   font-size: 1.8rem;
-  margin-top: -10px;
   font-family: 'Patua One', cursive;
   text-align: end;
   width: 100%;
   color: #b991da;
-  transition: 1s;
-  @media (max-width: 908px) {
-    margin-top: 40px;
-  }
+  transition: 0.5s;
+
   @media (max-width: 1025px) {
-    margin-top: -10px;
     font-size: 1.1rem;
   }
+
   @media (max-width: 1281px) {
     font-size: 1.4rem;
+  }
+  @media (max-width: 600px) {
+    text-align: center;
+  }
+
+  @media (max-width: 430px) {
+    font-size: 1.3rem;
+    text-align: center;
   }
 `;
 
@@ -87,20 +92,16 @@ const Text = styled.p`
   line-height: 25px;
   font-weight: 400;
   color: ${props => (props.darkMode ? ' #414141' : '#5f5f5f')};
-  transition: 1s;
 
+  margin: 0;
+  margin-top: 10px;
+  transition: 0.5s;
   @media (max-width: 1025px) {
-    margin: 0;
-    margin-top: 10px;
     font-size: 1rem;
-    transition: 1s;
   }
 
   @media (max-width: 1281px) {
-    margin: 0;
-    margin-top: 10px;
     font-size: 1.2rem;
-    transition: 1s;
   }
 `;
 
@@ -111,24 +112,28 @@ const Figure = styled.figure`
 
 const Drawing = styled.img`
   height: 500px;
-  transition: 1s;
+  transition: 0.5s;
 
   @media (max-width: 1281px) {
-    height: 300px;
+    height: 320px;
   }
-  @media (max-width: 1025px) {
-    height: 400px;
-  }
+
   @media (max-width: 908px) {
-    height: 350px;
+    height: 300px;
+    margin-bottom: 40px;
   }
-  @media (max-width: 420px) {
-    height: 250px;
+
+  @media (max-width: 430px) {
+    height: 200px;
+  }
+
+  @media (max-width: 300px) {
+    height: 180px;
   }
 `;
 
 const Main = () => {
-  const { darkMode } = useDarkMode(false);
+  const { darkMode } = useDarkMode();
   return (
     <Wrapper>
       <Section>
