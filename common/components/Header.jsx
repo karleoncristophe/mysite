@@ -7,7 +7,7 @@ const Wrapper = styled.header`
   justify-content: space-between;
   color: ${props => (props.darkMode ? ' #1c1c1c' : ' #fffff')};
   width: 100%;
-  padding-top: 20px;
+  margin-top: 10px;
 `;
 
 const Figure = styled.figure`
@@ -56,7 +56,9 @@ const Social = styled.img`
   }
 `;
 
-const ButtonContent = styled.div``;
+const ButtonContent = styled.div`
+  display: flex;
+`;
 
 const DarkMode = styled.button`
   height: 50px;
@@ -68,6 +70,18 @@ const DarkMode = styled.button`
   border-left: none;
   border-right: none;
   border-top: none;
+
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 300%;
+    }
+
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
   cursor: pointer;
   @media (max-width: 425px) {
     background-size: 35px;
@@ -86,6 +100,7 @@ const LightMode = styled.button`
   border-left: none;
   border-right: none;
   border-top: none;
+
   cursor: pointer;
   @media (max-width: 425px) {
     height: 40px;
@@ -119,7 +134,7 @@ const Header = () => {
       <Figure>
         {socialLogo.map((item, index) => (
           <Link key={item.id + index.toString()}>
-            <Social src={item.image} />
+            <Social src={item.image} className="" />
           </Link>
         ))}
       </Figure>

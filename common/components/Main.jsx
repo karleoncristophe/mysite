@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { useDarkMode } from '../../context/DarkMode';
 import Contact from './Contact';
-import media from '../components/BREAK_POINT';
 
 const Wrapper = styled.main`
   display: flex;
@@ -15,8 +14,7 @@ const Section = styled.section`
   align-items: center;
   justify-content: space-between;
   overflow: scroll;
-  @media (max-width: 1025px) {
-  }
+
   @media (max-width: 908px) {
     flex-direction: column;
     width: 100%;
@@ -42,6 +40,7 @@ const Title = styled.h1`
   font-family: 'Patua One', cursive;
   font-weight: 400;
   margin: 0;
+  margin-bottom: 10px;
 
   @media (max-width: 1025px) {
     font-size: 2.5rem;
@@ -64,7 +63,7 @@ const Title = styled.h1`
 
 const Subtitle = styled.span`
   font-size: 1.8rem;
-  margin-top: -20px;
+  margin-top: -10px;
   font-family: 'Patua One', cursive;
   text-align: end;
   width: 100%;
@@ -111,25 +110,19 @@ const Figure = styled.figure`
 `;
 
 const Drawing = styled.img`
-  width: 600px;
-  height: 600px;
+  height: 500px;
   transition: 1s;
-  @media (max-width: 1025px) {
-    width: 400px;
-    height: 400px;
-  }
 
   @media (max-width: 1281px) {
-    width: 450px;
-    height: 450px;
-  }
-  @media (max-width: 908px) {
-    width: 300px;
     height: 300px;
   }
-
-  @media (max-width: 320px) {
-    width: 250px;
+  @media (max-width: 1025px) {
+    height: 400px;
+  }
+  @media (max-width: 908px) {
+    height: 350px;
+  }
+  @media (max-width: 420px) {
     height: 250px;
   }
 `;
@@ -142,7 +135,8 @@ const Main = () => {
         <Article>
           <Title darkMode={darkMode}>
             Olá! <br />
-            Eu sou o Karleon Cristophe
+            Eu sou o <br />
+            Karleon Cristophe
           </Title>
           <Subtitle>_Fullstack developer_</Subtitle>
           <Text darkMode={darkMode}>
@@ -156,7 +150,7 @@ const Main = () => {
           <Contact />
         </Article>
         <Figure>
-          <Drawing src="/programming.svg" />
+          <Drawing src="/programming.svg" className="" />
         </Figure>
       </Section>
     </Wrapper>
