@@ -166,7 +166,11 @@ const Header = () => {
     <Wrapper darkMode={darkMode}>
       <Figure>
         {socialMedia.map((item, index) => (
-          <Link href={item.link} key={item.id + index.toString()}>
+          <Link
+            target="_blank"
+            href={item.link}
+            key={item.id + index.toString()}
+          >
             <Social src={item.image} />
           </Link>
         ))}
