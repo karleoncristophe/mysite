@@ -79,7 +79,7 @@ const DarkMode = styled.button`
   height: 50px;
   width: 50px;
   background: url('/moon.png') no-repeat;
-  background-size: 32px;
+  background-size: 80%;
   background-position: center;
   border: ${props => (props.darkMode ? ' none' : ' 3px solid #7B2CBF')};
   border-left: none;
@@ -88,13 +88,11 @@ const DarkMode = styled.button`
   cursor: pointer;
 
   @media (max-width: 430px) {
-    background-size: 30px;
     width: 35px;
     height: 35px;
   }
 
   @media (max-width: 300px) {
-    background-size: 25px;
     width: 30px;
     height: 30px;
   }
@@ -105,7 +103,7 @@ const LightMode = styled.button`
   width: 50px;
   background: url('/sun.png') no-repeat;
   background-position: center;
-  background-size: 38px;
+  background-size: 80%;
   border: ${props => (props.darkMode ? ' 3px solid #7B2CBF' : ' none')};
   border-left: none;
   border-right: none;
@@ -113,13 +111,11 @@ const LightMode = styled.button`
   cursor: pointer;
 
   @media (max-width: 430px) {
-    background-size: 30px;
     width: 35px;
     height: 35px;
   }
 
   @media (max-width: 300px) {
-    background-size: 25px;
     width: 30px;
     height: 33px;
   }
