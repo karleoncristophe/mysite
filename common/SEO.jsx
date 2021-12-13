@@ -2,43 +2,46 @@ import React from 'react';
 import Head from 'next/head';
 import { NextSeo } from 'next-seo';
 
-const Page = () => (
+const SEO = () => (
   <>
     <Head>
       <meta name="theme-color" content="#000" />
       <meta lang="pt-br" />
       <meta property="og:type" content="website" />
       <meta property="og:title" content="Karleon Cristophe" />
+      <meta property="og:url" content="https://karleoncristophe.com.br/" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <NextSeo
       title="Karleon Cristophe"
-      description="This example uses more of the available config options."
-      canonical="https://www.canonical.ie/"
+      description="Programador web/mobile freelancer, criação de sites, aplicativos móveis, landing pages, front e backend."
+      canonical="https://karleoncristophe.com.br"
       openGraph={{
-        url: 'https://www.url.ie/a',
+        url: 'https://karleoncristophe.com.br',
         title: 'Karleon Cristophe',
-        description: 'Open Graph Description',
+
+        description:
+          'Programador web/mobile freelancer, criação de sites, aplicativos móveis, landing pages, front e backend.',
         images: [
           {
-            url: 'https://www.example.ie/og-image-01.jpg',
-            width: 800,
+            url: 'https://karleoncristophe.com.br/programming.svg',
+            width: 900,
             height: 600,
-            alt: 'Og Image Alt',
+            alt: 'karleoncristophe',
           },
           {
-            url: 'https://www.example.ie/og-image-02.jpg',
+            url: 'https://karleoncristophe.com.br/programming.svg',
             width: 900,
             height: 800,
-            alt: 'Og Image Alt Second',
+            alt: 'karleoncristophe',
           },
-          { url: 'https://www.example.ie/og-image-03.jpg' },
-          { url: 'https://www.example.ie/og-image-04.jpg' },
+          { url: 'https://karleoncristophe.com.br/programming.svg' },
+          { url: 'https://karleoncristophe.com.br/programming.svg' },
         ],
         site_name: 'SiteName',
       }}
       twitter={{
-        handle: '@handle',
+        handle: '@karleoncris',
         site: '@site',
         cardType: 'summary_large_image',
       }}
@@ -46,4 +49,4 @@ const Page = () => (
   </>
 );
 
-export default Page;
+export default SEO;

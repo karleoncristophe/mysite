@@ -72,12 +72,13 @@ const Contact = () => {
   return (
     <Wrapper>
       <Link
+        rel="noopener"
         target="_blank"
         href="https://api.whatsapp.com/send?phone=5521981454891&text=Ol%C3%A1!%20Preciso%20de%20uma%20ajudinha%20sua%20em%20um%20projeto!%20"
       >
         <WppButton darkMode={darkMode}>WhatsApp</WppButton>
       </Link>
-      <Link target="_blank" href="https://t.me/karleoncristophe">
+      <Link rel="noopener" target="_blank" href="https://t.me/karleoncristophe">
         <TelButton darkMode={darkMode}>Telegram</TelButton>
       </Link>
     </Wrapper>

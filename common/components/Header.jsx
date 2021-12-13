@@ -62,6 +62,7 @@ const Link = styled.a`
 `;
 const Social = styled.img`
   height: 100%;
+  width: 100%;
   border-radius: 50%;
 
   &:hover {
@@ -128,26 +129,31 @@ const LightMode = styled.button`
 const socialMedia = [
   {
     id: 0,
+    name: 'Facebook',
     link: 'https://www.facebook.com/profile.php?id=100009449735779',
     image: '/facebook.svg',
   },
   {
     id: 1,
+    name: 'Github',
     link: 'https://github.com/karleoncristophe',
     image: '/github.svg',
   },
   {
     id: 2,
+    name: 'Instagram',
     link: 'https://www.instagram.com/karleoncristophe/',
     image: '/instagram.svg',
   },
   {
     id: 3,
+    name: 'Linkedin',
     link: 'https://www.linkedin.com/in/karleon-cristophe-07657b221/',
     image: '/linkedin.svg',
   },
   {
     id: 4,
+    name: 'Twitter',
     link: 'https://twitter.com/karleoncris',
     image: '/twitter.svg',
   },
@@ -169,16 +175,26 @@ const Header = () => {
         {socialMedia.map((item, index) => (
           <Link
             target="_blank"
+            rel="noopener"
+            name={item.name}
             href={item.link}
             key={item.id + index.toString()}
           >
-            <Social src={item.image} />
+            <Social src={item.image} alt={item.name} />
           </Link>
         ))}
       </Figure>
       <ButtonContent>
-        <LightMode onClick={handleLightMode} darkMode={darkMode} />
-        <DarkMode onClick={handleDarkMode} darkMode={darkMode} />
+        <LightMode
+          onClick={handleLightMode}
+          darkMode={darkMode}
+          aria-label="Light"
+        />
+        <DarkMode
+          onClick={handleDarkMode}
+          darkMode={darkMode}
+          aria-label="Dark"
+        />
       </ButtonContent>
     </Wrapper>
   );
