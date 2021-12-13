@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  width: 88%;
+  width: 92%;
   flex: 1;
   padding-left: 10px;
   padding-right: 10px;
