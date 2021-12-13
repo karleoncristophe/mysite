@@ -124,15 +124,32 @@ const LightMode = styled.button`
   }
 `;
 
-const socialLogo = [
+const socialMedia = [
   {
     id: 0,
+    link: 'https://www.facebook.com/profile.php?id=100009449735779',
     image: '/facebook.svg',
   },
-  { id: 1, image: '/github.svg' },
-  { id: 2, image: '/instagram.svg' },
-  { id: 3, image: '/linkedin.svg' },
-  { id: 4, image: '/twitter.svg' },
+  {
+    id: 1,
+    link: 'https://github.com/karleoncristophe',
+    image: '/github.svg',
+  },
+  {
+    id: 2,
+    link: 'https://www.instagram.com/karleoncristophe/',
+    image: '/instagram.svg',
+  },
+  {
+    id: 3,
+    link: 'https://www.linkedin.com/in/karleon-cristophe-07657b221/',
+    image: '/linkedin.svg',
+  },
+  {
+    id: 4,
+    link: 'https://twitter.com/karleoncris',
+    image: '/twitter.svg',
+  },
 ];
 
 const Header = () => {
@@ -148,9 +165,9 @@ const Header = () => {
   return (
     <Wrapper darkMode={darkMode}>
       <Figure>
-        {socialLogo.map((item, index) => (
-          <Link key={item.id + index.toString()}>
-            <Social src={item.image} className="" />
+        {socialMedia.map((item, index) => (
+          <Link href={item.link} key={item.id + index.toString()}>
+            <Social src={item.image} />
           </Link>
         ))}
       </Figure>
