@@ -12,9 +12,9 @@ const Section = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   height: 100%;
   width: 100%;
+
   @media (max-width: 908px) {
     flex-direction: column;
   }
@@ -47,13 +47,16 @@ const Title = styled.h1`
   @media (max-width: 1281px) {
     font-size: 3rem;
   }
+
   @media (max-width: 908px) {
     margin-top: 40px;
     margin-bottom: 12px;
   }
+
   @media (max-width: 600px) {
     text-align: center;
   }
+
   @media (max-width: 425px) {
     font-size: 2.5rem;
     text-align: center;
@@ -92,16 +95,20 @@ const Text = styled.p`
   line-height: 25px;
   font-weight: 400;
   color: ${props => (props.darkMode ? ' #414141' : '#5f5f5f')};
-
   margin: 0;
   margin-top: 10px;
   transition: 0.5s;
+
   @media (max-width: 1025px) {
     font-size: 1rem;
   }
 
   @media (max-width: 1281px) {
     font-size: 1.2rem;
+  }
+
+  @media (max-width: 600px) {
+    text-align: center;
   }
 `;
 

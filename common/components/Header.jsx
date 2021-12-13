@@ -7,7 +7,6 @@ const Wrapper = styled.header`
   justify-content: space-between;
   color: ${props => (props.darkMode ? ' #1c1c1c' : ' #fffff')};
   width: 100%;
-
   margin-top: 15px;
   margin-bottom: 10px;
 `;
@@ -93,6 +92,7 @@ const DarkMode = styled.button`
     width: 35px;
     height: 35px;
   }
+
   @media (max-width: 300px) {
     background-size: 25px;
     width: 30px;
@@ -117,6 +117,7 @@ const LightMode = styled.button`
     width: 35px;
     height: 35px;
   }
+
   @media (max-width: 300px) {
     background-size: 25px;
     width: 30px;

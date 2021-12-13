@@ -13,7 +13,6 @@ const Wrapper = styled.div`
   align-items: center;
   height: 100vh;
   justify-content: space-between;
-
   overflow: scroll;
 
   ::-webkit-scrollbar {
@@ -42,14 +41,6 @@ const Content = styled.div`
   }
 `;
 
-const Spacer = styled.div`
-  height: 10vh;
-  background: transparent;
-  @media (max-width: 720px) {
-    height: 0;
-  }
-`;
-
 export default function Home() {
   const { darkMode } = useDarkMode();
 
@@ -58,7 +49,6 @@ export default function Home() {
       <Content>
         <Header />
         <Main />
-        <Spacer />
       </Content>
       <SEO />
     </Wrapper>
