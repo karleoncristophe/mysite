@@ -65,12 +65,21 @@ const TelButton = styled.button`
   }
 `;
 
+const Link = styled.a``;
+
 const Contact = () => {
   const { darkMode } = useDarkMode(false);
   return (
     <Wrapper>
-      <WppButton darkMode={darkMode}>WhatsApp</WppButton>
-      <TelButton darkMode={darkMode}>Telegram</TelButton>
+      <Link
+        target="_blank"
+        href="https://api.whatsapp.com/send?phone=5521981454891&text=Ol%C3%A1!%20Preciso%20de%20uma%20ajudinha%20sua%20em%20um%20projeto!%20"
+      >
+        <WppButton darkMode={darkMode}>WhatsApp</WppButton>
+      </Link>
+      <Link target="_blank" href="https://t.me/karleoncristophe">
+        <TelButton darkMode={darkMode}>Telegram</TelButton>
+      </Link>
     </Wrapper>
   );
 };
