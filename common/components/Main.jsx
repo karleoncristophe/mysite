@@ -19,12 +19,15 @@ const Section = styled.section`
 const Figure = styled.figure`
   display: flex;
   margin: 0;
+  @media (max-width: 908px) {
+    height: 340px;
+  }
 `;
 
 const Drawing = styled.img`
-  height: 500px;
+  height: 400px;
   width: auto;
-  aspect-ratio: attr(width) 
+  aspect-ratio: attr(width);
   transition: 0.5s;
 
   @media (max-width: 1281px) {
@@ -33,7 +36,6 @@ const Drawing = styled.img`
 
   @media (max-width: 908px) {
     height: 300px;
-    margin-bottom: 40px;
   }
 
   @media (max-width: 430px) {

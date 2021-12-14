@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useDarkMode } from '../../context/DarkMode';
 import Contact from './Contact';
+
 const Article = styled.article`
   display: flex;
   flex-direction: column;
@@ -17,8 +18,8 @@ const Title = styled.h1`
   font-size: 4rem;
   transition: 0.5s;
   color: ${props => (props.darkMode ? ' #1c1c1c' : ' #9D4EDD')};
-  font-family: 'Patua One', cursive;
-  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
   margin: 0;
 
   @media (max-width: 1025px) {
@@ -45,11 +46,12 @@ const Title = styled.h1`
 
 const Subtitle = styled.span`
   font-size: 1.8rem;
-  font-family: 'Patua One', cursive;
+  font-family: 'Roboto', sans-serif;
   text-align: end;
   width: 100%;
   color: #b991da;
   transition: 0.5s;
+  font-weight: 500;
 
   @media (max-width: 1025px) {
     font-size: 1.1rem;
@@ -70,8 +72,8 @@ const Subtitle = styled.span`
 
 const Text = styled.p`
   font-size: 1.4rem;
-  font-family: 'Mitr', sans-serif;
-  line-height: 25px;
+  font-family: 'Roboto', sans-serif;
+  line-height: 27px;
   font-weight: 400;
   color: ${props => (props.darkMode ? ' #414141' : '#b8b8b8')};
   margin: 0;
