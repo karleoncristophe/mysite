@@ -19,31 +19,39 @@ const Section = styled.section`
 const Figure = styled.figure`
   display: flex;
   margin: 0;
+
   @media (max-width: 908px) {
-    height: 340px;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
 const Drawing = styled.img`
-  height: 400px;
+  height: 420px;
   width: auto;
   aspect-ratio: attr(width);
   transition: 0.5s;
 
   @media (max-width: 1281px) {
-    height: 320px;
+    height: 330px;
   }
 
   @media (max-width: 908px) {
     height: 300px;
   }
+  @media (max-width: 600px) {
+    margin-top: 30px;
+    margin-bottom: 100px;
+  }
 
   @media (max-width: 430px) {
-    height: 200px;
+    height: 210px;
   }
 
   @media (max-width: 300px) {
-    height: 180px;
+    height: 170px;
   }
 `;
 

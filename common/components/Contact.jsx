@@ -3,7 +3,7 @@ import { useDarkMode } from '../../context/DarkMode';
 
 const Wrapper = styled.footer`
   display: flex;
-  margin-top: 15px;
+  margin-top: 33px;
   margin-bottom: 20px;
   width: 100%;
 

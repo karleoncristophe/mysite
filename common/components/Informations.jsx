@@ -52,7 +52,7 @@ const Subtitle = styled.span`
   color: #b991da;
   transition: 0.5s;
   font-weight: 500;
-
+  margin-top: 5px;
   @media (max-width: 1025px) {
     font-size: 1.1rem;
   }
@@ -77,7 +77,7 @@ const Text = styled.p`
   font-weight: 400;
   color: ${props => (props.darkMode ? ' #414141' : '#b8b8b8')};
   margin: 0;
-  margin-top: 10px;
+  margin-top: 28px;
   transition: 0.5s;
 
   @media (max-width: 1025px) {
@@ -102,7 +102,7 @@ const Informations = () => {
         Eu sou o <br />
         Karleon Cristophe
       </Title>
-      <Subtitle>_Fullstack developer_</Subtitle>
+      <Subtitle>_Full-Stack Developer_</Subtitle>
       <Text darkMode={darkMode}>
         Atualmente estudando/trabalhando com Mobile, Frontend e Backend. Amo
         aprender novas tecnologias e enfrentar novos desafios na programação.
