@@ -7,7 +7,7 @@ const Article = styled.article`
   flex-direction: column;
   width: 45%;
 
-  @media (max-width: 908px) {
+  @media (max-width: 1585px) {
     display: flex;
     width: 100%;
   }

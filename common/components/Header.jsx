@@ -130,7 +130,7 @@ const socialMedia = [
   {
     id: 0,
     name: 'Facebook',
-    link: 'https://www.facebook.com/profile.php?id=100009449735779',
+    link: 'https://www.facebook.com/karleoncristophe',
     image: '/facebook.png',
   },
   {

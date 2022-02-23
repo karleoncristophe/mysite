@@ -28,6 +28,12 @@ const Content = styled.div`
   padding-left: 10px;
   padding-right: 10px;
 
+  @media (max-width: 1585px) {
+    width: 85%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
   @media (max-width: 1200px) {
     width: 96%;
     padding-left: 10px;
