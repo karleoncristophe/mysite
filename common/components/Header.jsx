@@ -14,11 +14,11 @@ const Wrapper = styled.header`
 const Figure = styled.figure`
   display: flex;
   justify-content: space-between;
-  width: 250px;
+  width: 200px;
   margin: 0;
 
   @media (max-width: 425px) {
-    width: 200px;
+    width: 180px;
   }
 
   @media (max-width: 320px) {
