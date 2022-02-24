@@ -130,7 +130,7 @@ const socialMedia = [
   {
     id: 0,
     name: 'Facebook',
-    link: 'https://www.facebook.com/karleoncris',
+    link: 'https://www.facebook.com/karleoncristophe',
     image: '/facebook.png',
   },
   {
@@ -142,7 +142,7 @@ const socialMedia = [
   {
     id: 2,
     name: 'Instagram',
-    link: 'https://www.instagram.com/karleoncris/',
+    link: 'https://www.instagram.com/karleoncristophe/',
     image: '/instagram.png',
   },
   {
