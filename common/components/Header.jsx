@@ -129,30 +129,24 @@ const LightMode = styled.button`
 const socialMedia = [
   {
     id: 0,
-    name: 'Facebook',
-    link: 'https://www.facebook.com/karleoncristophe',
-    image: '/facebook.png',
-  },
-  {
-    id: 1,
     name: 'Github',
     link: 'https://github.com/karleoncristophe',
     image: '/github.png',
   },
   {
-    id: 2,
+    id: 1,
     name: 'Instagram',
     link: 'https://www.instagram.com/karleoncristophe/',
     image: '/instagram.png',
   },
   {
-    id: 3,
+    id: 2,
     name: 'Linkedin',
     link: 'https://www.linkedin.com/in/karleon-cristophe-07657b221/',
     image: '/linkedin.png',
   },
   {
-    id: 4,
+    id: 3,
     name: 'Twitter',
     link: 'https://twitter.com/karleoncris',
     image: '/twitter.png',
