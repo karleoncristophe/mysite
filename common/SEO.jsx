@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { NextSeo } from 'next-seo';
+import { Html } from 'next/document';
 
 const SEO = () => (
   <>
@@ -12,6 +13,7 @@ const SEO = () => (
       <meta property="og:url" content="https://karleoncristophe.com.br/" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
+
     <NextSeo
       title="Karleon Cristophe"
       description="Programador web/mobile freelancer, criação de sites, aplicativos móveis, landing pages, front e backend."
