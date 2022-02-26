@@ -38,7 +38,7 @@ const SEO = () => (
           { url: 'https://karleoncristophe.com.br/vercel.svg' },
           { url: 'https://karleoncristophe.com.br/vercel.svg' },
         ],
-        site_name: 'SiteName',
+        site_name: 'Karleon Cristophe',
       }}
       twitter={{
         handle: '@karleoncris',
