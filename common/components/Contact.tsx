@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { useDarkMode } from '../../context/DarkMode';
+import styled from "styled-components";
+import { useDarkMode } from "../../context/DarkMode";
 
 const Wrapper = styled.footer`
   display: flex;
@@ -12,7 +12,7 @@ const Wrapper = styled.footer`
   }
 `;
 
-const WppButton = styled.button`
+const WppButton = styled.button<any>`
   font-size: 1.2rem;
   font-weight: 600;
   height: 50px;
@@ -20,9 +20,9 @@ const WppButton = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  color: ${props => (props.darkMode ? ' #f7f7f7' : '#7b2cbf')};
+  color: ${(props) => (props.darkMode ? " #f7f7f7" : "#7b2cbf")};
   transition: 1s;
-  background: ${props => (props.darkMode ? ' #7b2cbf' : '#ffff')};
+  background: ${(props) => (props.darkMode ? " #7b2cbf" : "#ffff")};
 
   &:hover {
     color: #7b2cbf;
@@ -38,7 +38,7 @@ const WppButton = styled.button`
   }
 `;
 
-const TelButton = styled.button`
+const TelButton = styled.button<any>`
   font-size: 1.2rem;
   height: 50px;
   width: 150px;
@@ -47,7 +47,7 @@ const TelButton = styled.button`
   font-weight: 600;
   border-radius: 5px;
   cursor: pointer;
-  background: ${props => (props.darkMode ? ' #7b2cbf' : 'none')};
+  background: ${(props) => (props.darkMode ? " #7b2cbf" : "none")};
   color: #ffff;
   transition: 1s;
 

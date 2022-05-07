@@ -1,9 +1,9 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from "react";
 
-const DarkModeContext = createContext();
+const DarkModeContext = createContext<any>({});
 
 export default function DarkModeProvider({ children }) {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState<any>(false);
   return (
     <DarkModeContext.Provider value={{ darkMode, setDarkMode }}>
       {children}
@@ -11,10 +11,12 @@ export default function DarkModeProvider({ children }) {
   );
 }
 
+interface Props {}
+
 export function useDarkMode() {
   const darkmode = useContext(DarkModeContext);
   if (!darkmode)
-    throw new Error('useDarkMode must be used within a DarkModeProvider');
+    throw new Error("useDarkMode must be used within a DarkModeProvider");
   const { darkMode, setDarkMode } = darkmode;
   return { darkMode, setDarkMode };
 }
