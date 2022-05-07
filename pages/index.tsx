@@ -1,13 +1,13 @@
-import styled from 'styled-components';
-import Header from '../common/components/Header';
-import Main from '../common/components/Main';
-import SEO from '../common/SEO';
+import styled from "styled-components";
+import Header from "../common/components/Header";
+import Main from "../common/components/Main";
+import SEO from "../common/SEO";
 
-import { useDarkMode } from '../context/DarkMode';
+import { useDarkMode } from "../context/DarkMode";
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<any>`
   display: flex;
-  background: ${props => (props.darkMode ? ' #fffff' : '#030412')};
+  background: ${(props) => (props.darkMode ? " #fffff" : "#030412")};
   transition: 0.5s;
   flex-direction: column;
   align-items: center;

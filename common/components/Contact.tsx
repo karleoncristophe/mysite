@@ -68,7 +68,7 @@ const TelButton = styled.button<any>`
 const Link = styled.a``;
 
 const Contact = () => {
-  const { darkMode } = useDarkMode(false);
+  const { darkMode } = useDarkMode();
   return (
     <Wrapper>
       <Link

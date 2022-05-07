@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { useDarkMode } from '../../context/DarkMode';
-import Contact from './Contact';
+import styled from "styled-components";
+import { useDarkMode } from "../../context/DarkMode";
+import Contact from "./Contact";
 
 const Article = styled.article`
   display: flex;
@@ -13,12 +13,12 @@ const Article = styled.article`
   }
 `;
 
-const Title = styled.h1`
+const Title = styled.h1<any>`
   color: #fff;
   font-size: 4rem;
   transition: 0.5s;
-  color: ${props => (props.darkMode ? ' #1c1c1c' : ' #9D4EDD')};
-  font-family: 'Roboto', sans-serif;
+  color: ${(props) => (props.darkMode ? " #1c1c1c" : " #9D4EDD")};
+  font-family: "Roboto", sans-serif;
   font-weight: 700;
   margin: 0;
 
@@ -46,7 +46,7 @@ const Title = styled.h1`
 
 const Subtitle = styled.span`
   font-size: 1.8rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: end;
   width: 100%;
   color: #b991da;
@@ -70,12 +70,12 @@ const Subtitle = styled.span`
   }
 `;
 
-const Text = styled.p`
+const Text = styled.p<any>`
   font-size: 1.4rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   line-height: 27px;
   font-weight: 400;
-  color: ${props => (props.darkMode ? ' #414141' : '#b8b8b8')};
+  color: ${(props) => (props.darkMode ? " #414141" : "#b8b8b8")};
   margin: 0;
   margin-top: 28px;
   transition: 0.5s;

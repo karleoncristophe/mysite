@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import { useDarkMode } from '../../context/DarkMode';
+import styled from "styled-components";
+import { useDarkMode } from "../../context/DarkMode";
 
-const Wrapper = styled.header`
+const Wrapper = styled.header<any>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: ${props => (props.darkMode ? ' #1c1c1c' : ' #fffff')};
+  color: ${(props) => (props.darkMode ? " #1c1c1c" : " #fffff")};
   width: 100%;
   margin-top: 15px;
   margin-bottom: 10px;
@@ -30,7 +30,7 @@ const Figure = styled.figure`
   }
 `;
 
-const Link = styled.a`
+const Link = styled.a<any>`
   width: 40px;
   height: 40px;
   background: #7b2cbf;
@@ -76,13 +76,13 @@ const ButtonContent = styled.div`
   display: flex;
 `;
 
-const DarkMode = styled.button`
+const DarkMode = styled.button<any>`
   height: 50px;
   width: 50px;
-  background: url('/moon.png') no-repeat;
+  background: url("/moon.png") no-repeat;
   background-size: 32px;
   background-position: center;
-  border: ${props => (props.darkMode ? ' none' : ' 3px solid #7B2CBF')};
+  border: ${(props) => (props.darkMode ? " none" : " 3px solid #7B2CBF")};
   border-left: none;
   border-right: none;
   border-top: none;
@@ -101,13 +101,13 @@ const DarkMode = styled.button`
   }
 `;
 
-const LightMode = styled.button`
+const LightMode = styled.button<any>`
   height: 50px;
   width: 50px;
-  background: url('/sun.png') no-repeat;
+  background: url("/sun.png") no-repeat;
   background-position: center;
   background-size: 38px;
-  border: ${props => (props.darkMode ? ' 3px solid #7B2CBF' : ' none')};
+  border: ${(props) => (props.darkMode ? " 3px solid #7B2CBF" : " none")};
   border-left: none;
   border-right: none;
   border-top: none;
@@ -129,27 +129,27 @@ const LightMode = styled.button`
 const socialMedia = [
   {
     id: 0,
-    name: 'Github',
-    link: 'https://github.com/karleoncristophe',
-    image: '/github.png',
+    name: "Github",
+    link: "https://github.com/karleoncristophe",
+    image: "/github.png",
   },
   {
     id: 1,
-    name: 'Instagram',
-    link: 'https://www.instagram.com/karleoncristophe/',
-    image: '/instagram.png',
+    name: "Instagram",
+    link: "https://www.instagram.com/karleoncristophe/",
+    image: "/instagram.png",
   },
   {
     id: 2,
-    name: 'Linkedin',
-    link: 'https://www.linkedin.com/in/karleon-cristophe-07657b221/',
-    image: '/linkedin.png',
+    name: "Linkedin",
+    link: "https://www.linkedin.com/in/karleon-cristophe-07657b221/",
+    image: "/linkedin.png",
   },
   {
     id: 3,
-    name: 'Twitter',
-    link: 'https://twitter.com/karleoncris',
-    image: '/twitter.png',
+    name: "Twitter",
+    link: "https://twitter.com/karleoncris",
+    image: "/twitter.png",
   },
 ];
 
