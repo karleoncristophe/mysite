@@ -6,8 +6,8 @@ import Footer from "./components/Footer";
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
   height: 100vh;
+  flex-direction: column;
   width: 100%;
   background: linear-gradient(360deg, #171522 38.25%, #450e73 100%);
   padding-left: 10%;
@@ -16,12 +16,22 @@ const Wrapper = styled.div`
   padding-bottom: 2%;
 `;
 
+const Center = styled.div`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
 const HomeScreen = () => {
   return (
     <Wrapper>
       <Header />
-      <Main />
-      <Footer />
+      <Center>
+        <Main />
+        <Footer />
+      </Center>
     </Wrapper>
   );
 };

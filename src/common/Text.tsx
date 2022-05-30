@@ -32,7 +32,7 @@ const Text = ({ children, color, size, weight, align, style }: Props) => (
 );
 
 Text.defaultProps = {
-  size: 15,
+  size: 1,
   color: theme.colors.text.primary,
 };
 
