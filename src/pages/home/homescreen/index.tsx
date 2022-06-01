@@ -18,15 +18,17 @@ const Wrapper = styled.div`
 
 const Center = styled.div`
   display: flex;
+  margin-top: 5%;
   flex: 1;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  /* background: red; */
 `;
 
 const HomeScreen = () => {
   return (
-    <Wrapper>
+    <Wrapper id="home">
       <Header />
       <Center>
         <Main />

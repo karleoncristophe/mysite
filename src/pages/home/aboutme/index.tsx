@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 
 const AboutMe = () => {
   return (
-    <Wrapper>
+    <Wrapper id="quemSou">
       <Header />
       <Main />
       <Footer />

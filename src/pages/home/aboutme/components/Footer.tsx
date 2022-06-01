@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
-  margin-top: 8%;
+  padding-top: 8%;
 `;
 
 const SkillWrraper = styled.div`
@@ -23,15 +23,14 @@ const SkillContet = styled.div`
   background: linear-gradient(93.67deg, #232035 0%, #450e73 101.25%);
   border-radius: 20px;
   width: 40%;
-
   justify-content: space-between;
   height: 125px;
   padding: 1.5%;
 `;
 
 const Image = styled.img`
-  width: 32.67px;
-  height: 35px;
+  width: 30%px;
+  height: 30%px;
 `;
 
 const ImageAndTextContet = styled.div`
@@ -75,11 +74,11 @@ const TimeExperienceCircle = styled.div`
 
 const Footer = () => {
   return (
-    <Wrapper>
+    <Wrapper id="habilidades">
       <Text size={3.12} weight={600} style={{ lineHeight: "55px" }}>
         Habilidades
       </Text>
-      <Text size={1.87} style={{ marginBottom: "6%" }}>
+      <Text size={1.87} style={{ marginBottom: "2%" }}>
         Minha experiência de trabalho
       </Text>
       <SkillWrraper>

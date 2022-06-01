@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import Link from "../../../../common/Link";
 import Text from "../../../../common/Text";
-import Image from "next/image";
-
+import data from "./data";
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
@@ -23,23 +23,26 @@ const ContentIcon = styled.div`
   height: 90%;
 `;
 
-const ImageContet = styled.div`
+const ImageContet = styled.button`
   display: flex;
   height: 60.56px;
   width: 61.91px;
   border-radius: 50%;
-  background: "#ffffff";
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.2);
+    transform: rotate(360deg);
+    transition: 0.8s;
+  }
 `;
 
-const data = [
-  {
-    id: 0,
-    image: "/Github.svg",
-  },
-  { id: 1, image: "/Facebook.svg" },
-  { id: 2, image: "/Twitter.svg" },
-  { id: 3, image: "/Linkedin.svg" },
-];
+const Image = styled.img`
+  height: 100%;
+  width: 100%;
+`;
 
 const Main = () => {
   return (
@@ -55,9 +58,9 @@ const Main = () => {
         <Text size={2.95}>Fullstack Developer_</Text>
       </ContentText>
       <ContentIcon>
-        {data.map((item) => (
-          <ImageContet key={item.id}>
-            <Image src={item.image} height="100%" width="100%" />
+        {data.image.map((item) => (
+          <ImageContet key={item.id} onClick={() => Link({ link: item.link })}>
+            <Image src={item.image} />
           </ImageContet>
         ))}
       </ContentIcon>

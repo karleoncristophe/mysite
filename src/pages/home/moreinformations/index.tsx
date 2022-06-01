@@ -2,11 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import Header from "./components/Header";
 import Main from "./components/Main";
+import Footer from "./components/Footer";
+import Space from "../../../common/Space";
 
 const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
   height: 263px;
-  align-items: center;
+  justify-content: center;
   width: 100%;
   padding-left: 10%;
   padding-right: 10%;
@@ -15,9 +18,11 @@ const Wrapper = styled.div`
 
 const MoreInformations = () => {
   return (
-    <Wrapper>
+    <Wrapper id="">
       <Header />
       <Main />
+      <Space height={25} />
+      <Footer />
     </Wrapper>
   );
 };

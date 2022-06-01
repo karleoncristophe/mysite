@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import Link from "../../../../common/Link";
 import Text from "../../../../common/Text";
-import Image from "next/image";
+import data from "./data";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -19,7 +20,7 @@ const WhatsAppContet = styled.div`
   width: 100%;
 `;
 
-const LinkInstagram = styled.a`
+const LinkInstagram = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,10 +30,14 @@ const LinkInstagram = styled.a`
   margin-top: 15px;
   background: #ffffff;
   border-radius: 48px;
+  cursor: pointer;
+  border: none;
 `;
 
 const InstagramImage = styled.img`
   display: flex;
+  position: relative;
+  left: 3%;
   height: 55%;
   width: 60px;
 `;
@@ -43,7 +48,7 @@ const WhatsAppImage = styled.img`
   width: 60px;
 `;
 
-const LinkWhatsApp = styled.a`
+const LinkWhatsApp = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -51,28 +56,25 @@ const LinkWhatsApp = styled.a`
   width: 268px;
   background: #7c2cbf;
   border-radius: 25.4545px;
+  cursor: pointer;
+  border: none;
 `;
 
 const Footer = () => {
-  const linkToWpp =
-    "https://api.whatsapp.com/send?phone=5521981454891&text=Ol%C3%A1!%20Preciso%20de%20uma%20ajudinha%20sua%20em%20um%20projeto!%20";
-  const linkToInstagram = "https://www.instagram.com/karleoncristophe/";
   return (
     <Wrapper>
       <InstagramContet>
-        <LinkInstagram href={linkToInstagram}>
+        <LinkInstagram
+          onClick={() => Link({ link: data.link.linkToInstagram })}
+        >
           <Text style={{ color: "#000" }} size={1.6}>
             Instagram
           </Text>
-          <InstagramImage
-            src="/Instagram.svg"
-            alt="Instagram"
-            style={{ paddingRight: "10px" }}
-          />
+          <InstagramImage src="/Instagram.svg" alt="Instagram" />
         </LinkInstagram>
       </InstagramContet>
       <WhatsAppContet>
-        <LinkWhatsApp href={linkToWpp}>
+        <LinkWhatsApp onClick={() => Link({ link: data.link.linkToWpp })}>
           <WhatsAppImage src="/WhatsApp.svg" />
           <Text size={1.6} weight={700} style={{ marginRight: "10%" }}>
             WhatsApp

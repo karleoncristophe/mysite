@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Text from "../../../../common/Text";
-import Image from "next/image";
 import Space from "../../../../common/Space";
 
 const Wrapper = styled.div`
@@ -27,8 +26,10 @@ const Arrow = styled.img`
 `;
 
 const Square = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   background: #232035;
-  height: 445px;
   border-radius: 20px 50px 20px 20px;
   border: 2px dashed #a5a1a8;
   padding: 2%;
@@ -36,8 +37,8 @@ const Square = styled.div`
 
 const Rectangle = styled.div`
   display: flex;
-  height: 348px;
-  width: 20%;
+  height: 20%;
+  width: 2%;
   background: #7c2cbf;
   border: 2px dashed #a5a1a8;
   border-left: 0px;

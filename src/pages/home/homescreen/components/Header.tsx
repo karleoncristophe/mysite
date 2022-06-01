@@ -1,5 +1,7 @@
 import styled from "styled-components";
+import Link from "../../../../common/Link";
 import Text from "../../../../common/Text";
+import data from "./data";
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,22 +14,24 @@ const ContentText = styled.div`
   width: 50%;
 `;
 
-const data = [
-  { id: 0, text: "Home" },
-  { id: 1, text: "Quem Sou" },
-  { id: 2, text: "Habilidades" },
-  { id: 3, text: "Contato" },
-];
+const LinkToTitle = styled.button`
+  background: transparent;
+  border: none;
+  cursor: pointer;
+`;
 
 const Header = () => {
   return (
     <Wrapper>
       <Text size={1.87}>Karleon C.</Text>
       <ContentText>
-        {data.map((item) => (
-          <Text size={1.87} key={item.id}>
-            {item.text}
-          </Text>
+        {data.text.map((item) => (
+          <LinkToTitle
+            key={item.id}
+            onClick={() => Link({ link: item.link, target: "_top" })}
+          >
+            <Text size={1.87}>{item.text}</Text>
+          </LinkToTitle>
         ))}
       </ContentText>
     </Wrapper>

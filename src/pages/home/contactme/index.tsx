@@ -33,7 +33,7 @@ const TextContent = styled.div`
 
 const ContactMe = () => {
   return (
-    <Wrapper>
+    <Wrapper id="contato">
       {data.map((item) => (
         <WppAndEmailContent key={item.id}>
           <Image src={item.image} alt={item.title} />
