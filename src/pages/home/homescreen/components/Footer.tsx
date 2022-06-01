@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import Text from "../../../../common/Text";
-import InstagramIcon from "../../../../public/Instagram.svg";
-import WhatsAppImage from "../../../../public/WhatsApp.svg";
 import Image from "next/image";
 
 const Wrapper = styled.div`
@@ -21,7 +19,7 @@ const WhatsAppContet = styled.div`
   width: 100%;
 `;
 
-const Instagram = styled.div`
+const LinkInstagram = styled.a`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -33,7 +31,19 @@ const Instagram = styled.div`
   border-radius: 48px;
 `;
 
-const WhatsApp = styled.div`
+const InstagramImage = styled.img`
+  display: flex;
+  height: 55%;
+  width: 60px;
+`;
+
+const WhatsAppImage = styled.img`
+  display: flex;
+  height: 60%;
+  width: 60px;
+`;
+
+const LinkWhatsApp = styled.a`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -44,34 +54,30 @@ const WhatsApp = styled.div`
 `;
 
 const Footer = () => {
+  const linkToWpp =
+    "https://api.whatsapp.com/send?phone=5521981454891&text=Ol%C3%A1!%20Preciso%20de%20uma%20ajudinha%20sua%20em%20um%20projeto!%20";
+  const linkToInstagram = "https://www.instagram.com/karleoncristophe/";
   return (
     <Wrapper>
       <InstagramContet>
-        <Instagram>
+        <LinkInstagram href={linkToInstagram}>
           <Text style={{ color: "#000" }} size={1.6}>
             Instagram
           </Text>
-          <Image
-            src={InstagramIcon}
+          <InstagramImage
+            src="/Instagram.svg"
             alt="Instagram"
-            height="45.56px"
-            width="45.55px"
-            style={{ paddingRight: "15px" }}
+            style={{ paddingRight: "10px" }}
           />
-        </Instagram>
+        </LinkInstagram>
       </InstagramContet>
       <WhatsAppContet>
-        <WhatsApp>
-          <Image
-            src={WhatsAppImage}
-            alt="WhatsApp"
-            height="45.56px"
-            width="45.55px"
-          />
-          <Text size={1.6} weight={700} style={{ marginRight: "10px" }}>
+        <LinkWhatsApp href={linkToWpp}>
+          <WhatsAppImage src="/WhatsApp.svg" />
+          <Text size={1.6} weight={700} style={{ marginRight: "10%" }}>
             WhatsApp
           </Text>
-        </WhatsApp>
+        </LinkWhatsApp>
       </WhatsAppContet>
     </Wrapper>
   );

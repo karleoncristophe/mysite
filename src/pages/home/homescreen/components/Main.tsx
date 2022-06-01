@@ -1,10 +1,6 @@
 import styled from "styled-components";
 import Text from "../../../../common/Text";
 import Image from "next/image";
-import LinkedinImage from "../../../../public/Linkedin.svg";
-import GitbubImage from "../../../../public/Github.svg";
-import TwiiterIMage from "../../../../public/Twitter.svg";
-import FacebookIMage from "../../../../public/Facebook.svg";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -38,11 +34,11 @@ const ImageContet = styled.div`
 const data = [
   {
     id: 0,
-    image: GitbubImage,
+    image: "/Github.svg",
   },
-  { id: 1, image: FacebookIMage },
-  { id: 2, image: TwiiterIMage },
-  { id: 3, image: LinkedinImage },
+  { id: 1, image: "/Facebook.svg" },
+  { id: 2, image: "/Twitter.svg" },
+  { id: 3, image: "/Linkedin.svg" },
 ];
 
 const Main = () => {
