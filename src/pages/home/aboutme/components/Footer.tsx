@@ -25,7 +25,11 @@ const SkillContet = styled.div`
   width: 40%;
   justify-content: space-between;
   height: 125px;
-  padding: 1.5%;
+  padding: 20px;
+
+  @media (max-width: 1235px) {
+    width: 100%;
+  }
 `;
 
 const Image = styled.img`

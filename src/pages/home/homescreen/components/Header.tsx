@@ -6,12 +6,27 @@ import data from "./data";
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 1600px) {
+    width: 100%;
+    justify-content: none;
+    flex-direction: column;
+  }
 `;
 
 const ContentText = styled.div`
   display: flex;
   justify-content: space-between;
   width: 50%;
+
+  @media (max-width: 1600px) {
+    justify-content: space-between;
+    justify-content: center;
+    width: 100%;
+    margin-top: 5%;
+    text-align: center;
+    flex-wrap: wrap;
+  }
 `;
 
 const LinkToTitle = styled.button`
