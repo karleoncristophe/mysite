@@ -6,9 +6,9 @@ import HomeScreen from "./home/homescreen";
 import MoreInformations from "./home/moreinformations";
 
 const Wrapper = styled.div`
-  height: 100%;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 `;
 
 export default function Home() {

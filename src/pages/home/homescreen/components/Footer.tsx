@@ -7,39 +7,15 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-`;
-
-const InstagramContet = styled.div`
-  display: flex;
-  justify-content: end;
-  width: 100%;
+  margin-top: 2%;
+  @media (max-width: 946px) {
+    display: none;
+  }
 `;
 
 const WhatsAppContet = styled.div`
   display: flex;
   width: 100%;
-`;
-
-const LinkInstagram = styled.button`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 60.56px;
-  width: 268px;
-  padding-left: 1.5%;
-  margin-top: 15px;
-  background: #ffffff;
-  border-radius: 48px;
-  cursor: pointer;
-  border: none;
-`;
-
-const InstagramImage = styled.img`
-  display: flex;
-  position: relative;
-  left: 3%;
-  height: 55%;
-  width: 60px;
 `;
 
 const WhatsAppImage = styled.img`
@@ -63,16 +39,6 @@ const LinkWhatsApp = styled.button`
 const Footer = () => {
   return (
     <Wrapper>
-      <InstagramContet>
-        <LinkInstagram
-          onClick={() => Link({ link: data.link.linkToInstagram })}
-        >
-          <Text style={{ color: "#000" }} size={1.6}>
-            Instagram
-          </Text>
-          <InstagramImage src="/Instagram.svg" alt="Instagram" />
-        </LinkInstagram>
-      </InstagramContet>
       <WhatsAppContet>
         <LinkWhatsApp onClick={() => Link({ link: data.link.linkToWpp })}>
           <WhatsAppImage src="/WhatsApp.svg" />

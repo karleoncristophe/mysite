@@ -32,7 +32,7 @@ const Square = styled.div`
   background: #232035;
   border-radius: 20px 50px 20px 20px;
   border: 2px dashed #a5a1a8;
-  padding: 2%;
+  padding: 20px;
 `;
 
 const Rectangle = styled.div`
@@ -67,7 +67,7 @@ const Main = () => {
           <Text size={1.56}>{text}</Text>
         </AboutMeContent>
       </Square>
-      <Rectangle />
+      {/* <Rectangle /> */}
     </Wrapper>
   );
 };

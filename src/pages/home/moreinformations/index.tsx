@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   padding-left: 10%;
   padding-right: 10%;
   background: #450e73;
+  overflow: hidden;
 `;
 
 const MoreInformations = () => {
