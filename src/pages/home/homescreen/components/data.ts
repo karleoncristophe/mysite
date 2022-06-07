@@ -42,6 +42,28 @@ const data = {
       link: "https://www.instagram.com/karleoncristophe/",
     },
   ],
+
+  imageMobile: [
+    {
+      id: 0,
+      name: "Github",
+      img: "/Github.svg",
+      link: "https://github.com/karleoncristophe",
+    },
+
+    {
+      id: 1,
+      name: "Linkedin",
+      img: "/Linkedin.svg",
+      link: "https://www.linkedin.com/in/karleon-cristophe-07657b221/",
+    },
+    {
+      id: 2,
+      name: "Instagram",
+      img: "/Instagram2.svg",
+      link: "https://www.instagram.com/karleoncristophe/",
+    },
+  ],
 };
 
 export default data;

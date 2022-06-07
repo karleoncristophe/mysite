@@ -5,15 +5,35 @@ const Wrapper = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
+
+  @media (max-width: 549px) {
+    margin-top: 40px;
+  }
+`;
+
+const Title = styled.span`
+  font-size: 3.12rem;
+  font-weight: 600;
+
+  @media (max-width: 549px) {
+    font-size: 2.5rem;
+  }
+`;
+
+const SubTitle = styled.span`
+  font-size: 1.87rem;
+
+  @media (max-width: 549px) {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
 `;
 
 const Header = () => {
   return (
     <Wrapper>
-      <Text size={3.12} weight={600} style={{ lineHeight: "55px" }}>
-        Quem Sou
-      </Text>
-      <Text size={1.87}>Vamos lá me conhecer um pouco...</Text>
+      <Title style={{ lineHeight: "55px" }}>Quem Sou</Title>
+      <SubTitle>Vamos lá me conhecer um pouco...</SubTitle>
     </Wrapper>
   );
 };

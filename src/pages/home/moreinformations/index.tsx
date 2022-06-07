@@ -7,23 +7,37 @@ import Space from "../../../common/Space";
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  height: 263px;
+  height: 270px;
   justify-content: center;
   width: 100%;
-  padding-left: 10%;
-  padding-right: 10%;
   background: #450e73;
+`;
+
+const Container = styled.div`
+  display: flex;
+  max-width: 1240px;
+  padding: 40px;
+  flex-direction: column;
+  height: 270px;
+  justify-content: center;
+  width: 100%;
   overflow: hidden;
+
+  @media (max-width: 549px) {
+    height: 280px;
+    padding: 10px;
+  }
 `;
 
 const MoreInformations = () => {
   return (
-    <Wrapper id="">
-      <Header />
-      <Main />
-      <Space height={25} />
-      <Footer />
+    <Wrapper>
+      <Container>
+        <Header />
+        <Main />
+        <Space height={25} />
+        <Footer />
+      </Container>
     </Wrapper>
   );
 };

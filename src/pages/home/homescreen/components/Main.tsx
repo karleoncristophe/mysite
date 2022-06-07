@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: "Poppins", sans-serif;
+
   @media (max-width: 946px) {
     flex-direction: column;
   }
@@ -34,8 +34,17 @@ const ContentIcon = styled.div`
   width: 100%;
 
   @media (max-width: 549px) {
+    display: none;
+  }
+`;
+
+const ContentIconMobile = styled.div`
+  display: none;
+
+  @media (max-width: 549px) {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    width: 100%;
     margin-top: 40px;
   }
 `;
@@ -86,18 +95,15 @@ const ImageContet = styled.button`
       }
     }
   }
-
-  @media (max-width: 1266px) {
-    display: none;
-  }
 `;
 const ImageContentPhone = styled.button`
   display: none;
   cursor: pointer;
-  margin-top: 40px;
 
   @media (max-width: 549px) {
     display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
     background: none;
     border: none;
   }
@@ -156,7 +162,7 @@ const SubTitle = styled.span`
   font-weight: 400;
   color: #ffffff;
   @media (max-width: 549px) {
-    font-size: 1.95rem;
+    font-size: 1.7rem;
   }
 `;
 const Span = styled.span`
@@ -164,7 +170,46 @@ const Span = styled.span`
   font-weight: 400;
   color: #ffffff;
   @media (max-width: 549px) {
+    display: none;
     font-size: 1.95rem;
+  }
+`;
+
+const WhatsAppContet = styled.div`
+  display: none;
+
+  @media (max-width: 549px) {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+`;
+
+const WhatsAppImage = styled.img`
+  display: flex;
+  height: 35px;
+  width: 35px;
+`;
+
+const LinkWhatsApp = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60.56px;
+  width: 268px;
+  background: #7c2cbf;
+  border-radius: 25.4545px;
+  cursor: pointer;
+  border: none;
+`;
+
+const Text = styled.span`
+  font-weight: 700;
+  color: #ffffff;
+  margin-left: 10px;
+  @media (max-width: 549px) {
+    font-size: 1.3rem;
   }
 `;
 
@@ -177,6 +222,12 @@ const Main = () => {
         <Title style={{ marginTop: "-3%" }}>Cristophe</Title>
         <SubTitle>Fullstack Developer_</SubTitle>
       </ContentText>
+      <WhatsAppContet>
+        <LinkWhatsApp onClick={() => Link({ link: data.link.linkToWpp })}>
+          <WhatsAppImage src="/WhatsApp.svg" />
+          <Text style={{ marginRight: "10%" }}>WhatsApp</Text>
+        </LinkWhatsApp>
+      </WhatsAppContet>
       <ContentIcon>
         {data.image.map((item) => (
           <ImageContet key={item.id} onClick={() => Link({ link: item.link })}>
@@ -186,7 +237,9 @@ const Main = () => {
             </Figure>
           </ImageContet>
         ))}
-        {data.image.map((item) => (
+      </ContentIcon>
+      <ContentIconMobile>
+        {data.imageMobile.map((item) => (
           <ImageContentPhone
             key={item.id}
             onClick={() => Link({ link: item.link })}
@@ -194,7 +247,7 @@ const Main = () => {
             <ImagePhone src={item.img} />
           </ImageContentPhone>
         ))}
-      </ContentIcon>
+      </ContentIconMobile>
     </Wrapper>
   );
 };

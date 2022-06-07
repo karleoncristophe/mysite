@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Space from "../../../../common/Space";
-import Text from "../../../../common/Text";
 import data, { Idata } from "./data";
 
 const Wrapper = styled.div`
@@ -30,11 +29,20 @@ const SkillContet = styled.div`
   @media (max-width: 1235px) {
     width: 100%;
   }
+
+  @media (max-width: 549px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const Image = styled.img`
-  width: 30%px;
-  height: 30%px;
+  width: 30%;
+  height: 30%;
+
+  @media (max-width: 549px) {
+    width: 35px;
+    height: 35px;
+  }
 `;
 
 const ImageAndTextContet = styled.div`
@@ -46,6 +54,10 @@ const ImageAndTextContet = styled.div`
 const ImageAndText = styled.div`
   display: flex;
   align-items: center;
+
+  @media (max-width: 549px) {
+    /* align-items: flex-start; */
+  }
 `;
 
 const TimeExperienceContent = styled.div``;
@@ -57,6 +69,9 @@ const TimeExperienceBarContent = styled.div`
   height: 20px;
   background: #cab0df;
   border-radius: 50px;
+  @media (max-width: 549px) {
+    height: 12px;
+  }
 `;
 
 const TimeExperienceBar = styled.div<Idata>`
@@ -74,17 +89,44 @@ const TimeExperienceCircle = styled.div`
   background: #8f3cd4;
   border: 1px solid #7c2cbf;
   right: 12px;
+  @media (max-width: 549px) {
+    height: 22px;
+    width: 22px;
+  }
+`;
+
+const Title = styled.span`
+  font-size: 3.12rem;
+  font-weight: 600;
+
+  @media (max-width: 549px) {
+    font-size: 2.5rem;
+  }
+`;
+
+const SubTitle = styled.span`
+  font-size: 1.87rem;
+
+  @media (max-width: 549px) {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+  }
+`;
+
+const Text = styled.span`
+  font-size: 1.25rem;
+  font-weight: 600;
+
+  @media (max-width: 549px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const Footer = () => {
   return (
     <Wrapper id="habilidades">
-      <Text size={3.12} weight={600} style={{ lineHeight: "55px" }}>
-        Habilidades
-      </Text>
-      <Text size={1.87} style={{ marginBottom: "2%" }}>
-        Minha experiência de trabalho
-      </Text>
+      <Title style={{ lineHeight: "55px" }}>Habilidades</Title>
+      <SubTitle>Minha experiência de trabalho</SubTitle>
       <SkillWrraper>
         {data.map((item) => (
           <SkillContet key={item.id}>
@@ -95,13 +137,9 @@ const Footer = () => {
                   alt={item.text}
                   style={{ marginRight: "15px" }}
                 />
-                <Text size={1.25} weight={600}>
-                  {item.text}
-                </Text>
+                <Text>{item.text}</Text>
               </ImageAndText>
-              <Text size={1.25} weight={600}>
-                {item.TimeExperience}
-              </Text>
+              <Text>{item.TimeExperience}</Text>
             </ImageAndTextContet>
             <TimeExperienceContent>
               <TimeExperienceBarContent>

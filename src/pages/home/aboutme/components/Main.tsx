@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Text from "../../../../common/Text";
 import Space from "../../../../common/Space";
 
 const Wrapper = styled.div`
@@ -23,6 +22,7 @@ const Arrow = styled.img`
   height: 16px;
   width: 18px;
   margin-right: 10px;
+  transform: rotate(270deg);
 `;
 
 const Square = styled.div`
@@ -32,7 +32,24 @@ const Square = styled.div`
   background: #232035;
   border-radius: 20px 50px 20px 20px;
   border: 2px dashed #a5a1a8;
-  padding: 20px;
+  padding: 25px;
+  margin-bottom: 20px;
+`;
+
+const Title = styled.span`
+  font-size: 1.12rem;
+
+  @media (max-width: 549px) {
+    font-size: 1.1rem;
+  }
+`;
+
+const Text = styled.span`
+  font-size: 1.56rem;
+
+  @media (max-width: 549px) {
+    font-size: 1.4rem;
+  }
 `;
 
 const Rectangle = styled.div`
@@ -58,13 +75,13 @@ const Main = () => {
       <Square>
         <TitleContent>
           <Arrow src="/Arrow.png" />
-          <Text style={{ color: "#B98FDC" }} size={1.12}>
-            nano <Text size={1.12}> about</Text>
-          </Text>
+          <Title style={{ color: "#B98FDC" }}>
+            nano <Title style={{ color: "#ffffff" }}> about</Title>
+          </Title>
         </TitleContent>
         <Space height={21} width={100} />
         <AboutMeContent>
-          <Text size={1.56}>{text}</Text>
+          <Text>{text}</Text>
         </AboutMeContent>
       </Square>
       {/* <Rectangle /> */}

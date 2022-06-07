@@ -8,6 +8,10 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+
+  @media (max-width: 549px) {
+    flex-direction: column;
+  }
 `;
 
 const ImageContet = styled.button`
@@ -23,6 +27,13 @@ const ImageContet = styled.button`
     transform: rotate(360deg);
     transition: 0.8s;
   }
+
+  @media (max-width: 549px) {
+    display: flex;
+    flex-direction: row;
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 const Image = styled.img`
@@ -34,16 +45,37 @@ const TextContent = styled.div`
   display: flex;
   width: 80%;
   flex-direction: column;
+
+  @media (max-width: 549px) {
+    display: none;
+  }
+`;
+
+const Container = styled.div`
+  display: flex;
+
+  @media (max-width: 549px) {
+    display: none;
+  }
+`;
+const TextContentMobile = styled.div`
+  display: none;
+
+  @media (max-width: 549px) {
+    display: flex;
+  }
 `;
 
 const Footer = () => {
   return (
     <Wrapper>
-      {data.image.map((item) => (
-        <ImageContet key={item.id} onClick={() => Link({ link: item.link })}>
-          <Image src={item.image} />
-        </ImageContet>
-      ))}
+      <Container>
+        {data.image.map((item) => (
+          <ImageContet key={item.id} onClick={() => Link({ link: item.link })}>
+            <Image src={item.image} />
+          </ImageContet>
+        ))}
+      </Container>
       <TextContent>
         <Text size={1.25} align="right">
           Copyright 2022 ©{" "}
@@ -55,6 +87,11 @@ const Footer = () => {
           todos os direitos reservados
         </Text>
       </TextContent>
+      <TextContentMobile>
+        <Text align="center">
+          Copyright 2022 © karleoncristophe. todos os direitos reservados
+        </Text>
+      </TextContentMobile>
     </Wrapper>
   );
 };

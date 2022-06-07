@@ -7,24 +7,16 @@ import data from "./data";
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
-const TitleContent = styled.div`
-  @media (max-width: 946px) {
-    display: none;
-  }
-`;
+const TitleContent = styled.div``;
 
 const ContentText = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 50%;
 
-  @media (max-width: 946px) {
-    display: none;
-  }
-
-  @media (max-width: 1600px) {
+  @media (max-width: 855px) {
     display: none;
   }
 `;
@@ -33,24 +25,25 @@ const LinkToTitle = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
+  margin-left: 10px;
 `;
 
 const Button = styled.button`
-  position: relative;
-  left: -20px;
+  display: none;
   background: transparent;
   border: none;
   cursor: pointer;
   height: 50px;
   width: 50px;
-  @media (min-width: 1600px) {
-    display: none;
+
+  @media (max-width: 855px) {
+    display: flex;
   }
 `;
 
 const Image = styled.img`
-  height: 100%;
-  width: 100%;
+  height: 45px;
+  width: 45px;
 `;
 
 const Header = () => {
@@ -69,14 +62,14 @@ const Header = () => {
         <Image src="/menu.svg" />
       </Button>
 
-      {modal === true && <Menu setModal={setModal} />}
+      {modal === true && <Menu setModal={setModal} modal={modal} />}
       <ContentText>
         {data.text.map((item) => (
           <LinkToTitle
             key={item.id}
             onClick={() => Link({ link: item.link, target: "_top" })}
           >
-            <Text size={1.87}>{item.text}</Text>
+            <Text size={1.47}>{item.text}</Text>
           </LinkToTitle>
         ))}
       </ContentText>
@@ -84,14 +77,15 @@ const Header = () => {
   );
 };
 
-const MenuContet = styled.div`
-  position: absolute;
+const MenuContet = styled.div<Props>`
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  background: #171522;
-  height: 100vh;
+  position: absolute;
+  transition: all ease-out 0.8s;
+  /* height: ${(p) => (p.modal ? 100 : 0)}vh; */
   width: 100vw;
+  padding: 20px;
+  background: #171522;
   right: 0;
   left: 0;
   bottom: 0;
@@ -107,24 +101,28 @@ const ModalText = styled.div`
 `;
 
 const ButtonClose = styled.button`
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
   background: transparent;
   border: none;
   cursor: pointer;
   height: 50px;
-  width: 50px;
+  width: 100%;
 `;
 
 interface Props {
-  setModal: (data: boolean) => void;
+  modal: boolean;
+  setModal?: (data: boolean) => void;
 }
 
-function Menu({ setModal }: Props) {
+function Menu({ setModal, modal }: Props) {
   const closeModal = (item?: string) => {
     Link({ link: item, target: "_top" });
     setModal(false);
   };
   return (
-    <MenuContet>
+    <MenuContet modal={modal}>
       <ButtonClose>
         <Image src="/close.svg" onClick={() => closeModal()} />
       </ButtonClose>
