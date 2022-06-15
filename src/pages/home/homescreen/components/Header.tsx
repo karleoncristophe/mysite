@@ -76,7 +76,7 @@ const Header = () => {
         <Image src="/menu.svg" />
       </Button>
 
-      {modal === true && <Menu setModal={setModal} modal={modal} />}
+      {modal ? <Menu setModal={setModal} modal={modal} /> : ""}
       <ContentText>
         {data.text.map((item) => (
           <LinkToTitle
@@ -95,8 +95,8 @@ const MenuContet = styled.div<Props>`
   display: flex;
   flex-direction: column;
   position: absolute;
-  transition: all ease-out 0.8s;
-  /* height: ${(p) => (p.modal ? 100 : 0)}vh; */
+  transition: all ease-out 0.5s;
+  height: ${(p) => (p.modal === true ? 100 : 0)}vh;
   width: 100vw;
   padding: 20px;
   background: #171522;

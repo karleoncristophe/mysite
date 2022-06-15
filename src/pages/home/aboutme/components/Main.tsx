@@ -60,6 +60,10 @@ const Rectangle = styled.div`
   border: 2px dashed #a5a1a8;
   border-left: 0px;
   border-radius: 0px 50px 20px 0px;
+
+  @media (max-width: 1011px) {
+    display: none;
+  }
 `;
 
 const text = `Atualmente estudando/trabalhando com Frontend, Backend e Mobile. Amo

@@ -34,12 +34,12 @@ const SkillContet = styled.div`
     }
   }
 
-  @media (max-width: 1235px) {
+  @media (max-width: 830px) {
     width: 100%;
   }
 
   @media (max-width: 549px) {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
   }
 `;
 
