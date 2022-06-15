@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Link from "../../../../common/Link";
 
-import data from "./data";
+import data, { Idata } from "./data";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  @media (max-width: 946px) {
+  @media (max-width: 1011px) {
     flex-direction: column;
   }
 `;
@@ -21,7 +21,7 @@ const ContentText = styled.div`
 
   height: 80%;
 
-  @media (max-width: 946px) {
+  @media (max-width: 1011px) {
     align-items: center;
   }
 `;
@@ -33,7 +33,7 @@ const ContentIcon = styled.div`
   height: 90%;
   width: 100%;
 
-  @media (max-width: 549px) {
+  @media (max-width: 1011px) {
     display: none;
   }
 `;
@@ -41,7 +41,7 @@ const ContentIcon = styled.div`
 const ContentIconMobile = styled.div`
   display: none;
 
-  @media (max-width: 549px) {
+  @media (max-width: 1011px) {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -49,7 +49,7 @@ const ContentIconMobile = styled.div`
   }
 `;
 
-const ImageContet = styled.button`
+const ImageContet = styled.button<Idata>`
   display: flex;
   padding: 0px;
   border-radius: 50px;
@@ -86,7 +86,7 @@ const ImageContet = styled.button`
       }
       img {
         background: radial-gradient(
-          #29263d 66%,
+          ${(p) => p.color} 66%,
 
           #ffffff 1%
         );
@@ -100,7 +100,7 @@ const ImageContentPhone = styled.button`
   display: none;
   cursor: pointer;
 
-  @media (max-width: 549px) {
+  @media (max-width: 1011px) {
     display: flex;
     margin-left: 10px;
     margin-right: 10px;
@@ -124,9 +124,14 @@ const Figure = styled.figure`
 `;
 
 const ImagePhone = styled.img`
-  /* border-radius: 50%; */
-  height: 45px;
-  width: 45px;
+  @media (max-width: 1011px) {
+    height: 55px;
+    width: 55px;
+  }
+  @media (max-width: 549px) {
+    height: 45px;
+    width: 45px;
+  }
 `;
 
 const Image = styled.img`
@@ -153,6 +158,9 @@ const Title = styled.span`
   font-weight: 700;
   color: #ffffff;
 
+  @media (max-width: 1011px) {
+    font-size: 5.07rem;
+  }
   @media (max-width: 549px) {
     font-size: 4.07rem;
   }
@@ -161,6 +169,11 @@ const SubTitle = styled.span`
   font-size: 2.95rem;
   font-weight: 400;
   color: #ffffff;
+
+  @media (max-width: 1011px) {
+    font-size: 2.2rem;
+  }
+
   @media (max-width: 549px) {
     font-size: 1.7rem;
   }
@@ -169,16 +182,15 @@ const Span = styled.span`
   font-size: 2.95rem;
   font-weight: 400;
   color: #ffffff;
-  @media (max-width: 549px) {
+  @media (max-width: 1011px) {
     display: none;
-    font-size: 1.95rem;
   }
 `;
 
 const WhatsAppContet = styled.div`
   display: none;
 
-  @media (max-width: 549px) {
+  @media (max-width: 1011px) {
     margin-top: 30px;
     display: flex;
     justify-content: center;
@@ -208,6 +220,10 @@ const Text = styled.span`
   font-weight: 700;
   color: #ffffff;
   margin-left: 10px;
+
+  @media (max-width: 1011px) {
+    font-size: 1.3rem;
+  }
   @media (max-width: 549px) {
     font-size: 1.3rem;
   }
@@ -219,7 +235,7 @@ const Main = () => {
       <ContentText>
         <Span>Olá, eu sou</Span>
         <Title style={{ marginTop: "-1%" }}>Karleon</Title>
-        <Title style={{ marginTop: "-3%" }}>Cristophe</Title>
+        <Title style={{ marginTop: "-11%" }}>Cristophe</Title>
         <SubTitle>Fullstack Developer_</SubTitle>
       </ContentText>
       <WhatsAppContet>
@@ -230,7 +246,11 @@ const Main = () => {
       </WhatsAppContet>
       <ContentIcon>
         {data.image.map((item) => (
-          <ImageContet key={item.id} onClick={() => Link({ link: item.link })}>
+          <ImageContet
+            key={item.id}
+            onClick={() => Link({ link: item.link })}
+            color={item.color}
+          >
             <Name>{item.name}</Name>
             <Figure>
               <Image src={item.img} />

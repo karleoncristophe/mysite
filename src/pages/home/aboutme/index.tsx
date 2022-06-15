@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  max-width: 1240px;
+  max-width: 1540px;
   display: flex;
   flex-direction: column;
   width: 100%;

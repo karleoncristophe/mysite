@@ -54,7 +54,7 @@ const Text = styled.span`
 
 const Rectangle = styled.div`
   display: flex;
-  height: 20%;
+  height: 70%;
   width: 2%;
   background: #7c2cbf;
   border: 2px dashed #a5a1a8;
@@ -84,7 +84,7 @@ const Main = () => {
           <Text>{text}</Text>
         </AboutMeContent>
       </Square>
-      {/* <Rectangle /> */}
+      <Rectangle />
     </Wrapper>
   );
 };

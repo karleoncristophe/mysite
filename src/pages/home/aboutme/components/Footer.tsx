@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
-  padding-top: 8%;
+  padding-top: 40px;
 `;
 
 const SkillWrraper = styled.div`
@@ -17,7 +17,7 @@ const SkillWrraper = styled.div`
 
 const SkillContet = styled.div`
   display: flex;
-  margin-top: 2.5%;
+  margin-top: 30px;
   flex-direction: column;
   background: linear-gradient(93.67deg, #232035 0%, #450e73 101.25%);
   border-radius: 20px;
@@ -25,6 +25,14 @@ const SkillContet = styled.div`
   justify-content: space-between;
   height: 125px;
   padding: 20px;
+
+  @media (hover: hover) and (pointer: fine) {
+    &&:hover {
+      cursor: pointer;
+      transition: 0.3s;
+      transform: scale(1.05, 1.05);
+    }
+  }
 
   @media (max-width: 1235px) {
     width: 100%;
@@ -36,13 +44,8 @@ const SkillContet = styled.div`
 `;
 
 const Image = styled.img`
-  width: 30%;
-  height: 30%;
-
-  @media (max-width: 549px) {
-    width: 35px;
-    height: 35px;
-  }
+  width: 35px;
+  height: 35px;
 `;
 
 const ImageAndTextContet = styled.div`
@@ -150,8 +153,6 @@ const Footer = () => {
           </SkillContet>
         ))}
       </SkillWrraper>
-
-      <Space width={100} height={90} />
     </Wrapper>
   );
 };

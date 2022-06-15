@@ -10,7 +10,13 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const TitleContent = styled.div``;
+const TitleContent = styled.div`
+  &&:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    transform: scale(1.1, 1.1);
+  }
+`;
 
 const ContentText = styled.div`
   display: flex;
@@ -25,7 +31,15 @@ const LinkToTitle = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
-  margin-left: 10px;
+  margin-left: 15px;
+
+  @media (hover: hover) and (pointer: fine) {
+    &&:hover {
+      cursor: pointer;
+      transition: 0.3s;
+      transform: scale(1.1, 1.1);
+    }
+  }
 `;
 
 const Button = styled.button`

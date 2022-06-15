@@ -11,9 +11,12 @@ const Wrapper = styled.div`
 const Content = styled.div`
   display: flex;
   align-items: center;
-  @media (max-width: 549px) {
+  @media (max-width: 1011px) {
     flex-direction: column;
   }
+  /* @media (max-width: 549px) {
+    flex-direction: column;
+  } */
 `;
 const ContentText = styled.div`
   display: flex;
@@ -21,9 +24,12 @@ const ContentText = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
 
-  @media (max-width: 549px) {
+  @media (max-width: 1011px) {
     justify-content: center;
   }
+  /* @media (max-width: 549px) {
+    justify-content: center;
+  } */
 `;
 
 const LinkToTitle = styled.button`
@@ -32,26 +38,46 @@ const LinkToTitle = styled.button`
   cursor: pointer;
   font-size: 1.68rem;
   color: #ffffff;
-  @media (max-width: 549px) {
+
+  @media (hover: hover) and (pointer: fine) {
+    &&:hover {
+      cursor: pointer;
+      transition: 0.3s;
+      transform: scale(1.1, 1.1);
+    }
+  }
+
+  @media (max-width: 1011px) {
     font-size: 1.3rem;
   }
+  /* @media (max-width: 549px) {
+    font-size: 1.3rem;
+  } */
 `;
 
 const Text = styled.span`
   font-size: 1.68rem;
   color: #ffffff;
-  @media (max-width: 549px) {
+  @media (max-width: 1011px) {
     display: none;
   }
+
+  /* @media (max-width: 549px) {
+    display: none;
+  } */
 `;
 
 const Container = styled.div`
   display: none;
 
-  @media (max-width: 549px) {
+  @media (max-width: 1011px) {
     display: flex;
     margin-bottom: 20px;
   }
+  /* @media (max-width: 549px) {
+    display: flex;
+    margin-bottom: 20px;
+  } */
 `;
 
 const ImageContet = styled.button`
@@ -62,12 +88,18 @@ const ImageContet = styled.button`
   border-radius: 50%;
   cursor: pointer;
 
-  @media (max-width: 549px) {
+  @media (max-width: 1011px) {
     display: flex;
     flex-direction: row;
     width: 50px;
     height: 50px;
   }
+  /* @media (max-width: 549px) {
+    display: flex;
+    flex-direction: row;
+    width: 50px;
+    height: 50px;
+  } */
 `;
 
 const Image = styled.img`

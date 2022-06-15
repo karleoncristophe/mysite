@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 2%;
-  @media (max-width: 946px) {
+  @media (max-width: 1011px) {
     display: none;
   }
 `;
@@ -34,6 +34,14 @@ const LinkWhatsApp = styled.button`
   border-radius: 25.4545px;
   cursor: pointer;
   border: none;
+
+  @media (hover: hover) and (pointer: fine) {
+    &&:hover {
+      cursor: pointer;
+      transition: 0.3s;
+      transform: scale(1.1, 1.1);
+    }
+  }
 `;
 
 const Footer = () => {

@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   display: flex;
-  max-width: 1240px;
+  max-width: 1540px;
   padding: 40px;
   flex-direction: column;
   height: 270px;

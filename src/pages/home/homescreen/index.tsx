@@ -8,15 +8,17 @@ const Wrapper = styled.div`
   display: flex;
   height: 100vh;
   width: 100%;
+  /* background: url("https://r4.wallpaperflare.com/wallpaper/36/14/561/minimalism-minimalist-mountains-landscape-wallpaper-b01465c8e0bcc2edba911fead217b2c2.jpg") */
   background: linear-gradient(360deg, #171522 38.25%, #450e73 100%);
-  /* background-attachment: fixed; */
+  background-size: 100%;
+  background-attachment: fixed;
   justify-content: center;
 `;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1240px;
+  max-width: 1540px;
   padding: 40px;
   @media (max-width: 549px) {
     padding: 20px;
