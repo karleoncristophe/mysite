@@ -1,0 +1,171 @@
+@import '@/theme/theme.scss';
+
+.fullContainer {
+  position: relative;
+}
+
+.container {
+  position: fixed;
+  width: 100vw;
+  transition: background-color 200ms linear;
+  z-index: 4;
+  background-color: #0E121D;
+
+  &.active {
+    background-color: #fff;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+    .wrapper {
+      ul {
+
+        a {
+          color: $text;
+        }
+      }
+
+      .menuIcon {
+        .icon {
+          color: $text;
+        }
+      }
+    }
+  }
+
+  .wrapper {
+    width: min(1220px, 95%);
+    padding: 1rem 0;
+    margin: 0 auto;
+
+    @media screen and (max-width: 768px) {}
+
+    display: flex;
+    align-items: center;
+
+    .authButtons {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+
+
+      span {
+        padding: 0.8rem 3.2rem;
+        border-radius: 99rem;
+        color: #fff;
+        font-weight: 500;
+        color: $primary-color;
+        border: 1px solid transparent;
+        transition: all 200ms linear;
+
+        &:hover {
+          border: 1px solid $primary-color;
+          cursor: pointer;
+        }
+      }
+    }
+
+    ul {
+      display: flex;
+      margin-right: 1.6rem;
+
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+
+      a {
+        padding: 0.8rem 3.2rem;
+        border-radius: 99rem;
+        color: #fff;
+        font-weight: 500;
+        border: 1px solid transparent;
+        transition: all 200ms linear;
+
+        &:hover {
+          // border: 1px solid $primary-color;
+          color: $text-gray;
+        }
+      }
+    }
+
+    .menuIcon {
+      padding: 1rem;
+      cursor: pointer;
+      display: none;
+
+      @media screen and (max-width: 768px) {
+        display: block;
+      }
+
+      .icon {
+        color: #fff;
+      }
+    }
+  }
+}
+
+
+.navigationMobile {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.9);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .closeIcon {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+
+    .icon2 {
+      color: #fff;
+    }
+
+  }
+
+
+  ul {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+
+    li {
+
+      a,
+      span {
+        padding: 0.8rem 3.2rem;
+        color: #fff;
+        font-weight: 500;
+        font-size: 3rem;
+        transition: all 200ms linear;
+
+        &:hover {
+          border-bottom: 2px solid $primary-color;
+          color: $primary-color;
+          cursor: pointer;
+        }
+      }
+
+      .create {
+        background-color: $primary-color;
+        border-radius: 1rem;
+        transition: all 200ms linear;
+
+        &:hover {
+          border-bottom: none;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
