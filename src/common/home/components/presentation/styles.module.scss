@@ -1,0 +1,56 @@
+@import '@/theme/theme.scss';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url('/lines.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+    height: 100vh;
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+            margin-top: 16rem;
+            
+            h1 {
+                font-size: 2rem;
+                font-weight: 400;
+            letter-spacing: 0.4rem;
+            }
+
+            p {
+                margin-top: 4rem;
+                font-size: 3rem;
+                text-align: center;
+                font-weight: 300;
+                color: $text-gray;
+
+                .creative {
+                    font-weight: 800;
+                    color: $text;
+                    font-size: 4rem;
+                    text-decoration-line: underline;
+                    text-decoration-style: solid;
+                    text-decoration-color: #63FFA2;
+                    text-underline-offset: 0.3em; 
+                    text-decoration-thickness: 0.1em; 
+                  
+                }
+
+                .expertise {
+                    font-weight: 800;
+                    color: $text;
+                    font-size: 4rem;
+                    text-decoration-line: underline;
+                    text-decoration-style: solid;
+                    text-decoration-color: #FFA665;
+                    text-underline-offset: 0.3em; 
+                    text-decoration-thickness: 0.1em; 
+                }
+            }
+    }
+}
