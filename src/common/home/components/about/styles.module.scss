@@ -1,0 +1,13 @@
+@import "@/theme/theme.scss";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url("/logorow.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-attachment: fixed;
+    min-height: 100vh;
+}

@@ -8,7 +8,7 @@ export const Navigation: FC = () => {
   return (
     <div className={styles.fullContainer}>
       <header className={`${styles.container}`}>
-        <div className={styles.wrapper}>
+        <nav className={styles.wrapper}>
           <Link
             href="/"
             style={{
@@ -40,7 +40,7 @@ export const Navigation: FC = () => {
             </li>
           </ul>
           <button>Contato</button>
-        </div>
+        </nav>
       </header>
     </div>
   )

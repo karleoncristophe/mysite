@@ -67,10 +67,9 @@ transition: background-color 200ms linear;
   &::after {
     content: "";
     background: linear-gradient(45deg, rgba(82, 5, 5, 0.4), rgba(23, 62, 110, 0.4), rgba(1, 120, 20, 0.4));
-    height: 25rem;
-    filter: blur(2rem);
+    height: 23rem;
     border-radius: 50%;
-    width: 70%;
+    width: 60%;
     position: absolute;
     z-index: -1;
   }

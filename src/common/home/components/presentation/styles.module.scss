@@ -1,56 +1,88 @@
-@import '@/theme/theme.scss';
+@import "@/theme/theme.scss";
 
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: url('/lines.svg');
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: contain;
-    height: 100vh;
+    background: url("/lines.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    min-height: 100vh;
     section {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-            margin-top: 16rem;
-            
-            h1 {
-                font-size: 2rem;
-                font-weight: 400;
+        margin-top: 16rem;
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 400;
             letter-spacing: 0.4rem;
+        }
+
+        p {
+            margin-top: 4rem;
+            font-size: 3.3rem;
+            text-align: center;
+            letter-spacing: 0.3rem;
+            font-weight: 300;
+            color: $text-gray;
+
+            .creative {
+                position: relative;
+                font-weight: 800;
+                color: $text;
+              
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 3px;
+                    bottom: -7px;
+                    width: 7.7rem; 
+                    height: 4px; 
+                    border-radius: 8px;
+                    background-color: $green; 
+                  }
+                
             }
 
-            p {
-                margin-top: 4rem;
-                font-size: 3rem;
-                text-align: center;
-                font-weight: 300;
-                color: $text-gray;
-
-                .creative {
-                    font-weight: 800;
-                    color: $text;
-                    font-size: 4rem;
-                    text-decoration-line: underline;
-                    text-decoration-style: solid;
-                    text-decoration-color: #63FFA2;
-                    text-underline-offset: 0.3em; 
-                    text-decoration-thickness: 0.1em; 
-                  
-                }
-
-                .expertise {
-                    font-weight: 800;
-                    color: $text;
-                    font-size: 4rem;
-                    text-decoration-line: underline;
-                    text-decoration-style: solid;
-                    text-decoration-color: #FFA665;
-                    text-underline-offset: 0.3em; 
-                    text-decoration-thickness: 0.1em; 
+            .expertise {
+                font-weight: 800;
+                color: $text;
+               
+                position: relative;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 3px;
+                    bottom: -7px;
+                    width: 7.7rem; 
+                    height: 4px; 
+                    border-radius: 8px;
+                    background-color: $orange; 
+                  }
+            }
+        }
+    }
+    aside {
+        display: flex;
+        margin-top: 20rem;
+        
+        ul {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            li {
+                transition: all ease-in 0.4s;
+                &:hover {
+                    
+                    transform: scale(1.2) rotate(360deg);
+                 
                 }
             }
+        }
     }
 }

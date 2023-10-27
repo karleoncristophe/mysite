@@ -16,8 +16,30 @@ html {
 body {
 	font-size: 1.6rem;
 	color: $text;
-	overflow: hidden;
+	// overflow: hidden;
 }
+
+
+::-webkit-scrollbar {
+	height: 0px;
+	width: 2px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+	background: $green;
+	border-radius: 0.625rem;
+  }
+  
+  @media (max-width: 549px) {
+	::-webkit-scrollbar {
+	  height: 0px;
+	  width: 0px;
+	}
+  }
+  
+  ::-webkit-scrollbar-track {
+	background: #171522;
+  }
 
 ul {
 	list-style: none;
