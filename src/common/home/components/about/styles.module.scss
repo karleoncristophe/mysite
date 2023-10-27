@@ -4,10 +4,38 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 1.6rem;
+    justify-content: center;
     background: url("/logorow.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    background-attachment: fixed;
+    // background-attachment: fixed;
     min-height: 100vh;
+
+    article {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        h2 {
+            background-color: transparent;
+            font-size: 3.2rem;
+            font-weight: 800;
+            text-align: center;
+            letter-spacing: 0.2rem;
+            margin-bottom: 2rem;
+        }
+
+        p {
+            letter-spacing: 0.1rem;
+            background-color: transparent;
+            color: $text-gray;
+            font-size: 2rem;
+            font-weight: 300;
+            width: min(1000px, 100%);
+            text-align: center;
+        }
+    }
 }
