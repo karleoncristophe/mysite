@@ -1,10 +1,12 @@
 import StarsBackground from "@/components/StarsBackground";
 import Navbar from "@/components/Navbar";
+import AtomOverlay from "@/components/AtomOverlay";
 
 export default function Home() {
   return (
     <div className="relative min-h-screen overflow-hidden">
       <StarsBackground className="opacity-100" density={8000} />
+      <AtomOverlay className="fixed inset-0 -z-10 pointer-events-none"  />
       <Navbar />
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4">
         <div className="mb-8">
@@ -116,7 +118,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 bg-black/60 backdrop-blur-sm border-t border-cyan-400/20 py-12">
+      <footer className="relative z-10 backdrop-blur-sm border-t border-cyan-400/20 py-12">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             {/* Brand Section */}
