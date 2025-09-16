@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     siteName: "Karleon Cristophe",
     images: [
       {
-        url: "https://i.pinimg.com/originals/18/eb/fc/18ebfc8d85ac30b957ef89e5eb6e0c33.jpg",
+        url: "https://i.pinimg.com/736x/0e/e2/8b/0ee28b9865481ff02ee85fa915c3b0ef.jpg",
         width: 1200,
         height: 630,
         alt: "Karleon Cristophe - Fullstack Developer",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     description: "Programador web/mobile freelancer, criação de sites, aplicativos móveis, landing pages, front e backend.",
     creator: "@karleoncris",
     site: "@karleoncris",
-    images: ["https://i.pinimg.com/originals/18/eb/fc/18ebfc8d85ac30b957ef89e5eb6e0c33.jpg"],
+    images: ["https://i.pinimg.com/736x/0e/e2/8b/0ee28b9865481ff02ee85fa915c3b0ef.jpg"],
   },
   robots: {
     index: true,
@@ -108,7 +108,7 @@ export default function RootLayout({
     "jobTitle": "Fullstack Developer",
     "description": "Programador web/mobile freelancer, especialista em React, Next.js, Node.js e desenvolvimento mobile",
     "url": "https://karleoncristophe.com.br",
-    "image": "https://i.pinimg.com/originals/18/eb/fc/18ebfc8d85ac30b957ef89e5eb6e0c33.jpg",
+    "image": "https://i.pinimg.com/736x/0e/e2/8b/0ee28b9865481ff02ee85fa915c3b0ef.jpg",
     "sameAs": [
       "https://github.com/karleoncristophe",
       "https://linkedin.com/in/karleoncristophe",
