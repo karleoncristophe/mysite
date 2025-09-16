@@ -21,11 +21,11 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-gradient-to-t from-purple-900/50 via-black/80 to-transparent backdrop-blur-sm border-t border-purple-500/20">
+    <footer className="relative backdrop-blur-sm border-t border-cyan-400/20">
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
           {/* Logo and Title */}
-          <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4">
+          <div className="flex flex-col lg:flex-row items-center gap-4">
             <div className="relative w-16 h-16">
               <Image
                 src="/logo.png"
