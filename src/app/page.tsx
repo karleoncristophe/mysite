@@ -1,9 +1,11 @@
 import StarsBackground from "@/components/StarsBackground";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
     <div className="relative min-h-screen overflow-hidden">
       <StarsBackground className="opacity-100" density={8000} />
+      <Navbar />
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4">
         <div className="mb-8">
           <h1 className="text-7xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent drop-shadow-2xl">
