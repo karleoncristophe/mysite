@@ -2,6 +2,7 @@ import StarsBackground from "@/components/StarsBackground";
 import Navbar from "@/components/Navbar";
 import AtomOverlay from "@/components/AtomOverlay";
 import SkillsList from "@/components/SkillsList";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -113,9 +114,17 @@ export default function Home() {
             {/* Brand Section */}
             <div className="flex items-center gap-4">
               <div className="w-px h-8 bg-white"></div>
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-1">Karleon C.</h3>
-                <p className="text-lg text-white">Fullstack Developer_</p>
+              <div className="flex items-center gap-3">
+                <Image 
+                  src="/logo.png" 
+                  alt="Karleon C. Logo" 
+                  width={48}
+                  height={48}
+                  className="object-contain"
+                />
+                <div>
+                  <p className="text-lg text-white">Fullstack Developer_</p>
+                </div>
               </div>
             </div>
 
