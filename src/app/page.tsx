@@ -21,6 +21,34 @@ export default function Home() {
           </p>
         </div>
       </div>
+
+      {/* Quem Sou Section */}
+      <section id="quemsou" className="relative z-10 flex items-center justify-center px-4 py-20">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-5xl font-bold text-cyan-400 mb-4">Quem Sou?</h2>
+            <p className="text-xl text-gray-300">Vamos lá me conhecer um pouco...</p>
+          </div>
+          
+          <div className="bg-black/40 backdrop-blur-sm rounded-lg p-8 border border-cyan-400/20">
+            <div className="flex items-start gap-4 mb-6">
+              <div className="text-cyan-400 text-2xl">→</div>
+              <div className="text-cyan-400 font-mono text-lg">nano <span className="text-white">about</span></div>
+            </div>
+            
+            <div className="bg-gray-900/50 rounded p-6 font-mono text-gray-300 leading-relaxed">
+              <p>
+                Atualmente estudando/trabalhando com Frontend, Backend e Mobile. Amo
+                aprender novas tecnologias e enfrentar novos desafios na programação.
+                Iniciei minha carreira como programador visando desenvolvimento de
+                jogos, que é algo que gosto muito, mas com o decorrer do tempo me
+                apaixonei por desenvolvimento Web e Mobile. Estudo/Trabalho com
+                ReactJS, React-Native, NextJS, NestJS e NodeJS.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
