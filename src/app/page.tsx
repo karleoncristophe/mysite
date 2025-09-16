@@ -49,6 +49,30 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Habilidades Section */}
+      <section id="habilidades" className="relative z-10 flex items-center justify-center px-4 py-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-5xl font-bold text-cyan-400 mb-4">Habilidades</h2>
+            <p className="text-xl text-gray-300">Minha experiência de trabalho</p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {[
+              'HTML5', 'React Native', 'CSS3', 'ReactJS', 'JavaScript',
+              'GraphQL', 'NestJS', 'NextJS', 'TypeScript', 'MongoDB'
+            ].map((skill) => (
+              <div
+                key={skill}
+                className="bg-black/40 backdrop-blur-sm rounded-lg p-6 text-center border border-cyan-400/20 hover:bg-cyan-400/10 transition-colors"
+              >
+                <div className="text-2xl font-bold text-cyan-400 mb-2">{skill}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
