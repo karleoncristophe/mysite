@@ -13,6 +13,16 @@ export default function Navbar() {
     });
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b border-cyan-400/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,24 +49,24 @@ export default function Navbar() {
               >
                 Home
               </button>
-              <a
-                href="#quemsou"
-                className="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              <button
+                onClick={() => scrollToSection('quemsou')}
+                className="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer"
               >
                 Quem Sou
-              </a>
-              <a
-                href="#habilidades"
-                className="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              </button>
+              <button
+                onClick={() => scrollToSection('habilidades')}
+                className="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer"
               >
                 Habilidades
-              </a>
-              <a
-                href="#contato"
-                className="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              </button>
+              <button
+                onClick={() => scrollToSection('contato')}
+                className="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer"
               >
                 Contato
-              </a>
+              </button>
             </div>
           </div>
 
@@ -90,27 +100,33 @@ export default function Navbar() {
               >
                 Home
               </button>
-              <a
-                href="#quemsou"
-                className="text-gray-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium transition-colors"
-                onClick={() => setIsMenuOpen(false)}
+              <button
+                onClick={() => {
+                  scrollToSection('quemsou');
+                  setIsMenuOpen(false);
+                }}
+                className="text-gray-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium transition-colors cursor-pointer w-full text-left"
               >
                 Quem Sou
-              </a>
-              <a
-                href="#habilidades"
-                className="text-gray-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium transition-colors"
-                onClick={() => setIsMenuOpen(false)}
+              </button>
+              <button
+                onClick={() => {
+                  scrollToSection('habilidades');
+                  setIsMenuOpen(false);
+                }}
+                className="text-gray-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium transition-colors cursor-pointer w-full text-left"
               >
                 Habilidades
-              </a>
-              <a
-                href="#contato"
-                className="text-gray-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium transition-colors"
-                onClick={() => setIsMenuOpen(false)}
+              </button>
+              <button
+                onClick={() => {
+                  scrollToSection('contato');
+                  setIsMenuOpen(false);
+                }}
+                className="text-gray-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium transition-colors cursor-pointer w-full text-left"
               >
                 Contato
-              </a>
+              </button>
             </div>
           </div>
         )}
