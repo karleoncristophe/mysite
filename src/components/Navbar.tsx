@@ -6,30 +6,39 @@ import Image from 'next/image';
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b border-cyan-400/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Image 
-              src="/logo.png" 
-              alt="Karleon C. Logo" 
-              width={40}
-              height={40}
-              className="object-contain"
-            />
+            <button onClick={scrollToTop} className="cursor-pointer">
+              <Image 
+                src="/logo.png" 
+                alt="Karleon C. Logo" 
+                width={40}
+                height={40}
+                className="object-contain"
+              />
+            </button>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              <a
-                href="#home"
-                className="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              <button
+                onClick={scrollToTop}
+                className="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer"
               >
                 Home
-              </a>
+              </button>
               <a
                 href="#quemsou"
                 className="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
@@ -72,13 +81,15 @@ export default function Navbar() {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/90 rounded-lg mt-2">
-              <a
-                href="#home"
-                className="text-gray-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium transition-colors"
-                onClick={() => setIsMenuOpen(false)}
+              <button
+                onClick={() => {
+                  scrollToTop();
+                  setIsMenuOpen(false);
+                }}
+                className="text-gray-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium transition-colors cursor-pointer w-full text-left"
               >
                 Home
-              </a>
+              </button>
               <a
                 href="#quemsou"
                 className="text-gray-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium transition-colors"
