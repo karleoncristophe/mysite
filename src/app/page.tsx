@@ -4,10 +4,13 @@ import AtomOverlay from "@/components/AtomOverlay";
 import SkillsList from "@/components/SkillsList";
 import ProjectsSection from "@/components/ProjectsSection";
 import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
+import ScrollAnimatedSection from "@/components/ScrollAnimatedSection";
 
 export default function Home() {
   return (
     <div className="relative min-h-screen overflow-hidden">
+      <ScrollProgress />
       <StarsBackground className="opacity-100" density={8000} />
       <AtomOverlay className="fixed inset-0 -z-10 pointer-events-none"  />
       <Navbar />
@@ -28,7 +31,7 @@ export default function Home() {
       </div>
 
       {/* Quem Sou Section */}
-      <section id="quemsou" className="relative z-10 flex items-center justify-center px-4 py-20">
+      <ScrollAnimatedSection id="quemsou" className="relative z-10 flex items-center justify-center px-4 py-20">
         <div className="w-full max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-5xl font-bold text-cyan-400 mb-4">Quem Sou?</h2>
@@ -53,10 +56,10 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </ScrollAnimatedSection>
 
       {/* Habilidades Section */}
-      <section id="habilidades" className="relative z-10 flex items-center justify-center px-4 py-20">
+      <ScrollAnimatedSection id="habilidades" className="relative z-10 flex items-center justify-center px-4 py-20">
         <div className="w-full max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-5xl font-bold text-cyan-400 mb-4">Habilidades</h2>
@@ -65,17 +68,17 @@ export default function Home() {
 
           <SkillsList />
         </div>
-      </section>
+      </ScrollAnimatedSection>
 
       {/* Projetos Section */}
-      <section id="projetos" className="relative z-10 flex items-center justify-center px-4 py-20">
+      <ScrollAnimatedSection id="projetos" className="relative z-10 flex items-center justify-center px-4 py-20">
         <div className="w-full max-w-7xl mx-auto">
           <ProjectsSection />
         </div>
-      </section>
+      </ScrollAnimatedSection>
 
       {/* Contato Section */}
-      <section id="contato" className="relative z-10 flex items-center justify-center px-4 py-20">
+      <ScrollAnimatedSection id="contato" className="relative z-10 flex items-center justify-center px-4 py-20">
         <div className="w-full max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-5xl font-bold text-cyan-400 mb-4">Contato</h2>
@@ -113,7 +116,7 @@ export default function Home() {
             </div>
           </a>
         </div>
-      </section>
+      </ScrollAnimatedSection>
 
       <Footer />
     </div>

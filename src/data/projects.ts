@@ -35,7 +35,7 @@ export const projects: Project[] = [
   },
   {
     id: 'classgame',
-    title: 'ClassGame',
+    title: 'Desenvolvedor Full-Stack',
     company: 'ClassGame',
     location: 'Rio de Janeiro, Brazil · Remota',
     description: 'Desenvolvimento completo de aplicação mobile e web para gestão de salas de aula, utilizando Apollo GraphQL, NestJS, MongoDB e React Native para criar uma solução completa de gerenciamento educacional.',
@@ -48,7 +48,7 @@ export const projects: Project[] = [
   },
   {
     id: 'equester',
-    title: 'eQuester',
+    title: 'Desenvolvedor Front-End Mobile',
     company: 'eQuester',
     location: 'Rio de Janeiro, Rio de Janeiro, Brazil · Remota',
     description: 'Desenvolvimento de aplicativo mobile para sistema de questionários e pesquisas, utilizando React Native, TypeScript e Git para criar uma plataforma de coleta de dados eficiente.',
@@ -61,7 +61,7 @@ export const projects: Project[] = [
   },
   {
     id: 'boksctrl',
-    title: 'BoksCtrl',
+    title: 'Desenvolvedor Full-Stack',
     company: '3Devs',
     location: 'Rio de Janeiro, Brasil',
     description: 'Construção de interfaces no aplicativo mobile e criação de lading pages para apresentação do trabalho.',
@@ -69,7 +69,7 @@ export const projects: Project[] = [
   },
   {
     id: 'netmidia',
-    title: 'Desenvolvedor full stack',
+    title: 'Desenvolvedor Full-Stack',
     company: 'Agência Netmidia',
     location: 'Rio de Janeiro · Remota',
     description: 'Desenvolvimento full-stack para agência digital, trabalhando com NestJS, Node.js, MongoDB e React Native para criação de soluções web e mobile personalizadas para clientes diversos.',
@@ -77,7 +77,7 @@ export const projects: Project[] = [
   },
   {
     id: 'mmodels',
-    title: 'MModels',
+    title: 'Desenvolvedor Full-Stack',
     company: 'MModels',
     location: 'Brazil',
     description: 'Desenvolvimento de aplicação web para plataforma de modelos, utilizando NestJS, GraphQL, MongoDB e Next.js para criar um sistema de gestão e exibição de conteúdo visual.',
@@ -85,7 +85,7 @@ export const projects: Project[] = [
   },
   {
     id: 'biblia-sagrada',
-    title: 'Bíblia Sagrada',
+    title: 'Desenvolvedor Front-End Mobile',
     company: '3Devs',
     location: 'Brazil · Remota',
     description: 'Desenvolvimento de aplicativo mobile para leitura da Bíblia Sagrada, utilizando React Native, TypeScript e GraphQL para criar uma experiência de leitura digital moderna e intuitiva.',

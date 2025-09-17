@@ -13,6 +13,8 @@
 body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* Hide scrollbar */
@@ -28,4 +30,112 @@ body {
 /* Smooth scroll behavior */
 .scroll-smooth {
   scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(20, 20, 20, 0.9) 100%);
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(6, 182, 212, 0.8) 0%, rgba(6, 182, 212, 0.4) 100%);
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(6, 182, 212, 1) 0%, rgba(6, 182, 212, 0.6) 100%);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
+  transform: scale(1.1);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, rgba(6, 182, 212, 1) 0%, rgba(6, 182, 212, 0.8) 100%);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.7);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(6, 182, 212, 0.8) rgba(0, 0, 0, 0.8);
+}
+
+/* Smooth scroll with easing */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scroll animation */
+@keyframes scrollGlow {
+  0% { box-shadow: 0 0 5px rgba(6, 182, 212, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.6); }
+  100% { box-shadow: 0 0 5px rgba(6, 182, 212, 0.3); }
+}
+
+::-webkit-scrollbar-thumb:active {
+  animation: scrollGlow 0.5s ease-in-out;
+}
+
+/* Scroll progress indicator */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.3), transparent);
+  z-index: 9999;
+  transition: all 0.3s ease;
+}
+
+.scroll-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(6, 182, 212, 0.8), rgba(6, 182, 212, 1));
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+  transition: width 0.1s ease;
+}
+
+/* Smooth scroll momentum */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Custom scroll snap */
+.scroll-snap {
+  scroll-snap-type: y mandatory;
+}
+
+.scroll-snap > * {
+  scroll-snap-align: start;
+}
+
+/* Parallax scroll effect */
+.parallax-scroll {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Scroll fade effects */
+.fade-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.fade-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
