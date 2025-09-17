@@ -62,6 +62,12 @@ export default function Navbar() {
                 Habilidades
               </button>
               <button
+                onClick={() => scrollToSection('projetos')}
+                className="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer"
+              >
+                Projetos
+              </button>
+              <button
                 onClick={() => scrollToSection('contato')}
                 className="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer"
               >
@@ -117,6 +123,15 @@ export default function Navbar() {
                 className="text-gray-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium transition-colors cursor-pointer w-full text-left"
               >
                 Habilidades
+              </button>
+              <button
+                onClick={() => {
+                  scrollToSection('projetos');
+                  setIsMenuOpen(false);
+                }}
+                className="text-gray-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium transition-colors cursor-pointer w-full text-left"
+              >
+                Projetos
               </button>
               <button
                 onClick={() => {

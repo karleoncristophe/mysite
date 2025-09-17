@@ -2,6 +2,7 @@ import StarsBackground from "@/components/StarsBackground";
 import Navbar from "@/components/Navbar";
 import AtomOverlay from "@/components/AtomOverlay";
 import SkillsList from "@/components/SkillsList";
+import ProjectsSection from "@/components/ProjectsSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -63,6 +64,13 @@ export default function Home() {
           </div>
 
           <SkillsList />
+        </div>
+      </section>
+
+      {/* Projetos Section */}
+      <section id="projetos" className="relative z-10 flex items-center justify-center px-4 py-20">
+        <div className="w-full max-w-7xl mx-auto">
+          <ProjectsSection />
         </div>
       </section>
 
