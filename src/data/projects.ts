@@ -4,7 +4,6 @@ export interface Project {
   company: string;
   location: string;
   description?: string;
-  skills: string[];
   links: {
     label: string;
     url: string;
@@ -17,29 +16,21 @@ export const projects: Project[] = [
     title: 'Desenvolvedor Full-Stack',
     company: 'Gurgel Tech',
     location: 'Rio de Janeiro, Rio de Janeiro, Brazil · Remota',
-    skills: ['JavaScript', 'React Native', 'GraphQL', 'React'],
+    description: 'Desenvolvimento de aplicações full-stack utilizando JavaScript, React Native e GraphQL para criação de soluções mobile e web integradas.',
     links: [
       {
-        label: 'Meu Catálogo - Apps on Google Play',
-        url: '#'
+        label: 'Meu Catálogo - Website',
+        url: 'https://meucatalogo.app/'
       },
       {
-        label: 'Meu site',
-        url: '#'
-      }
-    ],
-  },
-  {
-    id: 'personal-site',
-    title: 'Meu site',
-    company: 'Site próprio',
-    location: 'Brazil · Presencial',
-    skills: ['CSS', 'Git', 'Front-End Development', 'HTML5', 'Next.js', 'CSS Flexbox', 'TypeScript', 'styled-components'],
-    links: [
+        label: 'Meu Catálogo - Apps on Google Play',
+        url: 'https://play.google.com/store/apps/details?id=app.meucatalogo'
+      },
       {
-        label: 'Meu site',
-        url: '#'
-      }
+        label: 'Meu Catálogo - Apps on Apple Store',
+        url: 'https://apps.apple.com/br/app/meu-catalogo-app/id6460858710?l=en-GB&platform=iphone'
+      },
+
     ],
   },
   {
@@ -47,11 +38,11 @@ export const projects: Project[] = [
     title: 'ClassGame',
     company: 'ClassGame',
     location: 'Rio de Janeiro, Brazil · Remota',
-    skills: ['Apollo GraphQL', 'Back-End Web Development', 'Desenvolvimento web', 'TypeScript', 'Software Development', 'Responsive Web Design', 'React.js', 'React Native', 'React', 'Next.js', 'NestJS', 'MongoDB'],
+    description: 'Desenvolvimento completo de aplicação mobile e web para gestão de salas de aula, utilizando Apollo GraphQL, NestJS, MongoDB e React Native para criar uma solução completa de gerenciamento educacional.',
     links: [
       {
         label: 'ClassGame - Apps on Google Play',
-        url: '#'
+        url: 'https://play.google.com/store/search?q=classgame&c=apps'
       }
     ],
   },
@@ -60,11 +51,11 @@ export const projects: Project[] = [
     title: 'eQuester',
     company: 'eQuester',
     location: 'Rio de Janeiro, Rio de Janeiro, Brazil · Remota',
-    skills: ['React Native', 'React', 'Software Development', 'TypeScript', 'Git', 'Front-End Development'],
+    description: 'Desenvolvimento de aplicativo mobile para sistema de questionários e pesquisas, utilizando React Native, TypeScript e Git para criar uma plataforma de coleta de dados eficiente.',
     links: [
       {
         label: 'eQuester - Apps on Google Play',
-        url: '#'
+        url: 'https://play.google.com/store/search?q=equester&c=apps'
       }
     ],
   },
@@ -74,7 +65,6 @@ export const projects: Project[] = [
     company: '3Devs',
     location: 'Rio de Janeiro, Brasil',
     description: 'Construção de interfaces no aplicativo mobile e criação de lading pages para apresentação do trabalho.',
-    skills: ['React Native', 'Next.js', 'CSS Flexbox', 'React.js', 'styled-components'],
     links: [],
   },
   {
@@ -82,7 +72,7 @@ export const projects: Project[] = [
     title: 'Desenvolvedor full stack',
     company: 'Agência Netmidia',
     location: 'Rio de Janeiro · Remota',
-    skills: ['NestJS', 'Node.js', 'Back-End Web Development', 'Desenvolvimento web', 'JavaScript', 'CSS', 'GraphQL', 'Responsive Web Design', 'React Native', 'Git', 'Front-End Development', 'MongoDB', 'HTML5', 'Firebase', 'Next.js', 'Express.js', 'CSS Flexbox', 'TypeScript', 'Apollo GraphQL', 'React.js', 'styled-components', 'HTML'],
+    description: 'Desenvolvimento full-stack para agência digital, trabalhando com NestJS, Node.js, MongoDB e React Native para criação de soluções web e mobile personalizadas para clientes diversos.',
     links: [],
   },
   {
@@ -90,7 +80,7 @@ export const projects: Project[] = [
     title: 'MModels',
     company: 'MModels',
     location: 'Brazil',
-    skills: ['NestJS', 'Back-End Web Development', 'CSS', 'GraphQL', 'React Native', 'MongoDB', 'Next.js', 'CSS Flexbox', 'TypeScript', 'Apollo GraphQL', 'React.js', 'styled-components'],
+    description: 'Desenvolvimento de aplicação web para plataforma de modelos, utilizando NestJS, GraphQL, MongoDB e Next.js para criar um sistema de gestão e exibição de conteúdo visual.',
     links: [],
   },
   {
@@ -98,7 +88,7 @@ export const projects: Project[] = [
     title: 'Bíblia Sagrada',
     company: '3Devs',
     location: 'Brazil · Remota',
-    skills: ['GraphQL', 'React Native', 'Git', 'Front-End Development', 'TypeScript', 'styled-components'],
+    description: 'Desenvolvimento de aplicativo mobile para leitura da Bíblia Sagrada, utilizando React Native, TypeScript e GraphQL para criar uma experiência de leitura digital moderna e intuitiva.',
     links: [],
   }
 ];

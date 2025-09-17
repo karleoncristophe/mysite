@@ -1,20 +1,34 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef } from 'react';
 import ProjectCard from './ProjectCard';
 import { projects, Project } from '@/data/projects';
 
 export default function ProjectsSection() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const filteredProjects = projects.filter((project) => {
-    const matchesSearch = 
-      project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      project.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      project.skills.some(skill => skill.toLowerCase().includes(searchTerm.toLowerCase()));
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollContainerRef.current) return;
     
-    return matchesSearch;
-  });
+    const startX = e.pageX - scrollContainerRef.current.offsetLeft;
+    const scrollLeft = scrollContainerRef.current.scrollLeft;
+    
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!scrollContainerRef.current) return;
+      e.preventDefault();
+      const x = e.pageX - scrollContainerRef.current.offsetLeft;
+      const walk = (x - startX) * 2;
+      scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+    };
+
+    const handleMouseUp = () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+  };
 
   return (
     <div className="w-full">
@@ -24,42 +38,19 @@ export default function ProjectsSection() {
         <p className="text-xl text-gray-300">Minha experiência profissional e projetos desenvolvidos</p>
       </div>
 
-      {/* Search and Filters */}
-      <div className="mb-8 space-y-4">
-        {/* Search */}
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="Buscar por projeto, empresa ou tecnologia..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-4 py-3 bg-black/40 backdrop-blur-sm rounded-lg border border-cyan-400/20 text-white placeholder-gray-400 focus:border-cyan-400/50 focus:outline-none transition-colors duration-200"
-          />
-          <div className="absolute right-4 top-1/2 transform -translate-y-1/2 text-cyan-400">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </div>
-        </div>
 
-      </div>
-
-      {/* Projects Grid */}
-      <div className="space-y-6">
-        {filteredProjects.length > 0 ? (
-          filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))
-        ) : (
-          <div className="text-center py-12">
-            <div className="text-gray-400 text-lg mb-4">
-              <span className="text-cyan-400">→</span> Nenhum projeto encontrado
-            </div>
-            <p className="text-gray-500">
-              Tente ajustar os filtros ou termo de busca
-            </p>
+      {/* Projects Grid - Horizontal Scroll */}
+      <div 
+        ref={scrollContainerRef}
+        onMouseDown={handleMouseDown}
+        className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide cursor-grab active:cursor-grabbing select-none"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        {projects.map((project) => (
+          <div key={project.id} className="flex-shrink-0 w-80">
+            <ProjectCard project={project} />
           </div>
-        )}
+        ))}
       </div>
 
     </div>

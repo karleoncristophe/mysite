@@ -8,7 +8,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
 
   return (
-    <div className="bg-black/40 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:bg-black/60">
+    <div className="bg-black/40 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:bg-black/60 h-full flex flex-col">
       {/* Header */}
       <div className="mb-4">
         <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
@@ -32,27 +32,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
       )}
 
-      {/* Skills */}
-      <div className="mb-4">
-        <div className="flex items-start gap-4 mb-3">
-          <div className="text-cyan-400 text-lg">→</div>
-          <div className="text-cyan-400 font-mono text-sm">skills</div>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {project.skills.map((skill, index) => (
-            <span
-              key={index}
-              className="px-3 py-1 bg-gray-800/50 text-gray-300 rounded-md text-sm border border-gray-700/50 hover:border-cyan-400/50 transition-colors duration-200"
-            >
-              {skill}
-            </span>
-          ))}
-        </div>
-      </div>
 
       {/* Links */}
       {project.links.length > 0 && (
-        <div className="border-t border-gray-700/50 pt-4">
+        <div className="border-t border-gray-700/50 pt-4 mt-auto">
           <div className="flex items-start gap-4 mb-3">
             <div className="text-cyan-400 text-lg">→</div>
             <div className="text-cyan-400 font-mono text-sm">links</div>
