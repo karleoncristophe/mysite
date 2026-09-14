@@ -83,7 +83,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#000000",
+  themeColor: "#020308",
 };
 
 export default function RootLayout({
@@ -94,7 +94,7 @@ export default function RootLayout({
   return (
     <html lang={siteConfig.language}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-gray-900 via-black to-purple-900 text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--space-bg)] text-[var(--space-text)]`}
       >
         {children}
       </body>
