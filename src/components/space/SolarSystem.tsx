@@ -1,7 +1,14 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { BODIES, MODEL, getFocusedBody, qualityRank, type BodyId } from "@/lib/space/bodies";
+import {
+  BODIES,
+  MODEL,
+  isBodyOnJourney,
+  isCompanionBody,
+  qualityRank,
+  type BodyId,
+} from "@/lib/space/bodies";
 import { inspectTarget, journeyProgress } from "@/lib/space/stores";
 import type { QualityProfile } from "@/lib/space/quality";
 import { useStore } from "@/hooks/useScrollJourney";
@@ -44,7 +51,7 @@ export default function SolarSystem({ quality, reducedMotion }: Props) {
       if (body?.src && canLoad(id)) preloadPlanet(body.src);
     });
     const earthWave = window.setTimeout(() => {
-      ["astronaut", "jupiter"].forEach((id) => {
+      ["jupiter"].forEach((id) => {
         const body = BODIES.find((item) => item.id === id);
         if (body?.src && canLoad(id)) preloadPlanet(body.src);
       });
@@ -61,48 +68,34 @@ export default function SolarSystem({ quality, reducedMotion }: Props) {
     };
   }, [rank]);
 
-  const focused = getFocusedBody(progress);
   const visible = useMemo(() => {
     return BODIES.filter((body) => {
       if (qualityRank(body.qualityMin) > rank) return false;
       if (body.id === "sun") return false;
       if (body.id === "parker") return false;
-      if (body.id === "astronaut") return quality.probes && progress < 0.34;
+      if (inspecting === body.id || (inspecting && isCompanionBody(inspecting as BodyId, body.id))) {
+        return true;
+      }
       if (body.id === "satellite") return quality.probes && progress >= 0.42 && progress < 0.58;
-      const ahead = progress + 0.04 >= body.focusFrom;
-      const behind = progress > body.focusTo + 0.06;
-      return ahead && !behind;
+      return isBodyOnJourney(body, progress);
     });
-  }, [progress, quality.probes, rank]);
+  }, [inspecting, progress, quality.probes, rank]);
 
   return (
     <group>
-      <Sun
-        reducedMotion={reducedMotion}
-        showLabel={focused.id === "sun" && !reducedMotion && !inspecting}
-      />
+      <Sun reducedMotion={reducedMotion} />
       {progress > 0.28 && <AsteroidBelt quality={quality} />}
       {visible.map((body) => {
         if (body.id === "sun") return null;
-        const showLabel =
-          !inspecting &&
-          (quality.labels === "all"
-            ? focused.id === body.id || nearbyMoon(focused.id, body.id)
-            : focused.id === body.id);
         return (
           <PlanetAsset
             key={body.id}
             body={body}
             quality={quality}
             reducedMotion={reducedMotion}
-            showLabel={showLabel && !reducedMotion}
           />
         );
       })}
     </group>
   );
-}
-
-function nearbyMoon(focus: BodyId, id: BodyId) {
-  return focus === "earth" && id === "moon";
 }

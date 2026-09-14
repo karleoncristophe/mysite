@@ -10,7 +10,6 @@ export type BodyId =
   | "uranus"
   | "neptune"
   | "parker"
-  | "astronaut"
   | "satellite";
 
 export type CelestialBody = {
@@ -43,7 +42,6 @@ export const MODEL = {
   uranus: "/models/solar-system/uranus.glb",
   neptune: "/models/solar-system/neptune.glb",
   parker: "/models/solar-system/parker.glb",
-  astronaut: "/models/solar-system/astronaut.glb",
   satellite: "/models/solar-system/satellite.glb",
 } as const;
 
@@ -145,22 +143,6 @@ export const BODIES: CelestialBody[] = [
     focusFrom: 0,
     focusTo: 0.32,
     qualityMin: "low",
-  },
-  {
-    id: "astronaut",
-    name: "EVA",
-    type: "CREW ASSET",
-    feature: "HUMAN PRESENCE",
-    src: MODEL.astronaut,
-    position: [6.8, 0.55, -70],
-    radius: 0.42,
-    spin: 0.015,
-    inspectable: true,
-    fallback: "#dce7f7",
-    loadAt: 0,
-    focusFrom: 0,
-    focusTo: 0.34,
-    qualityMin: "high",
   },
   {
     id: "mars",
@@ -292,6 +274,33 @@ export function getFocusedBody(progress: number) {
       (body) => PRIMARY_FOCUS.includes(body.id) && p >= body.focusFrom && p < body.focusTo,
     ) ?? BODY_MAP.earth
   );
+}
+
+export const BODY_APPEAR_LEAD = 0.14;
+export const BODY_DISAPPEAR_LAG = 0.12;
+
+function smoothstep(edge0: number, edge1: number, x: number) {
+  const t = Math.min(1, Math.max(0, (x - edge0) / Math.max(1e-4, edge1 - edge0)));
+  return t * t * (3 - 2 * t);
+}
+
+export function isCompanionBody(a: BodyId, b: BodyId) {
+  return (a === "earth" && b === "moon") || (a === "moon" && b === "earth");
+}
+
+export function isBodyOnJourney(body: CelestialBody, progress: number) {
+  return progress + BODY_APPEAR_LEAD >= body.focusFrom && progress <= body.focusTo + BODY_DISAPPEAR_LAG;
+}
+
+export function getBodyAppearScale(body: CelestialBody, progress: number, reducedMotion: boolean) {
+  if (reducedMotion || body.focusFrom <= 0) return 1;
+  const spawn = body.focusFrom - BODY_APPEAR_LEAD;
+  const grown = body.focusFrom - 0.012;
+  const shrinkStart = body.focusTo + 0.02;
+  const gone = body.focusTo + BODY_DISAPPEAR_LAG;
+  const arrive = smoothstep(spawn, Math.max(spawn + 0.05, grown), progress);
+  const leave = 1 - smoothstep(shrinkStart, gone, progress);
+  return 0.03 + arrive * leave * 0.97;
 }
 
 export function qualityRank(level: "low" | "medium" | "high"): number {

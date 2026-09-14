@@ -2,7 +2,7 @@
 
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
-import { Html, useGLTF } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import { BODY_MAP } from "@/lib/space/bodies";
 
@@ -52,13 +52,7 @@ function SunModel({ url, radius }: { url: string; radius: number }) {
   return <primitive object={root} />;
 }
 
-export default function Sun({
-  reducedMotion,
-  showLabel,
-}: {
-  reducedMotion: boolean;
-  showLabel?: boolean;
-}) {
+export default function Sun({ reducedMotion }: { reducedMotion: boolean }) {
   const sun = BODY_MAP.sun;
   const spin = useRef<THREE.Group>(null);
   const [loadModel, setLoadModel] = useState(false);
@@ -84,21 +78,6 @@ export default function Sun({
       </group>
       <pointLight color="#ffb45c" intensity={6.5} distance={420} decay={1.35} />
       <directionalLight color="#fff1dc" intensity={1.35} position={[8, 6, 14]} />
-      {showLabel && (
-        <Html
-          sprite
-          pointerEvents="none"
-          position={[sun.radius * 1.35, sun.radius * 0.55, 0]}
-          distanceFactor={28}
-          style={{ pointerEvents: "none" }}
-        >
-          <div className="sci-label">
-            <span>OBJECT // {sun.name}</span>
-            <span>TYPE // {sun.type}</span>
-            <b>{sun.feature}</b>
-          </div>
-        </Html>
-      )}
     </group>
   );
 }

@@ -5,7 +5,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { BODY_MAP, type BodyId } from "@/lib/space/bodies";
 import { cameraCurve, lookCurve } from "@/lib/space/journey";
-import { inspectPose, inspectTarget, journeyProgress } from "@/lib/space/stores";
+import { hoveredBody, inspectPose, inspectTarget, journeyProgress } from "@/lib/space/stores";
 import type { QualityProfile } from "@/lib/space/quality";
 
 const tmpCam = new THREE.Vector3();
@@ -13,7 +13,7 @@ const tmpLook = new THREE.Vector3();
 const tmpUp = new THREE.Vector3(0, 1, 0);
 const desiredQuat = new THREE.Quaternion();
 const lookMatrix = new THREE.Matrix4();
-const pointer = new THREE.Vector2();
+const restPointer = new THREE.Vector2();
 
 type Props = {
   quality: QualityProfile;
@@ -43,12 +43,12 @@ export default function CameraRig({ quality, reducedMotion }: Props) {
     const body = inspecting ? BODY_MAP[inspecting as BodyId] : undefined;
 
     if (body) {
-      const radius = body.radius * inspectPose.zoom;
+      const radius = Math.max(body.radius, 1.08) * inspectPose.zoom;
       tmpLook.set(body.position[0], body.position[1], body.position[2]);
       tmpCam.set(
-        body.position[0] - radius * 1.65,
-        body.position[1] + radius * 0.55,
-        body.position[2] + radius * 3.4,
+        body.position[0] - radius * 1.75,
+        body.position[1] + radius * 0.48,
+        body.position[2] + radius * 3.7,
       );
     } else {
       const t = reducedMotion ? 0 : journeyProgress.get();
@@ -61,10 +61,15 @@ export default function CameraRig({ quality, reducedMotion }: Props) {
     look.current.lerp(tmpLook, damping);
 
     if (!body && quality.pointerParallax && !reducedMotion) {
-      smoothPointer.current.lerp(targetPointer.current, 1 - Math.exp(-4 * delta));
-      pointer.copy(smoothPointer.current);
-      camera.position.x += pointer.x * 0.16;
-      camera.position.y += pointer.y * 0.09;
+      const aiming = Boolean(hoveredBody.get());
+      smoothPointer.current.lerp(
+        aiming ? restPointer : targetPointer.current,
+        1 - Math.exp(-(aiming ? 8 : 4) * delta),
+      );
+      if (!aiming) {
+        camera.position.x += smoothPointer.current.x * 0.06;
+        camera.position.y += smoothPointer.current.y * 0.035;
+      }
     }
 
     lookMatrix.lookAt(camera.position, look.current, tmpUp);

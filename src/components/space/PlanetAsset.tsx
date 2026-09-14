@@ -2,10 +2,19 @@
 
 import { Suspense, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { Html, useGLTF } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
-import type { CelestialBody } from "@/lib/space/bodies";
-import { inspectPose, inspectTarget, openInspect } from "@/lib/space/stores";
+import {
+  getBodyAppearScale,
+  type CelestialBody,
+} from "@/lib/space/bodies";
+import {
+  hoveredBody,
+  inspectPose,
+  inspectTarget,
+  journeyProgress,
+  openInspect,
+} from "@/lib/space/stores";
 import type { QualityProfile } from "@/lib/space/quality";
 
 function FallbackSphere({ body }: { body: CelestialBody }) {
@@ -25,6 +34,16 @@ function FittedModel({ url, radius }: { url: string; radius: number }) {
       child.castShadow = false;
       child.receiveShadow = false;
       child.frustumCulled = true;
+      if (child instanceof THREE.Mesh) {
+        const materials = Array.isArray(child.material) ? child.material : [child.material];
+        materials.forEach((material) => {
+          if (!material) return;
+          if (material.blending === THREE.MultiplyBlending) {
+            material.blending = THREE.NormalBlending;
+            material.premultipliedAlpha = false;
+          }
+        });
+      }
     });
     const box = new THREE.Box3().setFromObject(cloned);
     const size = new THREE.Vector3();
@@ -87,67 +106,76 @@ type Props = {
   body: CelestialBody;
   quality: QualityProfile;
   reducedMotion: boolean;
-  showLabel: boolean;
 };
 
-export default function PlanetAsset({ body, quality, reducedMotion, showLabel }: Props) {
+export default function PlanetAsset({ body, quality, reducedMotion }: Props) {
   const group = useRef<THREE.Group>(null);
+  const visual = useRef<THREE.Group>(null);
   const spin = useRef(0);
+  const scale = useRef(reducedMotion || body.focusFrom <= 0 ? 1 : 0.03);
 
   useFrame((_, delta) => {
-    if (!group.current) return;
+    if (!group.current || !visual.current) return;
     const inspecting = inspectTarget.get() === body.id;
+    const targetScale = inspecting ? 1 : getBodyAppearScale(body, journeyProgress.get(), reducedMotion);
+    scale.current += (targetScale - scale.current) * (1 - Math.exp(-3.6 * delta));
+    visual.current.scale.setScalar(scale.current);
+
     if (inspecting) {
-      group.current.rotation.y = inspectPose.yaw;
-      group.current.rotation.x = inspectPose.pitch;
+      visual.current.rotation.y = inspectPose.yaw;
+      visual.current.rotation.x = inspectPose.pitch;
       return;
     }
     if (!reducedMotion) spin.current += body.spin * delta;
-    group.current.rotation.y = spin.current;
-    group.current.rotation.x = 0;
+    visual.current.rotation.y = spin.current;
+    visual.current.rotation.x = 0;
   });
+
+  const focusBody = () => {
+    if (!body.inspectable || inspectPose.pointerMoved) return;
+    inspectPose.ignoreMiss = true;
+    openInspect(body.id);
+    window.setTimeout(() => {
+      inspectPose.ignoreMiss = false;
+    }, 80);
+  };
 
   return (
     <group
       ref={group}
       position={body.position}
       onClick={(event) => {
-        if (!body.inspectable) return;
         event.stopPropagation();
-        openInspect(body.id);
+        focusBody();
       }}
       onPointerOver={() => {
-        if (body.inspectable) document.body.style.cursor = "pointer";
+        if (!body.inspectable) return;
+        hoveredBody.set(body.id);
+        document.body.style.cursor = "pointer";
       }}
       onPointerOut={() => {
+        if (hoveredBody.get() === body.id) hoveredBody.set(null);
         document.body.style.cursor = "auto";
       }}
     >
-      {body.src ? (
-        <Suspense fallback={<FallbackSphere body={body} />}>
-          <FittedModel url={body.src} radius={body.radius} />
-        </Suspense>
-      ) : (
-        <FallbackSphere body={body} />
-      )}
-      {body.atmosphere && quality.quality !== "low" && (
-        <Atmosphere radius={body.radius} color={body.atmosphere} />
-      )}
-      {showLabel && (
-        <Html
-          sprite
-          pointerEvents="none"
-          position={[body.radius * 1.55, body.radius * 0.75, 0]}
-          distanceFactor={18}
-          style={{ pointerEvents: "none" }}
-        >
-          <div className="sci-label">
-            <span>OBJECT // {body.name}</span>
-            <span>TYPE // {body.type}</span>
-            <b>{body.feature}</b>
-          </div>
-        </Html>
-      )}
+      <group ref={visual}>
+        {body.src ? (
+          <Suspense fallback={<FallbackSphere body={body} />}>
+            <FittedModel url={body.src} radius={body.radius} />
+          </Suspense>
+        ) : (
+          <FallbackSphere body={body} />
+        )}
+        {body.atmosphere && quality.quality !== "low" && (
+          <Atmosphere radius={body.radius} color={body.atmosphere} />
+        )}
+        {body.inspectable && (
+          <mesh visible={false}>
+            <sphereGeometry args={[Math.max(body.radius * 1.4, 0.55), 16, 16]} />
+            <meshBasicMaterial />
+          </mesh>
+        )}
+      </group>
     </group>
   );
 }

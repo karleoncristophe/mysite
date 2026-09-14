@@ -5,44 +5,58 @@ import { BODY_MAP, type BodyId } from "@/lib/space/bodies";
 import { closeInspect, inspectPose, inspectTarget } from "@/lib/space/stores";
 import { useStore } from "@/hooks/useScrollJourney";
 
+const DRAG_THRESHOLD = 5;
+
 export default function InspectOverlay() {
   const target = useStore(inspectTarget);
   const body = target ? BODY_MAP[target as BodyId] : undefined;
-  const layerRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const last = useRef({ x: 0, y: 0 });
+  const tracking = useRef(false);
 
   useEffect(() => {
     if (!target || !body) return;
-    const layer = layerRef.current;
-    if (!layer) return;
-
     closeRef.current?.focus();
 
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") closeInspect();
     };
 
+    window.getSelection()?.removeAllRanges();
+
+    const blockSelect = (event: Event) => {
+      event.preventDefault();
+    };
+
     const onDown = (event: PointerEvent) => {
       const node = event.target as HTMLElement;
       if (node.closest("[data-inspect-ui]")) return;
-      inspectPose.dragging = true;
+      event.preventDefault();
+      window.getSelection()?.removeAllRanges();
+      tracking.current = true;
+      inspectPose.dragging = false;
+      inspectPose.pointerMoved = false;
       last.current.x = event.clientX;
       last.current.y = event.clientY;
-      layer.setPointerCapture(event.pointerId);
     };
 
-    const onUp = (event: PointerEvent) => {
+    const onUp = () => {
+      tracking.current = false;
       inspectPose.dragging = false;
-      if (layer.hasPointerCapture(event.pointerId)) {
-        layer.releasePointerCapture(event.pointerId);
-      }
+      window.setTimeout(() => {
+        inspectPose.pointerMoved = false;
+      }, 40);
     };
 
     const onMove = (event: PointerEvent) => {
-      if (!inspectPose.dragging) return;
+      if (!tracking.current) return;
       const dx = event.clientX - last.current.x;
       const dy = event.clientY - last.current.y;
+      if (!inspectPose.dragging) {
+        if (Math.hypot(dx, dy) < DRAG_THRESHOLD) return;
+        inspectPose.dragging = true;
+        inspectPose.pointerMoved = true;
+      }
       last.current.x = event.clientX;
       last.current.y = event.clientY;
       inspectPose.yaw += dx * 0.005;
@@ -55,19 +69,28 @@ export default function InspectOverlay() {
     };
 
     window.addEventListener("keydown", onKey);
-    layer.addEventListener("pointerdown", onDown);
-    layer.addEventListener("pointerup", onUp);
-    layer.addEventListener("pointercancel", onUp);
-    layer.addEventListener("pointermove", onMove);
-    layer.addEventListener("wheel", onWheel, { passive: false });
+    window.addEventListener("pointerdown", onDown);
+    window.addEventListener("pointerup", onUp);
+    window.addEventListener("pointercancel", onUp);
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("wheel", onWheel, { passive: false });
+    document.addEventListener("selectstart", blockSelect);
+    document.addEventListener("copy", blockSelect);
+    document.addEventListener("cut", blockSelect);
+    document.addEventListener("contextmenu", blockSelect);
 
     return () => {
       window.removeEventListener("keydown", onKey);
-      layer.removeEventListener("pointerdown", onDown);
-      layer.removeEventListener("pointerup", onUp);
-      layer.removeEventListener("pointercancel", onUp);
-      layer.removeEventListener("pointermove", onMove);
-      layer.removeEventListener("wheel", onWheel);
+      window.removeEventListener("pointerdown", onDown);
+      window.removeEventListener("pointerup", onUp);
+      window.removeEventListener("pointercancel", onUp);
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("wheel", onWheel);
+      document.removeEventListener("selectstart", blockSelect);
+      document.removeEventListener("copy", blockSelect);
+      document.removeEventListener("cut", blockSelect);
+      document.removeEventListener("contextmenu", blockSelect);
+      tracking.current = false;
       inspectPose.dragging = false;
     };
   }, [body, target]);
@@ -75,18 +98,12 @@ export default function InspectOverlay() {
   if (!body) return null;
 
   return (
-    <div
-      ref={layerRef}
-      className="inspect-layer"
-      role="dialog"
-      aria-modal="true"
-      aria-label={`Inspecionar ${body.name}`}
-    >
+    <div className="inspect-layer" role="dialog" aria-modal="true" aria-label={`Inspecionar ${body.name}`}>
       <div className="inspect-panel" data-inspect-ui>
         <p>INSPECT // {body.name}</p>
         <span>{body.type}</span>
         <b>{body.feature}</b>
-        <small>Arraste para rotacionar · scroll para aproximar</small>
+        <small>Arraste para girar · clique outro mundo para focar · clique vazio para sair</small>
         <button ref={closeRef} type="button" onClick={closeInspect}>
           ENCERRAR INSPEÇÃO
         </button>

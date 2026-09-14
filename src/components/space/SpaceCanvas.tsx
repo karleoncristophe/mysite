@@ -2,7 +2,7 @@
 
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
-import { spaceReady } from "@/lib/space/stores";
+import { closeInspect, inspectPose, inspectTarget, spaceReady } from "@/lib/space/stores";
 import type { QualityProfile } from "@/lib/space/quality";
 import SpaceScene from "@/components/space/SpaceScene";
 
@@ -24,6 +24,10 @@ export default function SpaceCanvas({ quality, reducedMotion }: Props) {
       }}
       camera={{ fov: 42, near: 0.12, far: 420, position: [1.55, 0.4, -69.2] }}
       frameloop={reducedMotion ? "demand" : "always"}
+      onPointerMissed={() => {
+        if (!inspectTarget.get() || inspectPose.pointerMoved || inspectPose.ignoreMiss) return;
+        closeInspect();
+      }}
       onCreated={({ gl, scene, invalidate }) => {
         gl.toneMapping = THREE.ACESFilmicToneMapping;
         gl.toneMappingExposure = 1.05;

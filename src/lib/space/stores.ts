@@ -32,19 +32,25 @@ export const inspectPose = {
   pitch: 0,
   zoom: 1,
   dragging: false,
+  pointerMoved: false,
+  ignoreMiss: false,
   reset() {
     inspectPose.yaw = 0;
     inspectPose.pitch = 0;
     inspectPose.zoom = 1;
     inspectPose.dragging = false;
+    inspectPose.pointerMoved = false;
+    inspectPose.ignoreMiss = false;
   },
 };
 
 export function openInspect(id: string) {
   inspectPose.reset();
+  hoveredBody.set(null);
   inspectTarget.set(id);
   if (typeof document !== "undefined") {
     document.documentElement.classList.add("is-inspecting");
+    window.getSelection()?.removeAllRanges();
   }
 }
 

@@ -292,7 +292,7 @@ main {
 .hero-copy,
 .chapter-copy,
 .site-nav,
-.inspect-layer {
+.inspect-panel {
   pointer-events: auto;
 }
 
@@ -607,27 +607,43 @@ main {
 }
 
 .sci-label {
-  min-width: 11rem;
-  padding: 0.55rem 0.7rem;
+  appearance: none;
+  margin: 0;
+  width: max-content;
+  max-width: 8.4rem;
+  padding: 0.28rem 0.4rem;
   border: 1px solid rgba(130, 207, 255, 0.28);
-  background: rgba(2, 3, 8, 0.72);
+  background: rgba(2, 3, 8, 0.78);
   color: var(--space-muted-2);
   font-family: var(--font-geist-mono), ui-monospace, monospace;
-  font-size: 9px;
-  letter-spacing: 0.18em;
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
   text-transform: uppercase;
+  text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 0.22rem;
+  gap: 0.06rem;
   position: relative;
+  cursor: pointer;
+  pointer-events: auto;
+  transform: none;
+}
+
+.sci-label:hover,
+.sci-label:focus-visible {
+  border-color: rgba(130, 207, 255, 0.72);
+  background: rgba(2, 3, 8, 0.9);
+  color: var(--space-text);
+  outline: none;
 }
 
 .sci-label::before {
   content: "";
   position: absolute;
-  left: -16px;
-  top: 11px;
-  width: 14px;
+  left: -12px;
+  top: 9px;
+  width: 10px;
   height: 1px;
   background: rgba(130, 207, 255, 0.45);
 }
@@ -635,10 +651,10 @@ main {
 .sci-label::after {
   content: "";
   position: absolute;
-  left: -16px;
-  top: 9px;
-  width: 5px;
-  height: 5px;
+  left: -12px;
+  top: 7px;
+  width: 4px;
+  height: 4px;
   border: 1px solid rgba(130, 207, 255, 0.55);
   transform: rotate(45deg);
 }
@@ -652,12 +668,14 @@ main {
   position: fixed;
   inset: 0;
   z-index: 56;
-  cursor: grab;
-  touch-action: none;
-  user-select: none;
+  pointer-events: none;
 }
 
-.inspect-layer:active {
+html.is-inspecting .space-canvas {
+  cursor: grab;
+}
+
+html.is-inspecting .space-canvas:active {
   cursor: grabbing;
 }
 
@@ -675,6 +693,7 @@ main {
   font-family: var(--font-geist-mono), ui-monospace, monospace;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+  cursor: auto;
 }
 
 .inspect-panel p {
@@ -716,16 +735,29 @@ main {
 html.is-inspecting,
 html.is-inspecting body {
   overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+html.is-inspecting * {
+  user-select: none !important;
+  -webkit-user-select: none !important;
 }
 
 html.is-inspecting main {
-  opacity: 0.14;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+html.is-inspecting .hero-copy,
+html.is-inspecting .chapter-copy,
+html.is-inspecting .site-nav,
+html.is-inspecting .hud-corner {
   pointer-events: none;
 }
 
 html.is-inspecting .site-nav {
   opacity: 0;
-  pointer-events: none;
 }
 
 .reveal {
@@ -780,9 +812,10 @@ html.is-inspecting .site-nav {
   }
 
   .sci-label {
-    min-width: 8.2rem;
-    font-size: 8px;
-    padding: 0.4rem 0.5rem;
+    min-width: 6.6rem;
+    max-width: 8rem;
+    font-size: 7px;
+    padding: 0.28rem 0.38rem;
   }
 
   .sci-label span:nth-child(2) {
