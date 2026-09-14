@@ -1,0 +1,180 @@
+{
+  "meta": {
+    "tagline": "自由职业全栈开发者",
+    "description": "驻里约热内卢的自由职业全栈开发者。使用 React、Next.js、Node.js 和 React Native 打造网站、移动应用和落地页。",
+    "shortDescription": "自由职业 Web／移动开发者。使用 React、Next.js 和 Node.js 打造网站、应用和落地页。",
+    "jobTitle": "全栈开发者"
+  },
+  "nav": {
+    "aria": "主导航",
+    "logoAlt": "{name} 标志",
+    "language": "语言",
+    "home": "HOME",
+    "profile": "PROFILE",
+    "experience": "EXPERIENCE",
+    "stack": "STACK",
+    "projects": "PROJECTS",
+    "hire": "HIRE ME",
+    "contact": "CONTACT"
+  },
+  "loader": {
+    "kicker": "NAVIGATION SYSTEM",
+    "title": "CALIBRATING ORBIT"
+  },
+  "hud": {
+    "orbital": "ORBITAL NAVIGATION",
+    "lat": "LAT 22.9°S",
+    "base": "EARTH / RIO",
+    "stack": "WEB // MOBILE // BACKEND"
+  },
+  "hero": {
+    "kicker": "01 / EARTH",
+    "index": "HABITABLE ORBIT",
+    "sub": "专注 React、Next.js、Node.js 与移动开发。把想法变成数字方案，穿越技术的广阔宇宙。",
+    "roleLabel": "ROLE",
+    "roleValue": "FULLSTACK ENGINEER",
+    "locationLabel": "LOCATION",
+    "locationValue": "EARTH / RIO",
+    "stackLabel": "STACK",
+    "stackValue": "WEB · MOBILE · BACKEND"
+  },
+  "identity": {
+    "kicker": "02 / MOON",
+    "index": "FIRST CONTACT",
+    "title": "身份",
+    "lead": "自由职业全栈开发者。以意图、精度与存在感打造网站、应用与系统。",
+    "signal": "SIGNAL",
+    "signalValue": "KARLEON CRISTOPHE",
+    "vector": "VECTOR",
+    "vectorValue": "PRODUCT · ENGINEERING · MOBILE"
+  },
+  "profile": {
+    "kicker": "03 / EARTH",
+    "index": "MISSION PROFILE",
+    "title": "关于我",
+    "lead": "一名在产品与工程之间运行的开发者，想建造尚未存在的事物。",
+    "body": "全栈开发者，精通 React、Next.js、React Native、Node.js、NestJS 与 GraphQL 等现代技术。打造 Web 与移动产品，以前端与后端的整合为核心，注重架构、质量、性能与可扩展方案。",
+    "status": "STATUS",
+    "statusValue": "AVAILABLE FOR SELECTED MISSIONS",
+    "base": "BASE",
+    "focus": "FOCUS",
+    "focusValue": "WEB · MOBILE · SYSTEMS"
+  },
+  "experience": {
+    "kicker": "03 / MARS",
+    "index": "EXPERIENCE LOG",
+    "title": "轨迹",
+    "lead": "多年在代理公司、初创团队与远程团队中打造产品——从应用到后端。"
+  },
+  "stack": {
+    "kicker": "04 / BELT",
+    "index": "TECHNOLOGY CONSTELLATION",
+    "title": "技术栈",
+    "lead": "技术如同同一星系中的星辰：彼此相连、清晰可读，随时可以组成产品。"
+  },
+  "projects": {
+    "kicker": "05 / JUPITER",
+    "index": "SELECTED MISSIONS",
+    "title": "精选任务",
+    "lead": "真实产品，发往商店与网络。",
+    "more": "SEE MORE",
+    "less": "SEE LESS",
+    "items": {
+      "gurgel-tech": {
+        "title": "全栈开发者",
+        "location": "里约热内卢 · 远程",
+        "description": "使用 React Native 与 GraphQL 的全栈应用，打通 Web 与移动端。",
+        "type": "产品 · Web / Mobile",
+        "website": "Meu Catálogo — Website"
+      },
+      "classgame": {
+        "title": "全栈开发者",
+        "location": "里约热内卢 · 远程",
+        "description": "教室管理应用与 Web，技术栈为 NestJS、GraphQL 与 React Native。",
+        "type": "教育 · 平台"
+      },
+      "equester": {
+        "title": "移动前端开发者",
+        "location": "里约热内卢 · 远程",
+        "description": "基于 React Native 与 TypeScript 的问卷与调研应用。",
+        "type": "调研 · Mobile"
+      },
+      "boksctrl": {
+        "title": "全栈开发者",
+        "location": "里约热内卢",
+        "description": "移动应用界面与产品落地页。",
+        "type": "产品 · Mobile"
+      },
+      "netmidia": {
+        "title": "全栈开发者",
+        "location": "里约热内卢 · 远程",
+        "description": "为数字代理公司做全栈开发，使用 NestJS、Node.js 与 React Native。",
+        "type": "代理 · Full-Stack"
+      },
+      "mmodels": {
+        "title": "全栈开发者",
+        "location": "巴西",
+        "description": "基于 Next.js、NestJS 与 GraphQL 的模特 Web 平台。",
+        "type": "平台 · Web"
+      },
+      "biblia-sagrada": {
+        "title": "移动前端开发者",
+        "location": "巴西 · 远程",
+        "description": "基于 React Native、TypeScript 与 GraphQL 的圣经阅读应用。",
+        "type": "内容 · Mobile"
+      }
+    }
+  },
+  "hire": {
+    "kicker": "07 / URANUS",
+    "index": "AVAILABLE FOR COLLABORATION",
+    "title": "一起建造",
+    "lead": "开放精选项目。如果任务需要清晰、性能与匠心，让我们做出非凡的东西。",
+    "who": "WHO I HELP",
+    "whoValue": "需要兼具设计眼光的全栈开发者的初创公司、产品与团队",
+    "why": "WHY WORK WITH ME",
+    "whyValue": "前端、移动端与后端以同样的细致交付——快速、可读、为真实的人而做",
+    "cta": "LET'S CREATE SOMETHING EXCEPTIONAL →",
+    "services": {
+      "web": {
+        "title": "Web 应用",
+        "copy": "用 React、Next.js 与 Node.js 打造界面与系统，从原型到上线。"
+      },
+      "mobile": {
+        "title": "移动端",
+        "copy": "用 React Native 打造 iOS 与 Android 应用，面向商店，也面向日常。"
+      },
+      "landing": {
+        "title": "落地页",
+        "copy": "快速、电影感、为转化而做的页面——不像模板。"
+      },
+      "backend": {
+        "title": "后端",
+        "copy": "API、GraphQL 与 NestJS，让产品在上线后仍保持轨道。"
+      }
+    }
+  },
+  "contact": {
+    "kicker": "08 / NEPTUNE",
+    "index": "COMMUNICATIONS",
+    "title": "Let's build something worth exploring.",
+    "lead": "如果信号已经传到这里，请继续旅程。",
+    "whatsapp": "WHATSAPP",
+    "hours": "周一至周五 · 9:00–18:00 · 在线",
+    "whatsappAria": "通过 WhatsApp 与 {name} 交谈"
+  },
+  "voyager": {
+    "kicker": "09 / VOYAGER",
+    "index": "BEYOND THE KNOWN",
+    "title": "Voyager 1",
+    "status": "MISSION STATUS // INTERSTELLAR",
+    "distance": "DISTANCE FROM HOME // INCREASING",
+    "copyright": "© {year} {name}. 保留所有权利。"
+  },
+  "inspect": {
+    "aria": "检视 {name}",
+    "label": "INSPECT // {name}",
+    "hint": "拖动旋转 · 滚动或 +/− 缩放 · 点击空白退出",
+    "close": "结束检视"
+  }
+}

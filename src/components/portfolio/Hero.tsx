@@ -1,30 +1,32 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { siteConfig } from "@/config/site";
 
 export default function Hero() {
+  const t = useTranslations("hero");
+  const meta = useTranslations("meta");
+
   return (
     <header id="home" className="chapter hero">
       <div className="hero-copy">
-        <p className="hud-kicker">01 / EARTH</p>
-        <p className="chapter-index">HABITABLE ORBIT</p>
+        <p className="hud-kicker">{t("kicker")}</p>
+        <p className="chapter-index">{t("index")}</p>
         <h1>{siteConfig.name}</h1>
-        <p className="hero-role">{siteConfig.jobTitle}</p>
-        <p className="hero-lead">Building digital experiences beyond the ordinary.</p>
-        <p className="hero-sub">
-          Especialista em React, Next.js, Node.js e desenvolvimento mobile. Transformando ideias em
-          soluções digitais no vasto universo da tecnologia.
-        </p>
+        <p className="hero-role">{meta("jobTitle")}</p>
+        <p className="hero-sub">{t("sub")}</p>
         <dl className="hero-meta">
           <div>
-            <dt>ROLE</dt>
-            <dd>FULLSTACK ENGINEER</dd>
+            <dt>{t("roleLabel")}</dt>
+            <dd>{t("roleValue")}</dd>
           </div>
           <div>
-            <dt>LOCATION</dt>
-            <dd>EARTH / RIO</dd>
+            <dt>{t("locationLabel")}</dt>
+            <dd>{t("locationValue")}</dd>
           </div>
           <div>
-            <dt>STACK</dt>
-            <dd>WEB · MOBILE · BACKEND</dd>
+            <dt>{t("stackLabel")}</dt>
+            <dd>{t("stackValue")}</dd>
           </div>
         </dl>
       </div>

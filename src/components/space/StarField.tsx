@@ -1,8 +1,11 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
+import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { seededRandom } from "@/lib/space/noise";
+import { getInterstellarFade } from "@/lib/space/journey";
+import { journeyProgress } from "@/lib/space/stores";
 import type { QualityProfile } from "@/lib/space/quality";
 
 function createSoftSprite(): THREE.CanvasTexture {
@@ -31,7 +34,8 @@ type Layer = {
   sprite: THREE.CanvasTexture;
 };
 
-function StarLayer({ count, spread, origin, size, seed, sprite }: Layer) {
+function StarLayer({ count, spread, origin, size, seed, sprite, fadeAmount }: Layer & { fadeAmount: number }) {
+  const material = useRef<THREE.PointsMaterial>(null);
   const { positions, colors } = useMemo(() => {
     const rand = seededRandom(seed);
     const positions = new Float32Array(count * 3);
@@ -65,9 +69,16 @@ function StarLayer({ count, spread, origin, size, seed, sprite }: Layer) {
     return geo;
   }, [colors, positions]);
 
+  useFrame(() => {
+    if (!material.current) return;
+    const fade = getInterstellarFade(journeyProgress.get());
+    material.current.opacity = 0.9 * (1 - fade * fadeAmount);
+  });
+
   return (
     <points geometry={geometry} frustumCulled={false}>
       <pointsMaterial
+        ref={material}
         map={sprite}
         size={size}
         vertexColors
@@ -93,6 +104,7 @@ export default function StarField({ quality }: { quality: QualityProfile }) {
         size={0.055}
         seed={11}
         sprite={sprite}
+        fadeAmount={0}
       />
       {quality.starMid > 0 && (
         <StarLayer
@@ -102,6 +114,7 @@ export default function StarField({ quality }: { quality: QualityProfile }) {
           size={0.09}
           seed={29}
           sprite={sprite}
+          fadeAmount={0.85}
         />
       )}
       {quality.starNear > 0 && (
@@ -112,6 +125,7 @@ export default function StarField({ quality }: { quality: QualityProfile }) {
           size={0.16}
           seed={47}
           sprite={sprite}
+          fadeAmount={1}
         />
       )}
     </group>

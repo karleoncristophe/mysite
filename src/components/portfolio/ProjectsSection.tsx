@@ -1,25 +1,43 @@
 "use client";
 
+import { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { projects } from "@/data/projects";
+import { localizeProjects } from "@/lib/i18n/projects";
 import { hoveredMission } from "@/lib/space/stores";
 import { useStore } from "@/hooks/useScrollJourney";
 import { useInViewOnce } from "@/hooks/useInViewOnce";
 
+const PREVIEW_COUNT = 5;
+
+function hasPlayStore(project: (typeof projects)[number]) {
+  return project.links.some(
+    (link) => /google play/i.test(link.label) || link.url.includes("play.google.com"),
+  );
+}
+
 export default function ProjectsSection() {
   const ref = useInViewOnce<HTMLElement>();
   const active = useStore(hoveredMission);
+  const [expanded, setExpanded] = useState(false);
+  const t = useTranslations("projects");
+  const localized = localizeProjects(t);
+
+  const ordered = useMemo(
+    () => [...localized].sort((a, b) => Number(hasPlayStore(b)) - Number(hasPlayStore(a))),
+    [localized],
+  );
+  const visible = expanded ? ordered : ordered.slice(0, PREVIEW_COUNT);
 
   return (
     <section id="projetos" ref={ref} className="chapter missions reveal">
       <div className="chapter-copy missions-copy">
-        <p className="hud-kicker">05 / JUPITER</p>
-        <p className="chapter-index">SELECTED MISSIONS</p>
-        <h2>Missões selecionadas</h2>
-        <p className="chapter-lead">
-          Trabalho real, com destino em HTML. O sistema solar só acompanha a escala.
-        </p>
+        <p className="hud-kicker">{t("kicker")}</p>
+        <p className="chapter-index">{t("index")}</p>
+        <h2>{t("title")}</h2>
+        <p className="chapter-lead">{t("lead")}</p>
         <div className="mission-list">
-          {projects.map((project, index) => (
+          {visible.map((project, index) => (
             <article
               key={project.id}
               className={`mission-card ${active === project.id ? "is-hot" : ""}`}
@@ -51,6 +69,15 @@ export default function ProjectsSection() {
             </article>
           ))}
         </div>
+        {ordered.length > PREVIEW_COUNT && (
+          <button
+            type="button"
+            className="mission-more"
+            onClick={() => setExpanded((open) => !open)}
+          >
+            {expanded ? t("less") : t("more")}
+          </button>
+        )}
       </div>
     </section>
   );

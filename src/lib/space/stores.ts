@@ -44,13 +44,45 @@ export const inspectPose = {
   },
 };
 
+export const INSPECT_ZOOM_MIN = 0.55;
+export const INSPECT_ZOOM_MAX = 3.2;
+
+export function setInspectZoom(next: number) {
+  inspectPose.zoom = Math.max(INSPECT_ZOOM_MIN, Math.min(INSPECT_ZOOM_MAX, next));
+}
+
+let lockedScrollY = 0;
+
+function lockPageScroll() {
+  if (document.documentElement.classList.contains("is-inspecting")) return;
+  lockedScrollY = window.scrollY;
+  document.documentElement.classList.add("is-inspecting");
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${lockedScrollY}px`;
+  document.body.style.left = "0";
+  document.body.style.right = "0";
+  document.body.style.width = "100%";
+  window.getSelection()?.removeAllRanges();
+}
+
+function unlockPageScroll() {
+  document.documentElement.classList.remove("is-inspecting");
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.body.style.left = "";
+  document.body.style.right = "";
+  document.body.style.width = "";
+  window.scrollTo(0, lockedScrollY);
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  journeyProgress.set(max <= 0 ? 0 : Math.min(1, Math.max(0, lockedScrollY / max)));
+}
+
 export function openInspect(id: string) {
   inspectPose.reset();
   hoveredBody.set(null);
   inspectTarget.set(id);
   if (typeof document !== "undefined") {
-    document.documentElement.classList.add("is-inspecting");
-    window.getSelection()?.removeAllRanges();
+    lockPageScroll();
   }
 }
 
@@ -58,7 +90,7 @@ export function closeInspect() {
   inspectTarget.set(null);
   inspectPose.reset();
   if (typeof document !== "undefined") {
-    document.documentElement.classList.remove("is-inspecting");
+    unlockPageScroll();
   }
 }
 

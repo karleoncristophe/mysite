@@ -1,3 +1,5 @@
+import { journeyProgress } from "@/lib/space/stores";
+
 export type BodyId =
   | "sun"
   | "mercury"
@@ -10,7 +12,7 @@ export type BodyId =
   | "uranus"
   | "neptune"
   | "parker"
-  | "satellite";
+  | "voyager";
 
 export type CelestialBody = {
   id: BodyId;
@@ -42,7 +44,7 @@ export const MODEL = {
   uranus: "/models/solar-system/uranus.glb",
   neptune: "/models/solar-system/neptune.glb",
   parker: "/models/solar-system/parker.glb",
-  satellite: "/models/solar-system/satellite.glb",
+  voyager: "/models/solar-system/voyager.glb",
 } as const;
 
 export const BODIES: CelestialBody[] = [
@@ -65,18 +67,18 @@ export const BODIES: CelestialBody[] = [
   {
     id: "parker",
     name: "PARKER",
-    type: "SOLAR PROBE",
-    feature: "CLOSE APPROACH",
+    type: "SPACECRAFT",
+    feature: "EARTH ORBIT",
     src: MODEL.parker,
-    position: [7.4, 1.85, 8.8],
-    radius: 0.22,
+    position: [12.8, 0.55, -75.4],
+    radius: 0.078,
     spin: 0.4,
     inspectable: true,
     fallback: "#A7B3C7",
-    loadAt: 0.9,
-    focusFrom: 2,
-    focusTo: 2,
-    qualityMin: "medium",
+    loadAt: 0,
+    focusFrom: 0,
+    focusTo: 0.28,
+    qualityMin: "low",
   },
   {
     id: "mercury",
@@ -117,15 +119,15 @@ export const BODIES: CelestialBody[] = [
     type: "HABITABLE WORLD",
     feature: "ORBITAL APPROACH",
     src: MODEL.earth,
-    position: [10.6, -0.55, -74],
-    radius: 1.08,
+    position: [12.2, -0.35, -73.2],
+    radius: 1.68,
     spin: 0.08,
     inspectable: true,
     atmosphere: "#6eb6ff",
     fallback: "#2f6dad",
     loadAt: 0,
     focusFrom: 0,
-    focusTo: 0.32,
+    focusTo: 0.28,
     qualityMin: "low",
   },
   {
@@ -134,14 +136,14 @@ export const BODIES: CelestialBody[] = [
     type: "NATURAL SATELLITE",
     feature: "EARTH COMPANION",
     src: MODEL.moon,
-    position: [12.4, 0.25, -72.2],
+    position: [14.1, 0.35, -71.4],
     radius: 0.3,
     spin: 0.03,
     inspectable: true,
     fallback: "#9aa3ad",
     loadAt: 0,
     focusFrom: 0,
-    focusTo: 0.32,
+    focusTo: 0.28,
     qualityMin: "low",
   },
   {
@@ -150,32 +152,16 @@ export const BODIES: CelestialBody[] = [
     type: "TERRESTRIAL",
     feature: "EXPERIENCE LOG",
     src: MODEL.mars,
-    position: [9.8, 0.85, -102],
-    radius: 0.7,
+    position: [10.5, 0.22, -93.6],
+    radius: 1.02,
     spin: 0.09,
     inspectable: true,
     atmosphere: "#ff8a3d",
     fallback: "#b55232",
-    loadAt: 0.18,
-    focusFrom: 0.32,
+    loadAt: 0.14,
+    focusFrom: 0.28,
     focusTo: 0.44,
     qualityMin: "low",
-  },
-  {
-    id: "satellite",
-    name: "RELAY",
-    type: "SATELLITE",
-    feature: "DATA LINK",
-    src: MODEL.satellite,
-    position: [4.4, 1.8, -118],
-    radius: 0.2,
-    spin: 0.55,
-    inspectable: true,
-    fallback: "#8291a8",
-    loadAt: 0.28,
-    focusFrom: 0.42,
-    focusTo: 0.56,
-    qualityMin: "high",
   },
   {
     id: "jupiter",
@@ -216,7 +202,7 @@ export const BODIES: CelestialBody[] = [
     type: "ICE GIANT",
     feature: "AVAILABLE FOR WORK",
     src: MODEL.uranus,
-    position: [11.4, -0.55, -228],
+    position: [13.2, -0.55, -228],
     radius: 1.62,
     spin: 0.07,
     inspectable: true,
@@ -233,7 +219,7 @@ export const BODIES: CelestialBody[] = [
     type: "ICE GIANT",
     feature: "COMMUNICATIONS",
     src: MODEL.neptune,
-    position: [10.2, 0.75, -258],
+    position: [13.6, 0.75, -258],
     radius: 1.55,
     spin: 0.08,
     inspectable: true,
@@ -241,6 +227,22 @@ export const BODIES: CelestialBody[] = [
     fallback: "#355cff",
     loadAt: 0.78,
     focusFrom: 0.92,
+    focusTo: 0.96,
+    qualityMin: "low",
+  },
+  {
+    id: "voyager",
+    name: "VOYAGER 1",
+    type: "INTERSTELLAR PROBE",
+    feature: "DISTANCE INCREASING",
+    src: MODEL.voyager,
+    position: [8.8, 0.28, -264],
+    radius: 1.05,
+    spin: 0.12,
+    inspectable: true,
+    fallback: "#9aa7b8",
+    loadAt: 0.82,
+    focusFrom: 0.96,
     focusTo: 1,
     qualityMin: "low",
   },
@@ -268,7 +270,7 @@ const PRIMARY_FOCUS: BodyId[] = [
 
 export function getFocusedBody(progress: number) {
   const p = Math.min(1, Math.max(0, progress));
-  if (p >= 0.92) return BODY_MAP.neptune;
+  if (p >= 0.96) return BODY_MAP.voyager;
   return (
     BODIES.find(
       (body) => PRIMARY_FOCUS.includes(body.id) && p >= body.focusFrom && p < body.focusTo,
@@ -276,23 +278,84 @@ export function getFocusedBody(progress: number) {
   );
 }
 
-export const BODY_APPEAR_LEAD = 0.14;
-export const BODY_DISAPPEAR_LAG = 0.12;
+export const BODY_APPEAR_LEAD = 0.09;
+export const BODY_DISAPPEAR_LAG = 0.08;
 
 function smoothstep(edge0: number, edge1: number, x: number) {
   const t = Math.min(1, Math.max(0, (x - edge0) / Math.max(1e-4, edge1 - edge0)));
   return t * t * (3 - 2 * t);
 }
 
+const EARTH_SYSTEM: BodyId[] = ["earth", "moon", "parker"];
+
+export function isEarthSystem(id: BodyId) {
+  return EARTH_SYSTEM.includes(id);
+}
+
+export function isOrbitingBody(id: BodyId) {
+  return id === "moon" || id === "parker" || id === "voyager";
+}
+
+export function isCraftBody(id: BodyId) {
+  return id === "parker" || id === "voyager";
+}
+
 export function isCompanionBody(a: BodyId, b: BodyId) {
-  return (a === "earth" && b === "moon") || (a === "moon" && b === "earth");
+  return a !== b && isEarthSystem(a) && isEarthSystem(b);
+}
+
+function orbitAround(
+  center: readonly [number, number, number],
+  elapsed: number,
+  speed: number,
+  radius: number,
+  yAmp: number,
+  phase = 0,
+  zScale = 1,
+): [number, number, number] {
+  const angle = elapsed * speed + phase;
+  return [
+    center[0] + Math.cos(angle) * radius,
+    center[1] + Math.sin(angle) * yAmp,
+    center[2] + Math.sin(angle) * radius * zScale,
+  ];
+}
+
+export function getMoonPosition(elapsed: number): [number, number, number] {
+  return orbitAround(BODY_MAP.earth.position, elapsed, 0.22, 2.55, 0.32);
+}
+
+export function getParkerPosition(elapsed: number): [number, number, number] {
+  return orbitAround(BODY_MAP.earth.position, elapsed, 0.7, 1.96, 0.38, 2.1, 0.9);
+}
+
+export function getVoyagerPosition(elapsed: number): [number, number, number] {
+  const t = smoothstep(0.96, 1, journeyProgress.get());
+  const drift = Math.sin(elapsed * 0.07) * 0.04;
+  return [
+    8.45 + (7.95 - 8.45) * t,
+    0.28 + (0.1 - 0.28) * t + drift,
+    -266 + (-269 + 266) * t,
+  ];
+}
+
+export function getBodyWorldPosition(id: BodyId, elapsed: number): [number, number, number] {
+  if (id === "moon") return getMoonPosition(elapsed);
+  if (id === "parker") return getParkerPosition(elapsed);
+  if (id === "voyager") return getVoyagerPosition(elapsed);
+  return BODY_MAP[id].position;
 }
 
 export function isBodyOnJourney(body: CelestialBody, progress: number) {
+  if (body.id === "voyager") return progress >= 0.945;
   return progress + BODY_APPEAR_LEAD >= body.focusFrom && progress <= body.focusTo + BODY_DISAPPEAR_LAG;
 }
 
 export function getBodyAppearScale(body: CelestialBody, progress: number, reducedMotion: boolean) {
+  if (body.id === "voyager") {
+    if (reducedMotion) return progress >= 0.96 ? 1 : 0.03;
+    return 0.03 + smoothstep(0.95, 0.975, progress) * 0.97;
+  }
   if (reducedMotion || body.focusFrom <= 0) return 1;
   const spawn = body.focusFrom - BODY_APPEAR_LEAD;
   const grown = body.focusFrom - 0.012;

@@ -46,6 +46,7 @@ export default function SolarSystem({ quality, reducedMotion }: Props) {
     };
     preloadPlanet(MODEL.earth);
     preloadPlanet(MODEL.moon);
+    preloadPlanet(MODEL.parker);
     ["mars"].forEach((id) => {
       const body = BODIES.find((item) => item.id === id);
       if (body?.src && canLoad(id)) preloadPlanet(body.src);
@@ -58,6 +59,7 @@ export default function SolarSystem({ quality, reducedMotion }: Props) {
     }, 1600);
     const outerWave = window.setTimeout(() => {
       preloadSun(MODEL.sun);
+      preloadPlanet(MODEL.voyager);
       BODIES.forEach((body) => {
         if (body.src && qualityRank(body.qualityMin) <= rank) preloadPlanet(body.src);
       });
@@ -72,26 +74,23 @@ export default function SolarSystem({ quality, reducedMotion }: Props) {
     return BODIES.filter((body) => {
       if (qualityRank(body.qualityMin) > rank) return false;
       if (body.id === "sun") return false;
-      if (body.id === "parker") return false;
       if (inspecting === body.id || (inspecting && isCompanionBody(inspecting as BodyId, body.id))) {
         return true;
       }
-      if (body.id === "satellite") return quality.probes && progress >= 0.42 && progress < 0.58;
       return isBodyOnJourney(body, progress);
     });
-  }, [inspecting, progress, quality.probes, rank]);
+  }, [inspecting, progress, rank]);
 
   return (
     <group>
       <Sun reducedMotion={reducedMotion} />
-      {progress > 0.28 && <AsteroidBelt quality={quality} />}
+      {progress > 0.28 && progress < 0.78 && <AsteroidBelt quality={quality} />}
       {visible.map((body) => {
         if (body.id === "sun") return null;
         return (
           <PlanetAsset
             key={body.id}
             body={body}
-            quality={quality}
             reducedMotion={reducedMotion}
           />
         );

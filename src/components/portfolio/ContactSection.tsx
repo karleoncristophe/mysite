@@ -1,30 +1,30 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { siteConfig } from "@/config/site";
 import { useInViewOnce } from "@/hooks/useInViewOnce";
 
 export default function ContactSection() {
   const ref = useInViewOnce<HTMLElement>();
+  const t = useTranslations("contact");
 
   return (
     <section id="contato" ref={ref} className="chapter contact reveal">
       <div className="chapter-copy">
-        <p className="hud-kicker">08 / NEPTUNE</p>
-        <p className="chapter-index">OPEN CHANNEL</p>
-        <h2>Abrir canal de comunicação</h2>
-        <p className="chapter-lead">
-          Vamos conversar sobre o seu projeto. O destino final desta jornada é uma conversa real.
-        </p>
+        <p className="hud-kicker">{t("kicker")}</p>
+        <p className="chapter-index">{t("index")}</p>
+        <h2>{t("title")}</h2>
+        <p className="chapter-lead">{t("lead")}</p>
         <a
           className="contact-pulse"
           href={siteConfig.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Conversar no WhatsApp com ${siteConfig.name}`}
+          aria-label={t("whatsappAria", { name: siteConfig.name })}
         >
-          <span>WHATSAPP</span>
+          <span>{t("whatsapp")}</span>
           <strong>{siteConfig.phoneDisplay}</strong>
-          <em>Segunda a sexta · 9h às 18h · Online</em>
+          <em>{t("hours")}</em>
         </a>
         <div className="contact-links">
           <a href={siteConfig.sameAs[0]} target="_blank" rel="me noopener noreferrer">
@@ -37,9 +37,6 @@ export default function ContactSection() {
             Instagram
           </a>
         </div>
-        <p className="copyright">
-          © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
-        </p>
       </div>
     </section>
   );

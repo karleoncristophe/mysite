@@ -1,28 +1,27 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useInViewOnce } from "@/hooks/useInViewOnce";
 
 export default function IdentityIntro() {
   const ref = useInViewOnce<HTMLElement>();
+  const t = useTranslations("identity");
 
   return (
     <section id="intro" ref={ref} className="chapter reveal">
       <div className="chapter-copy">
-        <p className="hud-kicker">02 / MOON</p>
-        <p className="chapter-index">FIRST CONTACT</p>
-        <h2>Identidade</h2>
-        <p className="chapter-lead">
-          Desenvolvedor fullstack freelancer. Sites, aplicativos e sistemas com intenção, precisão
-          e presença.
-        </p>
+        <p className="hud-kicker">{t("kicker")}</p>
+        <p className="chapter-index">{t("index")}</p>
+        <h2>{t("title")}</h2>
+        <p className="chapter-lead">{t("lead")}</p>
         <ul className="mission-meta">
           <li>
-            <span>SIGNAL</span>
-            KARLEON CRISTOPHE
+            <span>{t("signal")}</span>
+            {t("signalValue")}
           </li>
           <li>
-            <span>VECTOR</span>
-            PRODUCT · ENGINEERING · MOBILE
+            <span>{t("vector")}</span>
+            {t("vectorValue")}
           </li>
         </ul>
       </div>

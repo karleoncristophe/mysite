@@ -6,6 +6,7 @@ import { journeyProgress } from "@/lib/space/stores";
 export function useScrollJourney(): void {
   useEffect(() => {
     const update = () => {
+      if (document.documentElement.classList.contains("is-inspecting")) return;
       const max = document.documentElement.scrollHeight - window.innerHeight;
       const next = max <= 0 ? 0 : window.scrollY / max;
       journeyProgress.set(Math.min(1, Math.max(0, next)));

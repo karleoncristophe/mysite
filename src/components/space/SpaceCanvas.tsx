@@ -22,7 +22,7 @@ export default function SpaceCanvas({ quality, reducedMotion }: Props) {
         stencil: false,
         depth: true,
       }}
-      camera={{ fov: 42, near: 0.12, far: 420, position: [1.55, 0.4, -69.2] }}
+      camera={{ fov: 42, near: 0.04, far: 520, position: [1.55, 0.4, -69.2] }}
       frameloop={reducedMotion ? "demand" : "always"}
       onPointerMissed={() => {
         if (!inspectTarget.get() || inspectPose.pointerMoved || inspectPose.ignoreMiss) return;

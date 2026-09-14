@@ -1,0 +1,180 @@
+{
+  "meta": {
+    "tagline": "Freelance Fullstack Developer",
+    "description": "Freelance fullstack developer in Rio de Janeiro. Building websites, mobile apps, and landing pages with React, Next.js, Node.js, and React Native.",
+    "shortDescription": "Freelance web/mobile developer. Sites, apps, and landing pages with React, Next.js, and Node.js.",
+    "jobTitle": "Fullstack Developer"
+  },
+  "nav": {
+    "aria": "Main navigation",
+    "logoAlt": "{name} Logo",
+    "language": "Language",
+    "home": "HOME",
+    "profile": "PROFILE",
+    "experience": "EXPERIENCE",
+    "stack": "STACK",
+    "projects": "PROJECTS",
+    "hire": "HIRE ME",
+    "contact": "CONTACT"
+  },
+  "loader": {
+    "kicker": "NAVIGATION SYSTEM",
+    "title": "CALIBRATING ORBIT"
+  },
+  "hud": {
+    "orbital": "ORBITAL NAVIGATION",
+    "lat": "LAT 22.9°S",
+    "base": "EARTH / RIO",
+    "stack": "WEB // MOBILE // BACKEND"
+  },
+  "hero": {
+    "kicker": "01 / EARTH",
+    "index": "HABITABLE ORBIT",
+    "sub": "Specialist in React, Next.js, Node.js, and mobile development. Turning ideas into digital solutions across the vast universe of technology.",
+    "roleLabel": "ROLE",
+    "roleValue": "FULLSTACK ENGINEER",
+    "locationLabel": "LOCATION",
+    "locationValue": "EARTH / RIO",
+    "stackLabel": "STACK",
+    "stackValue": "WEB · MOBILE · BACKEND"
+  },
+  "identity": {
+    "kicker": "02 / MOON",
+    "index": "FIRST CONTACT",
+    "title": "Identity",
+    "lead": "Freelance fullstack developer. Websites, apps, and systems with intention, precision, and presence.",
+    "signal": "SIGNAL",
+    "signalValue": "KARLEON CRISTOPHE",
+    "vector": "VECTOR",
+    "vectorValue": "PRODUCT · ENGINEERING · MOBILE"
+  },
+  "profile": {
+    "kicker": "03 / EARTH",
+    "index": "MISSION PROFILE",
+    "title": "Who I am",
+    "lead": "A developer in orbit between product, engineering, and the will to build what does not exist yet.",
+    "body": "Full-stack developer with solid experience in modern technologies such as React, Next.js, React Native, Node.js, NestJS, and GraphQL. I build web and mobile products, integrating frontend and backend with a focus on architecture, quality, performance, and scalable solutions.",
+    "status": "STATUS",
+    "statusValue": "AVAILABLE FOR SELECTED MISSIONS",
+    "base": "BASE",
+    "focus": "FOCUS",
+    "focusValue": "WEB · MOBILE · SYSTEMS"
+  },
+  "experience": {
+    "kicker": "03 / MARS",
+    "index": "EXPERIENCE LOG",
+    "title": "Trajectory",
+    "lead": "Years building product in agencies, startups, and remote teams — from the app to the backend."
+  },
+  "stack": {
+    "kicker": "04 / BELT",
+    "index": "TECHNOLOGY CONSTELLATION",
+    "title": "Stack",
+    "lead": "Technologies like stars in the same system: connected, readable, ready to form a product."
+  },
+  "projects": {
+    "kicker": "05 / JUPITER",
+    "index": "SELECTED MISSIONS",
+    "title": "Selected missions",
+    "lead": "Real product, shipping to stores and the web.",
+    "more": "SEE MORE",
+    "less": "SEE LESS",
+    "items": {
+      "gurgel-tech": {
+        "title": "Full-Stack Developer",
+        "location": "Rio de Janeiro · Remote",
+        "description": "Full-stack apps in React Native and GraphQL, integrating web and mobile.",
+        "type": "Product · Web / Mobile",
+        "website": "Meu Catálogo — Website"
+      },
+      "classgame": {
+        "title": "Full-Stack Developer",
+        "location": "Rio de Janeiro · Remote",
+        "description": "Classroom management app and web, with NestJS, GraphQL, and React Native.",
+        "type": "Education · Platform"
+      },
+      "equester": {
+        "title": "Mobile Front-End Developer",
+        "location": "Rio de Janeiro · Remote",
+        "description": "Surveys and questionnaires app in React Native and TypeScript.",
+        "type": "Research · Mobile"
+      },
+      "boksctrl": {
+        "title": "Full-Stack Developer",
+        "location": "Rio de Janeiro",
+        "description": "Mobile app interfaces and product landing pages.",
+        "type": "Product · Mobile"
+      },
+      "netmidia": {
+        "title": "Full-Stack Developer",
+        "location": "Rio de Janeiro · Remote",
+        "description": "Full-stack work for a digital agency, with NestJS, Node.js, and React Native.",
+        "type": "Agency · Full-Stack"
+      },
+      "mmodels": {
+        "title": "Full-Stack Developer",
+        "location": "Brazil",
+        "description": "Model platform on the web with Next.js, NestJS, and GraphQL.",
+        "type": "Platform · Web"
+      },
+      "biblia-sagrada": {
+        "title": "Mobile Front-End Developer",
+        "location": "Brazil · Remote",
+        "description": "Bible reading app in React Native, TypeScript, and GraphQL.",
+        "type": "Content · Mobile"
+      }
+    }
+  },
+  "hire": {
+    "kicker": "07 / URANUS",
+    "index": "AVAILABLE FOR COLLABORATION",
+    "title": "Build with me",
+    "lead": "Open for selected projects. If the mission needs clarity, performance, and craft, let’s make something exceptional.",
+    "who": "WHO I HELP",
+    "whoValue": "STARTUPS, PRODUCTS, AND TEAMS THAT NEED A FULLSTACK WITH A DESIGNER’S EYE",
+    "why": "WHY WORK WITH ME",
+    "whyValue": "I SHIP FRONT, MOBILE, AND BACKEND WITH THE SAME CARE — FAST, READABLE, READY FOR REAL PEOPLE",
+    "cta": "LET'S CREATE SOMETHING EXCEPTIONAL →",
+    "services": {
+      "web": {
+        "title": "Web apps",
+        "copy": "Interfaces and systems with React, Next.js, and Node.js, from prototype to production."
+      },
+      "mobile": {
+        "title": "Mobile",
+        "copy": "iOS and Android apps with React Native, ready for the store and for everyday use."
+      },
+      "landing": {
+        "title": "Landing pages",
+        "copy": "Fast, cinematic pages built to convert — without looking like a template."
+      },
+      "backend": {
+        "title": "Backend",
+        "copy": "APIs, GraphQL, and NestJS so the product stays in orbit after launch."
+      }
+    }
+  },
+  "contact": {
+    "kicker": "08 / NEPTUNE",
+    "index": "COMMUNICATIONS",
+    "title": "Let's build something worth exploring.",
+    "lead": "If the signal made it this far, keep going.",
+    "whatsapp": "WHATSAPP",
+    "hours": "Monday to Friday · 9am to 6pm · Online",
+    "whatsappAria": "Chat on WhatsApp with {name}"
+  },
+  "voyager": {
+    "kicker": "09 / VOYAGER",
+    "index": "BEYOND THE KNOWN",
+    "title": "Voyager 1",
+    "status": "MISSION STATUS // INTERSTELLAR",
+    "distance": "DISTANCE FROM HOME // INCREASING",
+    "copyright": "© {year} {name}. All rights reserved."
+  },
+  "inspect": {
+    "aria": "Inspect {name}",
+    "label": "INSPECT // {name}",
+    "hint": "Drag to rotate · scroll or +/− to zoom · click empty space to exit",
+    "close": "END INSPECTION"
+  }
+}

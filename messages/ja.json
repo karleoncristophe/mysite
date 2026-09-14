@@ -1,0 +1,180 @@
+{
+  "meta": {
+    "tagline": "フリーランスのフルスタック開発者",
+    "description": "リオデジャネイロを拠点とするフリーランスのフルスタック開発者。React、Next.js、Node.js、React Nativeでサイト、モバイルアプリ、ランディングページを制作します。",
+    "shortDescription": "フリーランスのWeb／モバイル開発者。React、Next.js、Node.jsでサイト、アプリ、ランディングページを作ります。",
+    "jobTitle": "フルスタック開発者"
+  },
+  "nav": {
+    "aria": "メインナビゲーション",
+    "logoAlt": "{name} ロゴ",
+    "language": "言語",
+    "home": "HOME",
+    "profile": "PROFILE",
+    "experience": "EXPERIENCE",
+    "stack": "STACK",
+    "projects": "PROJECTS",
+    "hire": "HIRE ME",
+    "contact": "CONTACT"
+  },
+  "loader": {
+    "kicker": "NAVIGATION SYSTEM",
+    "title": "CALIBRATING ORBIT"
+  },
+  "hud": {
+    "orbital": "ORBITAL NAVIGATION",
+    "lat": "LAT 22.9°S",
+    "base": "EARTH / RIO",
+    "stack": "WEB // MOBILE // BACKEND"
+  },
+  "hero": {
+    "kicker": "01 / EARTH",
+    "index": "HABITABLE ORBIT",
+    "sub": "React、Next.js、Node.js、モバイル開発のスペシャリスト。アイデアをテクノロジーの広大な宇宙でデジタルな解決策に変えます。",
+    "roleLabel": "ROLE",
+    "roleValue": "FULLSTACK ENGINEER",
+    "locationLabel": "LOCATION",
+    "locationValue": "EARTH / RIO",
+    "stackLabel": "STACK",
+    "stackValue": "WEB · MOBILE · BACKEND"
+  },
+  "identity": {
+    "kicker": "02 / MOON",
+    "index": "FIRST CONTACT",
+    "title": "アイデンティティ",
+    "lead": "フリーランスのフルスタック開発者。意図と精度と存在感のあるサイト、アプリ、システムを。",
+    "signal": "SIGNAL",
+    "signalValue": "KARLEON CRISTOPHE",
+    "vector": "VECTOR",
+    "vectorValue": "PRODUCT · ENGINEERING · MOBILE"
+  },
+  "profile": {
+    "kicker": "03 / EARTH",
+    "index": "MISSION PROFILE",
+    "title": "プロフィール",
+    "lead": "プロダクトとエンジニアリングの間を周回しながら、まだ存在しないものをつくりたい開発者です。",
+    "body": "React、Next.js、React Native、Node.js、NestJS、GraphQLなど、現代的な技術に強いフルスタック開発者です。Webとモバイルのプロダクトをつくり、アーキテクチャ、品質、パフォーマンス、スケーラブルな解決策を軸にフロントエンドとバックエンドを統合します。",
+    "status": "STATUS",
+    "statusValue": "AVAILABLE FOR SELECTED MISSIONS",
+    "base": "BASE",
+    "focus": "FOCUS",
+    "focusValue": "WEB · MOBILE · SYSTEMS"
+  },
+  "experience": {
+    "kicker": "03 / MARS",
+    "index": "EXPERIENCE LOG",
+    "title": "軌跡",
+    "lead": "エージェンシー、スタートアップ、リモートチームでプロダクトを積み重ねてきた年月。アプリからバックエンドまで。"
+  },
+  "stack": {
+    "kicker": "04 / BELT",
+    "index": "TECHNOLOGY CONSTELLATION",
+    "title": "スタック",
+    "lead": "同じ星系の星のようにつながる技術。読みやすく、プロダクトになる準備ができている。"
+  },
+  "projects": {
+    "kicker": "05 / JUPITER",
+    "index": "SELECTED MISSIONS",
+    "title": "選ばれたミッション",
+    "lead": "ストアとWebに届く、本物のプロダクト。",
+    "more": "SEE MORE",
+    "less": "SEE LESS",
+    "items": {
+      "gurgel-tech": {
+        "title": "フルスタック開発者",
+        "location": "リオデジャネイロ · リモート",
+        "description": "React NativeとGraphQLでWebとモバイルをつなぐフルスタックアプリ。",
+        "type": "プロダクト · Web / Mobile",
+        "website": "Meu Catálogo — Website"
+      },
+      "classgame": {
+        "title": "フルスタック開発者",
+        "location": "リオデジャネイロ · リモート",
+        "description": "NestJS、GraphQL、React Nativeによる教室管理アプリとWeb。",
+        "type": "教育 · プラットフォーム"
+      },
+      "equester": {
+        "title": "モバイルフロントエンド開発者",
+        "location": "リオデジャネイロ · リモート",
+        "description": "React NativeとTypeScriptのアンケート・調査アプリ。",
+        "type": "リサーチ · Mobile"
+      },
+      "boksctrl": {
+        "title": "フルスタック開発者",
+        "location": "リオデジャネイロ",
+        "description": "モバイルアプリのUIとプロダクトのランディングページ。",
+        "type": "プロダクト · Mobile"
+      },
+      "netmidia": {
+        "title": "フルスタック開発者",
+        "location": "リオデジャネイロ · リモート",
+        "description": "NestJS、Node.js、React Nativeによるデジタルエージェンシーのフルスタック開発。",
+        "type": "エージェンシー · Full-Stack"
+      },
+      "mmodels": {
+        "title": "フルスタック開発者",
+        "location": "ブラジル",
+        "description": "Next.js、NestJS、GraphQLによるモデル向けWebプラットフォーム。",
+        "type": "プラットフォーム · Web"
+      },
+      "biblia-sagrada": {
+        "title": "モバイルフロントエンド開発者",
+        "location": "ブラジル · リモート",
+        "description": "React Native、TypeScript、GraphQLによる聖書リーディングアプリ。",
+        "type": "コンテンツ · Mobile"
+      }
+    }
+  },
+  "hire": {
+    "kicker": "07 / URANUS",
+    "index": "AVAILABLE FOR COLLABORATION",
+    "title": "一緒につくる",
+    "lead": "選ばれたプロジェクトに開いています。明確さ、パフォーマンス、職人技がミッションなら、並外れたものをつくりましょう。",
+    "who": "WHO I HELP",
+    "whoValue": "デザインの目を持つフルスタックを必要とするスタートアップ、プロダクト、チーム",
+    "why": "WHY WORK WITH ME",
+    "whyValue": "フロント、モバイル、バックエンドを同じ丁寧さで届ける。速く、読みやすく、本物の人のためのもの",
+    "cta": "LET'S CREATE SOMETHING EXCEPTIONAL →",
+    "services": {
+      "web": {
+        "title": "Webアプリ",
+        "copy": "React、Next.js、Node.jsのインターフェースとシステム。プロトタイプから本番まで。"
+      },
+      "mobile": {
+        "title": "モバイル",
+        "copy": "React NativeのiOS／Androidアプリ。ストアにも日常にも届くもの。"
+      },
+      "landing": {
+        "title": "ランディングページ",
+        "copy": "速く、映画的で、コンバージョンのために作られたページ。テンプレートには見えない。"
+      },
+      "backend": {
+        "title": "バックエンド",
+        "copy": "ローンチ後も軌道を保つためのAPI、GraphQL、NestJS。"
+      }
+    }
+  },
+  "contact": {
+    "kicker": "08 / NEPTUNE",
+    "index": "COMMUNICATIONS",
+    "title": "Let's build something worth exploring.",
+    "lead": "ここまで信号が届いたなら、旅を続けてください。",
+    "whatsapp": "WHATSAPP",
+    "hours": "月〜金 · 9時〜18時 · オンライン",
+    "whatsappAria": "{name} とWhatsAppで話す"
+  },
+  "voyager": {
+    "kicker": "09 / VOYAGER",
+    "index": "BEYOND THE KNOWN",
+    "title": "Voyager 1",
+    "status": "MISSION STATUS // INTERSTELLAR",
+    "distance": "DISTANCE FROM HOME // INCREASING",
+    "copyright": "© {year} {name}. All rights reserved."
+  },
+  "inspect": {
+    "aria": "{name} を検査する",
+    "label": "INSPECT // {name}",
+    "hint": "ドラッグで回転 · スクロールまたは +/− でズーム · 空白をクリックで終了",
+    "close": "検査を終了"
+  }
+}

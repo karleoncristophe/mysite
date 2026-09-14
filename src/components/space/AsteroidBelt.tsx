@@ -33,12 +33,11 @@ export default function AsteroidBelt({
       const radius = ASTEROID_BELT.radius + (rand() - 0.5) * ASTEROID_BELT.width;
       dummy.position.set(
         cx + Math.cos(angle) * radius,
-        cy + (rand() - 0.5) * 1.6,
-        cz + Math.sin(angle) * radius * 0.55,
+        cy + (rand() - 0.5) * 2.8,
+        cz + Math.sin(angle) * radius * 0.62,
       );
       dummy.rotation.set(rand() * 2, rand() * 2, rand() * 2);
-      const s = 0.04 + rand() * 0.11;
-      dummy.scale.setScalar(s);
+      dummy.scale.setScalar(0.04 + rand() * 0.11);
       dummy.updateMatrix();
       instanced.setMatrixAt(i, dummy.matrix);
     }

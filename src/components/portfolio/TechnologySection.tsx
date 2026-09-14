@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { skills } from "@/data/skills";
 import { hoveredSkill } from "@/lib/space/stores";
 import { useStore } from "@/hooks/useScrollJourney";
@@ -8,17 +9,15 @@ import { useInViewOnce } from "@/hooks/useInViewOnce";
 export default function TechnologySection() {
   const ref = useInViewOnce<HTMLElement>();
   const active = useStore(hoveredSkill);
+  const t = useTranslations("stack");
 
   return (
     <section id="habilidades" ref={ref} className="chapter constellation reveal">
       <div className="chapter-copy">
-        <p className="hud-kicker">04 / BELT</p>
-        <p className="chapter-index">TECHNOLOGY CONSTELLATION</p>
-        <h2>Stack</h2>
-        <p className="chapter-lead">
-          Tecnologias como estrelas de um mesmo sistema: conectadas, legíveis, prontas para
-          formar produto.
-        </p>
+        <p className="hud-kicker">{t("kicker")}</p>
+        <p className="chapter-index">{t("index")}</p>
+        <h2>{t("title")}</h2>
+        <p className="chapter-lead">{t("lead")}</p>
         <ul className="constellation-list">
           {skills.map((skill) => (
             <li key={skill.name}>

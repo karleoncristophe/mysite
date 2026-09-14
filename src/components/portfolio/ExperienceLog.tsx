@@ -1,22 +1,23 @@
 "use client";
 
-import { projects } from "@/data/projects";
+import { useTranslations } from "next-intl";
+import { localizeProjects } from "@/lib/i18n/projects";
 import { useInViewOnce } from "@/hooks/useInViewOnce";
 
 export default function ExperienceLog() {
   const ref = useInViewOnce<HTMLElement>();
+  const t = useTranslations("experience");
+  const items = localizeProjects(useTranslations("projects"));
 
   return (
     <section id="experiencia" ref={ref} className="chapter reveal">
       <div className="chapter-copy">
-        <p className="hud-kicker">03 / MARS</p>
-        <p className="chapter-index">EXPERIENCE LOG</p>
-        <h2>Trajetória</h2>
-        <p className="chapter-lead">
-          Anos construindo produto em agências, startups e times remotos — do app ao backend.
-        </p>
+        <p className="hud-kicker">{t("kicker")}</p>
+        <p className="chapter-index">{t("index")}</p>
+        <h2>{t("title")}</h2>
+        <p className="chapter-lead">{t("lead")}</p>
         <ol className="experience-log">
-          {projects.map((project) => (
+          {items.map((project) => (
             <li key={project.id}>
               <span>{project.company}</span>
               <strong>{project.title}</strong>

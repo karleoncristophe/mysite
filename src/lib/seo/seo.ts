@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
-import { projects } from "@/data/projects";
+import { projects, type Project } from "@/data/projects";
 import { skillNames } from "@/data/skills";
 
 export function absoluteUrl(path = "/"): string {
@@ -47,15 +47,26 @@ export function ogImageUrl(): string {
   return siteConfig.ogImage || absoluteUrl("/opengraph-image");
 }
 
-export function personJsonLd() {
+type JsonLdCopy = {
+  locale?: string;
+  tagline?: string;
+  description?: string;
+  jobTitle?: string;
+  projects?: Project[];
+};
+
+export function personJsonLd(copy: JsonLdCopy = {}) {
+  const jobTitle = copy.jobTitle ?? siteConfig.jobTitle;
+  const description = copy.description ?? siteConfig.description;
+
   return {
     "@type": "Person",
     "@id": absoluteUrl("/#person"),
     name: siteConfig.name,
     givenName: siteConfig.givenName,
     familyName: siteConfig.familyName,
-    jobTitle: siteConfig.jobTitle,
-    description: siteConfig.description,
+    jobTitle,
+    description,
     url: siteConfig.url,
     image: ogImageUrl(),
     nationality: {
@@ -73,7 +84,7 @@ export function personJsonLd() {
     knowsAbout: [...skillNames, "Web Development", "Mobile Development"],
     hasOccupation: {
       "@type": "Occupation",
-      name: siteConfig.jobTitle,
+      name: jobTitle,
       occupationLocation: {
         "@type": "City",
         name: siteConfig.location.locality,
@@ -83,13 +94,15 @@ export function personJsonLd() {
   };
 }
 
-export function professionalServiceJsonLd() {
+export function professionalServiceJsonLd(copy: JsonLdCopy = {}) {
+  const description = copy.description ?? siteConfig.description;
+
   return {
     "@type": "ProfessionalService",
     "@id": absoluteUrl("/#business"),
     name: `${siteConfig.name} — Desenvolvimento Web e Mobile`,
     url: siteConfig.url,
-    description: siteConfig.description,
+    description,
     image: ogImageUrl(),
     telephone: siteConfig.phone,
     areaServed: {
@@ -149,15 +162,15 @@ export function professionalServiceJsonLd() {
   };
 }
 
-export function websiteJsonLd() {
+export function websiteJsonLd(copy: JsonLdCopy = {}) {
   return {
     "@type": "WebSite",
     "@id": absoluteUrl("/#website"),
     name: siteConfig.name,
-    alternateName: siteConfig.tagline,
-    description: siteConfig.description,
+    alternateName: copy.tagline ?? siteConfig.tagline,
+    description: copy.description ?? siteConfig.description,
     url: siteConfig.url,
-    inLanguage: siteConfig.language,
+    inLanguage: copy.locale ?? siteConfig.language,
     publisher: { "@id": absoluteUrl("/#person") },
   };
 }
@@ -177,13 +190,16 @@ export function siteNavigationJsonLd() {
   };
 }
 
-export function webPageJsonLd() {
+export function webPageJsonLd(copy: JsonLdCopy = {}) {
+  const tagline = copy.tagline ?? siteConfig.tagline;
+  const description = copy.description ?? siteConfig.description;
+
   return {
     "@type": "ProfilePage",
     "@id": absoluteUrl("/#webpage"),
     url: absoluteUrl("/"),
-    name: `${siteConfig.name} | ${siteConfig.tagline}`,
-    description: siteConfig.description,
+    name: `${siteConfig.name} | ${tagline}`,
+    description,
     isPartOf: { "@id": absoluteUrl("/#website") },
     about: { "@id": absoluteUrl("/#person") },
     mainEntity: { "@id": absoluteUrl("/#person") },
@@ -191,17 +207,19 @@ export function webPageJsonLd() {
       "@type": "ImageObject",
       url: ogImageUrl(),
     },
-    inLanguage: siteConfig.language,
+    inLanguage: copy.locale ?? siteConfig.language,
   };
 }
 
-export function projectsJsonLd() {
+export function projectsJsonLd(copy: JsonLdCopy = {}) {
+  const list = copy.projects ?? projects;
+
   return {
     "@type": "ItemList",
     "@id": absoluteUrl("/#projects"),
     name: "Projetos e experiência profissional",
-    numberOfItems: projects.length,
-    itemListElement: projects.map((project, index) => ({
+    numberOfItems: list.length,
+    itemListElement: list.map((project, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: `${project.title} — ${project.company}`,
@@ -221,16 +239,16 @@ export function projectsJsonLd() {
   };
 }
 
-export function homeJsonLd() {
+export function homeJsonLd(copy: JsonLdCopy = {}) {
   return {
     "@context": "https://schema.org",
     "@graph": [
-      personJsonLd(),
-      professionalServiceJsonLd(),
-      websiteJsonLd(),
+      personJsonLd(copy),
+      professionalServiceJsonLd(copy),
+      websiteJsonLd(copy),
       siteNavigationJsonLd(),
-      webPageJsonLd(),
-      projectsJsonLd(),
+      webPageJsonLd(copy),
+      projectsJsonLd(copy),
     ],
   };
 }

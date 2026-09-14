@@ -11,11 +11,11 @@ import InspectOverlay from "@/components/portfolio/InspectOverlay";
 import Hero from "@/components/portfolio/Hero";
 import IdentityIntro from "@/components/portfolio/IdentityIntro";
 import MissionProfile from "@/components/portfolio/MissionProfile";
-import EarthChapter from "@/components/portfolio/EarthChapter";
 import ExperienceLog from "@/components/portfolio/ExperienceLog";
 import TechnologySection from "@/components/portfolio/TechnologySection";
 import ProjectsSection from "@/components/portfolio/ProjectsSection";
 import HireMe from "@/components/portfolio/HireMe";
+import VoyagerSection from "@/components/portfolio/VoyagerSection";
 import ContactSection from "@/components/portfolio/ContactSection";
 
 export default function HomeExperience() {
@@ -34,12 +34,12 @@ export default function HomeExperience() {
         <Hero />
         <IdentityIntro />
         <MissionProfile />
-        <EarthChapter />
         <ExperienceLog />
         <TechnologySection />
         <ProjectsSection />
         <HireMe />
         <ContactSection />
+        <VoyagerSection />
       </main>
     </div>
   );

@@ -6,6 +6,8 @@ import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import {
   getBodyAppearScale,
+  getBodyWorldPosition,
+  isCraftBody,
   type CelestialBody,
 } from "@/lib/space/bodies";
 import {
@@ -15,7 +17,6 @@ import {
   journeyProgress,
   openInspect,
 } from "@/lib/space/stores";
-import type { QualityProfile } from "@/lib/space/quality";
 
 function FallbackSphere({ body }: { body: CelestialBody }) {
   return (
@@ -30,19 +31,30 @@ function FittedModel({ url, radius }: { url: string; radius: number }) {
   const gltf = useGLTF(url);
   const root = useMemo(() => {
     const cloned = gltf.scene.clone(true);
+    const voyager = url.includes("voyager");
     cloned.traverse((child) => {
       child.castShadow = false;
       child.receiveShadow = false;
-      child.frustumCulled = true;
+      child.frustumCulled = !voyager;
       if (child instanceof THREE.Mesh) {
-        const materials = Array.isArray(child.material) ? child.material : [child.material];
-        materials.forEach((material) => {
-          if (!material) return;
-          if (material.blending === THREE.MultiplyBlending) {
-            material.blending = THREE.NormalBlending;
-            material.premultipliedAlpha = false;
-          }
-        });
+        if (voyager) {
+          child.material = new THREE.MeshStandardMaterial({
+            color: "#d5dde8",
+            metalness: 0.7,
+            roughness: 0.34,
+            emissive: new THREE.Color("#1d2a3a"),
+            emissiveIntensity: 0.22,
+          });
+        } else {
+          const materials = Array.isArray(child.material) ? child.material : [child.material];
+          materials.forEach((material) => {
+            if (!material) return;
+            if (material.blending === THREE.MultiplyBlending) {
+              material.blending = THREE.NormalBlending;
+              material.premultipliedAlpha = false;
+            }
+          });
+        }
       }
     });
     const box = new THREE.Box3().setFromObject(cloned);
@@ -60,62 +72,23 @@ function FittedModel({ url, radius }: { url: string; radius: number }) {
   return <primitive object={root} />;
 }
 
-function Atmosphere({ radius, color }: { radius: number; color: string }) {
-  const material = useMemo(
-    () =>
-      new THREE.ShaderMaterial({
-        transparent: true,
-        blending: THREE.AdditiveBlending,
-        side: THREE.BackSide,
-        depthWrite: false,
-        uniforms: {
-          uColor: { value: new THREE.Color(color) },
-        },
-        vertexShader: `
-          varying vec3 vNormal;
-          varying vec3 vViewDir;
-          void main() {
-            vec4 world = modelMatrix * vec4(position, 1.0);
-            vNormal = normalize(mat3(modelMatrix) * normal);
-            vViewDir = normalize(cameraPosition - world.xyz);
-            gl_Position = projectionMatrix * viewMatrix * world;
-          }
-        `,
-        fragmentShader: `
-          varying vec3 vNormal;
-          varying vec3 vViewDir;
-          uniform vec3 uColor;
-          void main() {
-            float fresnel = pow(1.0 - max(dot(normalize(vNormal), normalize(vViewDir)), 0.0), 4.6);
-            gl_FragColor = vec4(uColor, fresnel * 0.32);
-          }
-        `,
-      }),
-    [color],
-  );
-
-  return (
-    <mesh scale={1.045}>
-      <sphereGeometry args={[radius, 24, 24]} />
-      <primitive object={material} attach="material" />
-    </mesh>
-  );
-}
-
 type Props = {
   body: CelestialBody;
-  quality: QualityProfile;
   reducedMotion: boolean;
 };
 
-export default function PlanetAsset({ body, quality, reducedMotion }: Props) {
+export default function PlanetAsset({ body, reducedMotion }: Props) {
   const group = useRef<THREE.Group>(null);
   const visual = useRef<THREE.Group>(null);
   const spin = useRef(0);
   const scale = useRef(reducedMotion || body.focusFrom <= 0 ? 1 : 0.03);
 
-  useFrame((_, delta) => {
+  useFrame(({ clock }, delta) => {
     if (!group.current || !visual.current) return;
+
+    const [x, y, z] = getBodyWorldPosition(body.id, clock.elapsedTime);
+    group.current.position.set(x, y, z);
+
     const inspecting = inspectTarget.get() === body.id;
     const targetScale = inspecting ? 1 : getBodyAppearScale(body, journeyProgress.get(), reducedMotion);
     scale.current += (targetScale - scale.current) * (1 - Math.exp(-3.6 * delta));
@@ -166,12 +139,23 @@ export default function PlanetAsset({ body, quality, reducedMotion }: Props) {
         ) : (
           <FallbackSphere body={body} />
         )}
-        {body.atmosphere && quality.quality !== "low" && (
-          <Atmosphere radius={body.radius} color={body.atmosphere} />
+        {body.id === "voyager" && (
+          <>
+            <pointLight color="#eef5ff" intensity={10} distance={18} decay={2} />
+            <pointLight color="#9ec7ff" intensity={3.4} distance={10} decay={2} position={[0.8, 0.4, 1.2]} />
+          </>
         )}
         {body.inspectable && (
           <mesh visible={false}>
-            <sphereGeometry args={[Math.max(body.radius * 1.4, 0.55), 16, 16]} />
+            <sphereGeometry
+              args={[
+                isCraftBody(body.id)
+                  ? Math.max(body.radius * 3.4, 0.4)
+                  : Math.max(body.radius * 1.45, 0.62),
+                16,
+                16,
+              ]}
+            />
             <meshBasicMaterial />
           </mesh>
         )}

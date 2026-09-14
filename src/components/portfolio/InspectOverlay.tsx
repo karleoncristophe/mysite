@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import { BODY_MAP, type BodyId } from "@/lib/space/bodies";
-import { closeInspect, inspectPose, inspectTarget } from "@/lib/space/stores";
+import { closeInspect, inspectPose, inspectTarget, setInspectZoom } from "@/lib/space/stores";
 import { useStore } from "@/hooks/useScrollJourney";
 
 const DRAG_THRESHOLD = 5;
 
 export default function InspectOverlay() {
+  const t = useTranslations("inspect");
   const target = useStore(inspectTarget);
   const body = target ? BODY_MAP[target as BodyId] : undefined;
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -20,6 +22,14 @@ export default function InspectOverlay() {
 
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") closeInspect();
+      if (event.key === "+" || event.key === "=") {
+        event.preventDefault();
+        setInspectZoom(inspectPose.zoom * 1.18);
+      }
+      if (event.key === "-" || event.key === "_") {
+        event.preventDefault();
+        setInspectZoom(inspectPose.zoom / 1.18);
+      }
     };
 
     window.getSelection()?.removeAllRanges();
@@ -64,8 +74,9 @@ export default function InspectOverlay() {
     };
 
     const onWheel = (event: WheelEvent) => {
+      if (!inspectTarget.get()) return;
       event.preventDefault();
-      inspectPose.zoom = Math.max(0.7, Math.min(2.1, inspectPose.zoom + event.deltaY * 0.0012));
+      setInspectZoom(inspectPose.zoom * Math.exp(-event.deltaY * 0.0016));
     };
 
     window.addEventListener("keydown", onKey);
@@ -73,7 +84,7 @@ export default function InspectOverlay() {
     window.addEventListener("pointerup", onUp);
     window.addEventListener("pointercancel", onUp);
     window.addEventListener("pointermove", onMove);
-    window.addEventListener("wheel", onWheel, { passive: false });
+    window.addEventListener("wheel", onWheel, { passive: false, capture: true });
     document.addEventListener("selectstart", blockSelect);
     document.addEventListener("copy", blockSelect);
     document.addEventListener("cut", blockSelect);
@@ -85,7 +96,7 @@ export default function InspectOverlay() {
       window.removeEventListener("pointerup", onUp);
       window.removeEventListener("pointercancel", onUp);
       window.removeEventListener("pointermove", onMove);
-      window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("wheel", onWheel, { capture: true });
       document.removeEventListener("selectstart", blockSelect);
       document.removeEventListener("copy", blockSelect);
       document.removeEventListener("cut", blockSelect);
@@ -98,14 +109,22 @@ export default function InspectOverlay() {
   if (!body) return null;
 
   return (
-    <div className="inspect-layer" role="dialog" aria-modal="true" aria-label={`Inspecionar ${body.name}`}>
+    <div className="inspect-layer" role="dialog" aria-modal="true" aria-label={t("aria", { name: body.name })}>
       <div className="inspect-panel" data-inspect-ui>
-        <p>INSPECT // {body.name}</p>
+        <p>{t("label", { name: body.name })}</p>
         <span>{body.type}</span>
         <b>{body.feature}</b>
-        <small>Arraste para girar · clique outro mundo para focar · clique vazio para sair</small>
+        <small>{t("hint")}</small>
+        <div className="inspect-zoom" data-inspect-ui>
+          <button type="button" onClick={() => setInspectZoom(inspectPose.zoom / 1.22)}>
+            −
+          </button>
+          <button type="button" onClick={() => setInspectZoom(inspectPose.zoom * 1.22)}>
+            +
+          </button>
+        </div>
         <button ref={closeRef} type="button" onClick={closeInspect}>
-          ENCERRAR INSPEÇÃO
+          {t("close")}
         </button>
       </div>
     </div>

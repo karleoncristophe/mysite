@@ -24,7 +24,7 @@ export const projects: Project[] = [
     company: "Gurgel Tech",
     location: "Rio de Janeiro · Remota",
     description:
-      "Desenvolvimento de aplicações full-stack utilizando JavaScript, React Native e GraphQL para criação de soluções mobile e web integradas.",
+      "Apps full-stack em React Native e GraphQL, integrando web e mobile.",
     type: "Produto · Web / Mobile",
     tech: ["React Native", "GraphQL", "JavaScript"],
     accent: "#4EA8FF",
@@ -50,7 +50,7 @@ export const projects: Project[] = [
     company: "ClassGame",
     location: "Rio de Janeiro · Remota",
     description:
-      "Desenvolvimento completo de aplicação mobile e web para gestão de salas de aula, utilizando Apollo GraphQL, NestJS, MongoDB e React Native.",
+      "App e web de gestão de salas, com NestJS, GraphQL e React Native.",
     type: "Educação · Plataforma",
     tech: ["React Native", "NestJS", "GraphQL", "MongoDB"],
     accent: "#82CFFF",
@@ -70,8 +70,7 @@ export const projects: Project[] = [
     title: "Desenvolvedor Front-End Mobile",
     company: "eQuester",
     location: "Rio de Janeiro · Remota",
-    description:
-      "Aplicativo mobile para questionários e pesquisas, com React Native, TypeScript e Git.",
+    description: "App de questionários e pesquisas em React Native e TypeScript.",
     type: "Pesquisa · Mobile",
     tech: ["React Native", "TypeScript"],
     accent: "#7557FF",
@@ -91,8 +90,7 @@ export const projects: Project[] = [
     title: "Desenvolvedor Full-Stack",
     company: "3Devs",
     location: "Rio de Janeiro",
-    description:
-      "Construção de interfaces no aplicativo mobile e criação de landing pages para apresentação do trabalho.",
+    description: "Interfaces no app mobile e landing pages do produto.",
     type: "Produto · Mobile",
     tech: ["React Native", "Landing pages"],
     accent: "#FFC46B",
@@ -107,8 +105,7 @@ export const projects: Project[] = [
     title: "Desenvolvedor Full-Stack",
     company: "Agência Netmidia",
     location: "Rio de Janeiro · Remota",
-    description:
-      "Desenvolvimento full-stack para agência digital, com NestJS, Node.js, MongoDB e React Native.",
+    description: "Full-stack para agência digital, com NestJS, Node.js e React Native.",
     type: "Agência · Full-Stack",
     tech: ["NestJS", "Node.js", "MongoDB", "React Native"],
     accent: "#355CFF",
@@ -123,8 +120,7 @@ export const projects: Project[] = [
     title: "Desenvolvedor Full-Stack",
     company: "MModels",
     location: "Brasil",
-    description:
-      "Aplicação web para plataforma de modelos, com NestJS, GraphQL, MongoDB e Next.js.",
+    description: "Plataforma web de modelos com Next.js, NestJS e GraphQL.",
     type: "Plataforma · Web",
     tech: ["Next.js", "NestJS", "GraphQL", "MongoDB"],
     accent: "#FF8A3D",
@@ -139,8 +135,7 @@ export const projects: Project[] = [
     title: "Desenvolvedor Front-End Mobile",
     company: "3Devs",
     location: "Brasil · Remota",
-    description:
-      "Aplicativo mobile para leitura da Bíblia Sagrada, com React Native, TypeScript e GraphQL.",
+    description: "App de leitura da Bíblia em React Native, TypeScript e GraphQL.",
     type: "Conteúdo · Mobile",
     tech: ["React Native", "TypeScript", "GraphQL"],
     accent: "#A7B3C7",
