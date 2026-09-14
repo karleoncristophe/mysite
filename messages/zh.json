@@ -25,7 +25,12 @@
     "orbital": "ORBITAL NAVIGATION",
     "lat": "LAT 22.9°S",
     "base": "EARTH / RIO",
-    "stack": "WEB // MOBILE // BACKEND"
+    "stack": "WEB // MOBILE // BACKEND",
+    "auto": "AUTO SCROLL",
+    "play": "PLAY",
+    "pause": "PAUSE",
+    "autoAria": "开始自动滚动",
+    "autoAriaOn": "暂停自动滚动"
   },
   "hero": {
     "kicker": "01 / EARTH",

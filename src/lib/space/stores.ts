@@ -49,6 +49,7 @@ function createStore<T>(initial: T) {
 }
 
 export const journeyProgress = createStore(0);
+export const autoScroll = createStore(false);
 export const hoveredSkill = createStore<string | null>(null);
 export const hoveredMission = createStore<string | null>(null);
 export const hoveredBody = createStore<string | null>(null);

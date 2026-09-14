@@ -1,5 +1,6 @@
 "use client";
 
+import { useAutoScroll } from "@/hooks/useAutoScroll";
 import { useScrollJourney } from "@/hooks/useScrollJourney";
 import SpaceExperience from "@/components/space/SpaceExperience";
 import Navigation from "@/components/portfolio/Navigation";
@@ -20,6 +21,7 @@ import ContactSection from "@/components/portfolio/ContactSection";
 
 export default function HomeExperience() {
   useScrollJourney();
+  useAutoScroll();
 
   return (
     <div className="universe">
