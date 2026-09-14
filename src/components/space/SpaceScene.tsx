@@ -1,5 +1,7 @@
 "use client";
 
+import { useFrame } from "@react-three/fiber";
+import { hoveredBody, inspectTarget, orbitTime } from "@/lib/space/stores";
 import type { QualityProfile } from "@/lib/space/quality";
 import CameraRig from "@/components/space/CameraRig";
 import StarField from "@/components/space/StarField";
@@ -13,6 +15,12 @@ type Props = {
 };
 
 export default function SpaceScene({ quality, reducedMotion }: Props) {
+  useFrame((_, delta) => {
+    if (!reducedMotion && !inspectTarget.get() && !hoveredBody.get()) {
+      orbitTime.elapsed += Math.min(delta, 0.05);
+    }
+  }, -2);
+
   return (
     <>
       <color attach="background" args={["#020308"]} />

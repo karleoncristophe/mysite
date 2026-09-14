@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { BODY_MAP, getBodyWorldPosition, getFocusedBody, isCraftBody, isOrbitingBody, type BodyId } from "@/lib/space/bodies";
+import { applyScreenOffset } from "@/lib/space/framing";
 import { getJourneyPose } from "@/lib/space/journey";
 import { hoveredBody, inspectPose, inspectTarget, journeyProgress } from "@/lib/space/stores";
 import type { QualityProfile } from "@/lib/space/quality";
@@ -11,8 +12,6 @@ import type { QualityProfile } from "@/lib/space/quality";
 const tmpCam = new THREE.Vector3();
 const tmpLook = new THREE.Vector3();
 const tmpUp = new THREE.Vector3(0, 1, 0);
-const tmpForward = new THREE.Vector3();
-const tmpRight = new THREE.Vector3();
 const desiredQuat = new THREE.Quaternion();
 const lookMatrix = new THREE.Matrix4();
 const inspectOffset = new THREE.Vector3(-1.75, 0.48, 3.7);
@@ -28,33 +27,6 @@ type Props = {
 function smoothstep(edge0: number, edge1: number, x: number) {
   const t = Math.min(1, Math.max(0, (x - edge0) / Math.max(1e-4, edge1 - edge0)));
   return t * t * (3 - 2 * t);
-}
-
-function applyScreenOffset(
-  cam: THREE.Vector3,
-  look: THREE.Vector3,
-  width: number,
-  height: number,
-  fovDeg: number,
-  screenX: number,
-  screenY: number,
-) {
-  const aspect = width / Math.max(1, height);
-  const ndcX = screenX * 2 - 1;
-  const ndcY = 1 - screenY * 2;
-  const dist = Math.max(0.25, cam.distanceTo(look));
-  const halfH = Math.tan(THREE.MathUtils.degToRad(fovDeg) * 0.5) * dist;
-  const halfW = halfH * aspect;
-
-  tmpForward.subVectors(look, cam);
-  if (tmpForward.lengthSq() < 1e-8) return;
-  tmpForward.normalize();
-  tmpRight.crossVectors(tmpForward, tmpUp);
-  if (tmpRight.lengthSq() < 1e-8) return;
-  tmpRight.normalize();
-
-  cam.addScaledVector(tmpRight, -ndcX * halfW);
-  cam.addScaledVector(tmpUp, -ndcY * halfH);
 }
 
 function copyStage(width: number) {
@@ -92,22 +64,13 @@ function frameBodyBesideCopy(
   progress: number,
 ) {
   const leftFrac = copyStage(width);
-  const voyagerX = leftFrac + (1 - leftFrac) * 0.72;
-  const screenY = height < 760 ? 0.56 : 0.5;
-
-  if (progress >= 0.92) {
-    applyScreenOffset(cam, look, width, height, fovDeg, voyagerX, screenY);
-    return;
-  }
-
   const dist = Math.max(0.25, cam.distanceTo(look));
-  const halfW =
-    Math.tan(THREE.MathUtils.degToRad(fovDeg) * 0.5) * dist * (width / Math.max(1, height));
-  const screenRadius = Math.min(0.34, radius / Math.max(0.001, 2 * halfW));
-  const earthBoost = (1 - smoothstep(0.08, 0.26, progress)) * 0.2;
-  const targetX = Math.min(0.9, leftFrac + 0.05 + screenRadius + 0.08 + earthBoost);
-  const mix = smoothstep(0.82, 0.92, progress);
-  applyScreenOffset(cam, look, width, height, fovDeg, targetX * (1 - mix) + voyagerX * mix, screenY);
+  const halfW = Math.tan(THREE.MathUtils.degToRad(fovDeg) * 0.5) * dist * width / Math.max(1, height);
+  const screenRadius = radius / Math.max(0.001, 2 * halfW);
+  const opening = width < 520 ? 1 - smoothstep(0.04, 0.1, progress) : 0;
+  const stageCenter = width < 768 ? 0.82 - opening * 0.08 : 0.76;
+  const targetX = Math.min(0.96 - screenRadius, Math.max(stageCenter, leftFrac + 0.06 + screenRadius));
+  applyScreenOffset(cam, look, width, height, fovDeg, targetX, (height < 760 ? 0.53 : 0.5) + opening * 0.22);
 }
 
 export default function CameraRig({ quality, reducedMotion }: Props) {
@@ -143,13 +106,19 @@ export default function CameraRig({ quality, reducedMotion }: Props) {
       const [x, y, z] = getBodyWorldPosition(body.id, clock.elapsedTime);
       tmpLook.set(x, y, z);
       const framed = Math.max(body.radius, isCraftBody(body.id) || orbiting ? 0.22 : 0);
-      const dist = Math.max(framed * 1.35, (framed * inspectSpread) / inspectPose.zoom);
+      const fov = "fov" in camera ? camera.fov : 42;
+      const aspect = size.width / Math.max(1, size.height);
+      const fitDistance = body.radius / (0.72 * aspect * Math.tan(THREE.MathUtils.degToRad(fov / 2)));
+      const dist = Math.max(framed * 1.35, Math.max(framed * inspectSpread, fitDistance) / inspectPose.zoom);
       tmpCam.copy(tmpLook).addScaledVector(inspectDir, dist);
+      if (size.width < 768) {
+        applyScreenOffset(tmpCam, tmpLook, size.width, size.height, fov, 0.5, 0.38);
+      }
     } else {
       const t = reducedMotion ? 0 : journeyProgress.get();
       getJourneyPose(t, tmpCam, tmpLook);
       const fov = "fov" in camera ? camera.fov : 42;
-      if (t >= 0.92) {
+      if (t >= 0.96) {
         frameLookBesideCopy(tmpCam, tmpLook, size.width, size.height, fov);
       } else if (t < 0.44 || t >= 0.56) {
         const focused = getFocusedBody(t);
@@ -157,6 +126,16 @@ export default function CameraRig({ quality, reducedMotion }: Props) {
         if (inFocus) {
           const [x, y, z] = getBodyWorldPosition(focused.id, clock.elapsedTime);
           tmpLook.set(x, y, z);
+          // Give the opening Earth a stronger presence without changing its orbit.
+          const opening = 1 - smoothstep(0.04, size.width < 520 ? 0.1 : 0.22, t);
+          tmpCam.sub(tmpLook).multiplyScalar(1 - opening * 0.24).add(tmpLook);
+          const aspect = size.width / Math.max(1, size.height);
+          const maxDiameter = size.width < 520 ? 0.3 + opening * 0.16 : size.width < 768 ? 0.3 : 0.36;
+          const minDistance = focused.radius / (maxDiameter * aspect * Math.tan(THREE.MathUtils.degToRad(fov / 2)));
+          const minDiameter = size.width < 520 ? 0.22 + opening * 0.2 : size.width < 768 ? 0.22 : 0.2;
+          const maxDistance = focused.radius / (minDiameter * aspect * Math.tan(THREE.MathUtils.degToRad(fov / 2)));
+          const distance = THREE.MathUtils.clamp(tmpCam.distanceTo(tmpLook), minDistance, maxDistance);
+          tmpCam.sub(tmpLook).setLength(distance).add(tmpLook);
         }
         frameBodyBesideCopy(
           tmpCam,

@@ -4,8 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import {
   BODIES,
   MODEL,
+  isBodyNearFocus,
   isBodyOnJourney,
-  isCompanionBody,
   qualityRank,
   type BodyId,
 } from "@/lib/space/bodies";
@@ -30,6 +30,11 @@ export default function SolarSystem({ quality, reducedMotion }: Props) {
     let bucket = -1;
     const sync = () => {
       const next = journeyProgress.get();
+      if (inspectTarget.get()) {
+        bucket = -1;
+        setProgress(next);
+        return;
+      }
       const current = Math.floor(next * 16);
       if (current === bucket) return;
       bucket = current;
@@ -74,8 +79,8 @@ export default function SolarSystem({ quality, reducedMotion }: Props) {
     return BODIES.filter((body) => {
       if (qualityRank(body.qualityMin) > rank) return false;
       if (body.id === "sun") return false;
-      if (inspecting === body.id || (inspecting && isCompanionBody(inspecting as BodyId, body.id))) {
-        return true;
+      if (inspecting) {
+        return isBodyNearFocus(body, inspecting as BodyId);
       }
       return isBodyOnJourney(body, progress);
     });

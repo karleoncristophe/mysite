@@ -11,6 +11,14 @@ export const localeLabels: Record<AppLocale, string> = {
   zh: "中文",
 };
 
+export const localeFlags: Record<AppLocale, string> = {
+  "pt-BR": "🇧🇷",
+  en: "🇺🇸",
+  es: "🇪🇸",
+  ja: "🇯🇵",
+  zh: "🇨🇳",
+};
+
 export const htmlLang: Record<AppLocale, string> = {
   "pt-BR": "pt-BR",
   en: "en",

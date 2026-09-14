@@ -1,4 +1,4 @@
-import { journeyProgress } from "@/lib/space/stores";
+import { journeyProgress, orbitTime } from "@/lib/space/stores";
 
 export type BodyId =
   | "sun"
@@ -30,6 +30,8 @@ export type CelestialBody = {
   focusFrom: number;
   focusTo: number;
   qualityMin: "low" | "medium" | "high";
+  /** Base Euler tilt so ringed planets show their rings to the camera. */
+  tilt?: [number, number, number];
 };
 
 export const MODEL = {
@@ -195,6 +197,7 @@ export const BODIES: CelestialBody[] = [
     focusFrom: 0.7,
     focusTo: 0.82,
     qualityMin: "low",
+    tilt: [0.62, 0.4, 0.16],
   },
   {
     id: "uranus",
@@ -212,6 +215,7 @@ export const BODIES: CelestialBody[] = [
     focusFrom: 0.82,
     focusTo: 0.92,
     qualityMin: "low",
+    tilt: [0.7, 0.22, 0.12],
   },
   {
     id: "neptune",
@@ -278,6 +282,14 @@ export function getFocusedBody(progress: number) {
   );
 }
 
+export function getBodyFocusProgress(id: string, current = journeyProgress.get()): number | null {
+  const body = BODY_MAP[id as BodyId];
+  if (!body) return null;
+  if (body.focusFrom < 0 || body.focusTo > 1 || body.focusTo <= body.focusFrom) return null;
+  if (current >= body.focusFrom && current < body.focusTo) return current;
+  return body.focusFrom + (body.focusTo - body.focusFrom) * 0.42;
+}
+
 export const BODY_APPEAR_LEAD = 0.09;
 export const BODY_DISAPPEAR_LAG = 0.08;
 
@@ -302,6 +314,18 @@ export function isCraftBody(id: BodyId) {
 
 export function isCompanionBody(a: BodyId, b: BodyId) {
   return a !== b && isEarthSystem(a) && isEarthSystem(b);
+}
+
+export function isBodyNearFocus(body: CelestialBody, inspectedId: BodyId) {
+  if (body.id === inspectedId) return true;
+  if (isCompanionBody(inspectedId, body.id)) return true;
+  const inspected = BODY_MAP[inspectedId];
+  if (!inspected || inspected.focusFrom > 1 || body.focusFrom > 1) return false;
+  const a0 = inspected.focusFrom - BODY_APPEAR_LEAD;
+  const a1 = inspected.focusTo + BODY_DISAPPEAR_LAG;
+  const b0 = body.focusFrom - BODY_APPEAR_LEAD;
+  const b1 = body.focusTo + BODY_DISAPPEAR_LAG;
+  return a0 < b1 && b0 < a1;
 }
 
 function orbitAround(
@@ -340,8 +364,8 @@ export function getVoyagerPosition(elapsed: number): [number, number, number] {
 }
 
 export function getBodyWorldPosition(id: BodyId, elapsed: number): [number, number, number] {
-  if (id === "moon") return getMoonPosition(elapsed);
-  if (id === "parker") return getParkerPosition(elapsed);
+  if (id === "moon") return getMoonPosition(orbitTime.elapsed);
+  if (id === "parker") return getParkerPosition(orbitTime.elapsed);
   if (id === "voyager") return getVoyagerPosition(elapsed);
   return BODY_MAP[id].position;
 }

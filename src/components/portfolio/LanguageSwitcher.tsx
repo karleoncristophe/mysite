@@ -2,7 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { localeLabels, locales, type AppLocale } from "@/i18n/routing";
+import { localeFlags, localeLabels, locales, type AppLocale } from "@/i18n/routing";
 
 export default function LanguageSwitcher() {
   const t = useTranslations("nav");
@@ -30,9 +30,13 @@ export default function LanguageSwitcher() {
           className={code === locale ? "is-active" : undefined}
           data-cjk={code === "ja" || code === "zh" ? "" : undefined}
           aria-current={code === locale ? "true" : undefined}
+          aria-label={`${localeFlags[code]} ${localeLabels[code]}`}
           onClick={() => switchLocale(code)}
         >
-          {localeLabels[code]}
+          <span className="lang-flag" aria-hidden>
+            {localeFlags[code]}
+          </span>
+          <span className="lang-code">{localeLabels[code]}</span>
         </button>
       ))}
     </div>

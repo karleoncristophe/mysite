@@ -6,6 +6,7 @@ import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import {
   getBodyAppearScale,
+  getBodyFocusProgress,
   getBodyWorldPosition,
   isCraftBody,
   type CelestialBody,
@@ -17,6 +18,14 @@ import {
   journeyProgress,
   openInspect,
 } from "@/lib/space/stores";
+
+function inspectHitRadius(body: CelestialBody) {
+  if (body.id === "parker") return 1.45;
+  if (body.id === "moon") return 1.05;
+  if (isCraftBody(body.id)) return Math.max(body.radius * 3.4, 0.4);
+  if (body.id === "earth") return body.radius * 1.08;
+  return Math.max(body.radius * 1.45, 0.62);
+}
 
 function FallbackSphere({ body }: { body: CelestialBody }) {
   return (
@@ -53,6 +62,9 @@ function FittedModel({ url, radius }: { url: string; radius: number }) {
               material.blending = THREE.NormalBlending;
               material.premultipliedAlpha = false;
             }
+            if (url.includes("saturn") || url.includes("uranus")) {
+              material.side = THREE.DoubleSide;
+            }
           });
         }
       }
@@ -80,14 +92,25 @@ type Props = {
 export default function PlanetAsset({ body, reducedMotion }: Props) {
   const group = useRef<THREE.Group>(null);
   const visual = useRef<THREE.Group>(null);
-  const spin = useRef(0);
+  const hitArea = useRef<THREE.Mesh>(null);
+  const [tiltX, tiltY, tiltZ] = body.tilt ?? [0, 0, 0];
+  const spin = useRef(tiltY);
   const scale = useRef(reducedMotion || body.focusFrom <= 0 ? 1 : 0.03);
 
-  useFrame(({ clock }, delta) => {
+  useFrame(({ clock, camera, size }, delta) => {
     if (!group.current || !visual.current) return;
 
     const [x, y, z] = getBodyWorldPosition(body.id, clock.elapsedTime);
     group.current.position.set(x, y, z);
+
+    // Keep a small screen-space touch target without covering neighbouring bodies.
+    if (hitArea.current) {
+      const distance = camera.position.distanceTo(group.current.position);
+      const fov = camera instanceof THREE.PerspectiveCamera ? camera.fov : 42;
+      const touchRadius = distance * Math.tan(THREE.MathUtils.degToRad(fov / 2)) * 44 / Math.max(1, size.height);
+      const radius = Math.max(body.radius * scale.current, Math.min(inspectHitRadius(body), touchRadius));
+      hitArea.current.scale.setScalar(radius);
+    }
 
     const inspecting = inspectTarget.get() === body.id;
     const targetScale = inspecting ? 1 : getBodyAppearScale(body, journeyProgress.get(), reducedMotion);
@@ -95,19 +118,17 @@ export default function PlanetAsset({ body, reducedMotion }: Props) {
     visual.current.scale.setScalar(scale.current);
 
     if (inspecting) {
-      visual.current.rotation.y = inspectPose.yaw;
-      visual.current.rotation.x = inspectPose.pitch;
+      visual.current.rotation.set(tiltX + inspectPose.pitch, inspectPose.yaw, tiltZ);
       return;
     }
-    if (!reducedMotion) spin.current += body.spin * delta;
-    visual.current.rotation.y = spin.current;
-    visual.current.rotation.x = 0;
+    if (!reducedMotion && !inspectTarget.get()) spin.current += body.spin * delta;
+    visual.current.rotation.set(tiltX, spin.current, tiltZ);
   });
 
-  const focusBody = () => {
+  const focusBody = (id = body.id) => {
     if (!body.inspectable || inspectPose.pointerMoved) return;
+    openInspect(id, getBodyFocusProgress(id));
     inspectPose.ignoreMiss = true;
-    openInspect(body.id);
     window.setTimeout(() => {
       inspectPose.ignoreMiss = false;
     }, 80);
@@ -119,7 +140,10 @@ export default function PlanetAsset({ body, reducedMotion }: Props) {
       position={body.position}
       onClick={(event) => {
         event.stopPropagation();
-        focusBody();
+        // The tiny craft remains selectable when its touch target overlaps a
+        // planet's enclosing sphere. Its target is limited to 44 screen pixels.
+        const craftHit = event.intersections.find((hit) => hit.object.userData.bodyId === "parker");
+        focusBody(craftHit ? "parker" : body.id);
       }}
       onPointerOver={() => {
         if (!body.inspectable) return;
@@ -145,21 +169,13 @@ export default function PlanetAsset({ body, reducedMotion }: Props) {
             <pointLight color="#9ec7ff" intensity={3.4} distance={10} decay={2} position={[0.8, 0.4, 1.2]} />
           </>
         )}
-        {body.inspectable && (
-          <mesh visible={false}>
-            <sphereGeometry
-              args={[
-                isCraftBody(body.id)
-                  ? Math.max(body.radius * 3.4, 0.4)
-                  : Math.max(body.radius * 1.45, 0.62),
-                16,
-                16,
-              ]}
-            />
-            <meshBasicMaterial />
-          </mesh>
-        )}
       </group>
+      {body.inspectable && (
+        <mesh ref={hitArea} userData={{ bodyId: body.id }} renderOrder={body.id === "parker" || body.id === "moon" ? 8 : 0}>
+          <sphereGeometry args={[1, 20, 20]} />
+          <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+        </mesh>
+      )}
     </group>
   );
 }

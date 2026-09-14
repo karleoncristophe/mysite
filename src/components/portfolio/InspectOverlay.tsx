@@ -18,7 +18,7 @@ export default function InspectOverlay() {
 
   useEffect(() => {
     if (!target || !body) return;
-    closeRef.current?.focus();
+    closeRef.current?.focus({ preventScroll: true });
 
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") closeInspect();
@@ -40,7 +40,7 @@ export default function InspectOverlay() {
 
     const onDown = (event: PointerEvent) => {
       const node = event.target as HTMLElement;
-      if (node.closest("[data-inspect-ui]")) return;
+      if (node.closest("[data-inspect-ui]") || !event.isPrimary || event.button !== 0) return;
       event.preventDefault();
       window.getSelection()?.removeAllRanges();
       tracking.current = true;
