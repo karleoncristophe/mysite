@@ -8,7 +8,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
 
   return (
-    <div className="bg-black/40 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:bg-black/60 h-full flex flex-col">
+    <article className="bg-black/40 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:bg-black/60 h-full flex flex-col">
       {/* Header */}
       <div className="mb-4">
         <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
@@ -68,6 +68,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </div>
       )}
-    </div>
+    </article>
   );
 }

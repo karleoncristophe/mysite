@@ -2,7 +2,7 @@
 
 import { 
   SiHtml5, 
-  SiCss3, 
+  SiCss, 
   SiJavascript, 
   SiReact, 
   SiTypescript, 
@@ -23,7 +23,7 @@ export function SkillCard({ name, className = '' }: SkillCardProps) {
       case 'HTML5':
         return <SiHtml5 className="w-16 h-16 text-orange-500" />;
       case 'CSS3':
-        return <SiCss3 className="w-16 h-16 text-blue-500" />;
+        return <SiCss className="w-16 h-16 text-blue-500" />;
       case 'JavaScript':
         return <SiJavascript className="w-16 h-16 text-yellow-500" />;
       case 'ReactJS':

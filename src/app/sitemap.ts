@@ -1,32 +1,15 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next";
+import { absoluteUrl } from "@/lib/seo/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://karleoncristophe.com.br'
-  
+  const now = new Date();
+
   return [
     {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
+      url: absoluteUrl("/"),
+      lastModified: now,
+      changeFrequency: "monthly",
       priority: 1,
     },
-    {
-      url: `${baseUrl}/#quemsou`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#habilidades`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#contato`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-  ]
+  ];
 }

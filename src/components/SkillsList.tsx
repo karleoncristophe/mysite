@@ -1,19 +1,7 @@
 'use client';
 
 import { SkillCard } from './SkillCard';
-
-const skills = [
-  { name: 'HTML5' },
-  { name: 'React Native' },
-  { name: 'CSS3' },
-  { name: 'ReactJS' },
-  { name: 'JavaScript' },
-  { name: 'GraphQL' },
-  { name: 'NestJS' },
-  { name: 'NextJS' },
-  { name: 'TypeScript' },
-  { name: 'MongoDB' },
-];
+import { skills } from '@/data/skills';
 
 export default function SkillsList() {
   return (
