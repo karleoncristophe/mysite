@@ -49,7 +49,7 @@ function frameLookBesideCopy(
     width,
     height,
     fovDeg,
-    leftFrac + (1 - leftFrac) * 0.72,
+    leftFrac + (1 - leftFrac) * 0.34,
     height < 760 ? 0.56 : 0.5,
   );
 }

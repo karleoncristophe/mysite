@@ -46,9 +46,9 @@ const voyagerCamCurve = new THREE.CatmullRomCurve3(
 const voyagerLookCurve = new THREE.CatmullRomCurve3(
   [
     lookCurve.getPoint(SYSTEM_END).clone(),
-    new THREE.Vector3(5.6, 0.32, -262),
-    new THREE.Vector3(6.1, 0.18, -268),
-    new THREE.Vector3(6.2, 0.1, -269),
+    new THREE.Vector3(7.6, 0.3, -264),
+    new THREE.Vector3(8.3, 0.18, -267),
+    new THREE.Vector3(7.95, 0.1, -269),
   ],
   false,
   "catmullrom",

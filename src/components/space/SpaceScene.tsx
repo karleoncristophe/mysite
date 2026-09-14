@@ -24,9 +24,9 @@ export default function SpaceScene({ quality, reducedMotion }: Props) {
   return (
     <>
       <color attach="background" args={["#020308"]} />
-      <ambientLight intensity={0.12} />
-      <hemisphereLight args={["#24355a", "#050308", 0.38]} />
-      <directionalLight color="#9ec7ff" intensity={0.42} position={[-18, 22, 28]} />
+      <ambientLight intensity={0.18} />
+      <hemisphereLight args={["#24355a", "#050308", 0.52]} />
+      <directionalLight color="#fff1dc" intensity={1.45} position={[-18, 22, 28]} />
       <CameraRig quality={quality} reducedMotion={reducedMotion} />
       <StarField quality={quality} />
       <CosmicDust quality={quality} />

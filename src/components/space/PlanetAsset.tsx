@@ -41,32 +41,26 @@ function FittedModel({ url, radius }: { url: string; radius: number }) {
   const root = useMemo(() => {
     const cloned = gltf.scene.clone(true);
     const voyager = url.includes("voyager");
+    const earth = url.includes("earth");
     cloned.traverse((child) => {
       child.castShadow = false;
       child.receiveShadow = false;
       child.frustumCulled = !voyager;
       if (child instanceof THREE.Mesh) {
-        if (voyager) {
-          child.material = new THREE.MeshStandardMaterial({
-            color: "#d5dde8",
-            metalness: 0.7,
-            roughness: 0.34,
-            emissive: new THREE.Color("#1d2a3a"),
-            emissiveIntensity: 0.22,
-          });
-        } else {
-          const materials = Array.isArray(child.material) ? child.material : [child.material];
-          materials.forEach((material) => {
-            if (!material) return;
-            if (material.blending === THREE.MultiplyBlending) {
-              material.blending = THREE.NormalBlending;
-              material.premultipliedAlpha = false;
-            }
-            if (url.includes("saturn") || url.includes("uranus")) {
-              material.side = THREE.DoubleSide;
-            }
-          });
-        }
+        const materials = Array.isArray(child.material) ? child.material : [child.material];
+        materials.forEach((material) => {
+          if (!material) return;
+          if (material.blending === THREE.MultiplyBlending) {
+            material.blending = THREE.NormalBlending;
+            material.premultipliedAlpha = false;
+          }
+          if (url.includes("saturn") || url.includes("uranus") || voyager) {
+            material.side = THREE.DoubleSide;
+          }
+          if (earth && material instanceof THREE.MeshStandardMaterial) {
+            material.metalness *= 0.18;
+          }
+        });
       }
     });
     const box = new THREE.Box3().setFromObject(cloned);
@@ -165,8 +159,8 @@ export default function PlanetAsset({ body, reducedMotion }: Props) {
         )}
         {body.id === "voyager" && (
           <>
-            <pointLight color="#eef5ff" intensity={10} distance={18} decay={2} />
-            <pointLight color="#9ec7ff" intensity={3.4} distance={10} decay={2} position={[0.8, 0.4, 1.2]} />
+            <pointLight color="#eef5ff" intensity={3.2} distance={18} decay={2} />
+            <pointLight color="#9ec7ff" intensity={1.4} distance={10} decay={2} position={[0.8, 0.4, 1.2]} />
           </>
         )}
       </group>

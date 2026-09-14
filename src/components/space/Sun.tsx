@@ -77,7 +77,6 @@ export default function Sun({ reducedMotion }: { reducedMotion: boolean }) {
         ) : null}
       </group>
       <pointLight color="#ffb45c" intensity={6.5} distance={420} decay={1.35} />
-      <directionalLight color="#fff1dc" intensity={1.35} position={[8, 6, 14]} />
     </group>
   );
 }
