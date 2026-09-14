@@ -41,7 +41,9 @@
     "locationLabel": "LOCATION",
     "locationValue": "EARTH / RIO",
     "stackLabel": "STACK",
-    "stackValue": "WEB · MOBILE · BACKEND"
+    "stackValue": "WEB · MOBILE · BACKEND",
+    "contactLabel": "CONTACT",
+    "whatsappAria": "Hablar por WhatsApp con {name}"
   },
   "identity": {
     "kicker": "02 / MOON",

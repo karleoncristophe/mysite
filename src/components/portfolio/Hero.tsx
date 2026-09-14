@@ -29,6 +29,28 @@ export default function Hero() {
             <dd>{t("stackValue")}</dd>
           </div>
         </dl>
+        <div className="hero-links">
+          <p>{t("contactLabel")}</p>
+          <nav aria-label={t("contactLabel")}>
+            <a
+              href={siteConfig.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t("whatsappAria", { name: siteConfig.name })}
+            >
+              WhatsApp
+            </a>
+            <a href={siteConfig.sameAs[0]} target="_blank" rel="me noopener noreferrer">
+              GitHub
+            </a>
+            <a href={siteConfig.sameAs[1]} target="_blank" rel="me noopener noreferrer">
+              LinkedIn
+            </a>
+            <a href={siteConfig.sameAs[3]} target="_blank" rel="me noopener noreferrer">
+              Instagram
+            </a>
+          </nav>
+        </div>
       </div>
     </header>
   );

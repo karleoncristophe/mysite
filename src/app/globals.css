@@ -485,6 +485,38 @@ main {
   font-size: 0.78rem;
 }
 
+.hero-links {
+  margin-top: 1.75rem;
+}
+
+.hero-links p {
+  color: var(--space-muted);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin: 0 0 0.45rem;
+}
+
+.hero-links nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.15rem;
+}
+
+.hero-links a {
+  color: var(--space-muted-2);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.hero-links a:hover,
+.hero-links a:focus-visible {
+  color: var(--space-cyan);
+}
+
 .mission-meta {
   display: flex;
   flex-direction: column;
