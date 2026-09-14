@@ -12,11 +12,11 @@ export default function ProjectsSection() {
   return (
     <section id="projetos" ref={ref} className="chapter missions reveal">
       <div className="chapter-copy missions-copy">
-        <p className="hud-kicker">04 / MISSIONS</p>
-        <p className="chapter-index">PROJECT SYSTEM</p>
+        <p className="hud-kicker">05 / JUPITER</p>
+        <p className="chapter-index">SELECTED MISSIONS</p>
         <h2>Missões selecionadas</h2>
         <p className="chapter-lead">
-          Cada planeta é um trabalho real. A órbita é visual; o acesso continua em HTML.
+          Trabalho real, com destino em HTML. O sistema solar só acompanha a escala.
         </p>
         <div className="mission-list">
           {projects.map((project, index) => (

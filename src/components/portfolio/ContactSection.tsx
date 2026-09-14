@@ -9,8 +9,8 @@ export default function ContactSection() {
   return (
     <section id="contato" ref={ref} className="chapter contact reveal">
       <div className="chapter-copy">
-        <p className="hud-kicker">05 / CONTACT</p>
-        <p className="chapter-index">ESTABLISH CONTACT</p>
+        <p className="hud-kicker">08 / NEPTUNE</p>
+        <p className="chapter-index">OPEN CHANNEL</p>
         <h2>Abrir canal de comunicação</h2>
         <p className="chapter-lead">
           Vamos conversar sobre o seu projeto. O destino final desta jornada é uma conversa real.

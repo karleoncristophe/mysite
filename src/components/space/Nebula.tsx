@@ -2,7 +2,6 @@
 
 import { useMemo } from "react";
 import * as THREE from "three";
-import { WORLD } from "@/lib/space/journey";
 import type { QualityProfile } from "@/lib/space/quality";
 
 const vertex = `
@@ -20,8 +19,8 @@ const fragment = `
   void main() {
     vec2 p = vUv - 0.5;
     float d = length(p);
-    float veil = smoothstep(0.5, 0.05, d);
-    float bands = sin((vUv.x + vUv.y) * 9.0) * 0.08 + 0.92;
+    float veil = smoothstep(0.5, 0.04, d);
+    float bands = sin((vUv.x + vUv.y) * 8.0) * 0.08 + 0.92;
     gl_FragColor = vec4(uColor * bands, veil * uOpacity);
   }
 `;
@@ -44,7 +43,7 @@ function NebulaPlane({
         fragmentShader: fragment,
         uniforms: {
           uColor: { value: new THREE.Color(color) },
-          uOpacity: { value: 0.09 },
+          uOpacity: { value: 0.045 },
         },
         transparent: true,
         depthWrite: false,
@@ -68,22 +67,22 @@ export default function Nebula({ quality }: { quality: QualityProfile }) {
   return (
     <group>
       <NebulaPlane
-        position={[WORLD.constellation.x - 8, 3, WORLD.constellation.z - 6]}
-        rotation={[0.4, 0.6, 0.2]}
+        position={[22, 6, -80]}
+        rotation={[0.35, 0.5, 0.15]}
         color="#355CFF"
-        scale={[28, 16, 1]}
+        scale={[36, 18, 1]}
       />
       <NebulaPlane
-        position={[WORLD.projects.x + 10, -4, WORLD.projects.z - 8]}
-        rotation={[-0.3, -0.5, 0.4]}
+        position={[-8, -6, -150]}
+        rotation={[-0.25, -0.4, 0.3]}
         color="#7557FF"
-        scale={[34, 18, 1]}
+        scale={[42, 20, 1]}
       />
       <NebulaPlane
-        position={[WORLD.beacon.x - 6, 2, WORLD.beacon.z - 4]}
-        rotation={[0.2, 0.3, -0.2]}
+        position={[16, 3, -230]}
+        rotation={[0.2, 0.25, -0.15]}
         color="#4EA8FF"
-        scale={[22, 12, 1]}
+        scale={[30, 16, 1]}
       />
     </group>
   );

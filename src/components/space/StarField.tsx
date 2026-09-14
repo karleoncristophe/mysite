@@ -88,8 +88,8 @@ export default function StarField({ quality }: { quality: QualityProfile }) {
     <group>
       <StarLayer
         count={quality.starFar}
-        spread={[220, 140, 280]}
-        origin={[0, 0, -40]}
+        spread={[260, 160, 360]}
+        origin={[6, 0, -120]}
         size={0.055}
         seed={11}
         sprite={sprite}
@@ -98,7 +98,7 @@ export default function StarField({ quality }: { quality: QualityProfile }) {
         <StarLayer
           count={quality.starMid}
           spread={[90, 50, 140]}
-          origin={[0, 0, -36]}
+          origin={[6, 0, -110]}
           size={0.09}
           seed={29}
           sprite={sprite}
@@ -108,7 +108,7 @@ export default function StarField({ quality }: { quality: QualityProfile }) {
         <StarLayer
           count={quality.starNear}
           spread={[30, 18, 70]}
-          origin={[0, 0, -20]}
+          origin={[8, 0, -80]}
           size={0.16}
           seed={47}
           sprite={sprite}

@@ -7,10 +7,15 @@ import HudOverlay from "@/components/portfolio/HudOverlay";
 import ScrollProgress from "@/components/portfolio/ScrollProgress";
 import GrainOverlay from "@/components/portfolio/GrainOverlay";
 import Loader from "@/components/portfolio/Loader";
+import InspectOverlay from "@/components/portfolio/InspectOverlay";
 import Hero from "@/components/portfolio/Hero";
+import IdentityIntro from "@/components/portfolio/IdentityIntro";
 import MissionProfile from "@/components/portfolio/MissionProfile";
+import EarthChapter from "@/components/portfolio/EarthChapter";
+import ExperienceLog from "@/components/portfolio/ExperienceLog";
 import TechnologySection from "@/components/portfolio/TechnologySection";
 import ProjectsSection from "@/components/portfolio/ProjectsSection";
+import HireMe from "@/components/portfolio/HireMe";
 import ContactSection from "@/components/portfolio/ContactSection";
 
 export default function HomeExperience() {
@@ -24,11 +29,16 @@ export default function HomeExperience() {
       <Navigation />
       <HudOverlay />
       <ScrollProgress />
+      <InspectOverlay />
       <main>
         <Hero />
+        <IdentityIntro />
         <MissionProfile />
+        <EarthChapter />
+        <ExperienceLog />
         <TechnologySection />
         <ProjectsSection />
+        <HireMe />
         <ContactSection />
       </main>
     </div>

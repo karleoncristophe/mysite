@@ -29,7 +29,7 @@ export default function HudOverlay() {
     <div className="hud" aria-hidden>
       <div className="hud-corner hud-tl">
         <span>SYSTEM // ONLINE</span>
-        <span ref={stageRef}>01 / ORBIT</span>
+        <span ref={stageRef}>01 / EARTH</span>
       </div>
       <div className="hud-corner hud-tr">
         <span>ORBITAL NAVIGATION</span>
@@ -37,7 +37,7 @@ export default function HudOverlay() {
       </div>
       <div className="hud-corner hud-bl">
         <span>LAT 22.9°S</span>
-        <span>EARTH / SOL</span>
+        <span>EARTH / RIO</span>
       </div>
       <div className="hud-corner hud-br">
         <span>WEB // MOBILE // BACKEND</span>

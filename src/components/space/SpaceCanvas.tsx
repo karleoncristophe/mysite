@@ -22,7 +22,7 @@ export default function SpaceCanvas({ quality, reducedMotion }: Props) {
         stencil: false,
         depth: true,
       }}
-      camera={{ fov: 42, near: 0.1, far: 260, position: [-0.35, 0.52, 8.6] }}
+      camera={{ fov: 42, near: 0.12, far: 420, position: [1.55, 0.4, -69.2] }}
       frameloop={reducedMotion ? "demand" : "always"}
       onCreated={({ gl, scene, invalidate }) => {
         gl.toneMapping = THREE.ACESFilmicToneMapping;

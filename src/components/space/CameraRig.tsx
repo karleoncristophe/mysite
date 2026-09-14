@@ -3,8 +3,9 @@
 import { useEffect, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
+import { BODY_MAP, type BodyId } from "@/lib/space/bodies";
 import { cameraCurve, lookCurve } from "@/lib/space/journey";
-import { getEasedJourney, journeyProgress } from "@/lib/space/stores";
+import { inspectPose, inspectTarget, journeyProgress } from "@/lib/space/stores";
 import type { QualityProfile } from "@/lib/space/quality";
 
 const tmpCam = new THREE.Vector3();
@@ -21,7 +22,7 @@ type Props = {
 
 export default function CameraRig({ quality, reducedMotion }: Props) {
   const { camera } = useThree();
-  const look = useRef(new THREE.Vector3(1.35, -0.35, 0.2));
+  const look = useRef(new THREE.Vector3(6.5, -0.38, -73.3));
   const targetPointer = useRef(new THREE.Vector2());
   const smoothPointer = useRef(new THREE.Vector2());
 
@@ -38,18 +39,32 @@ export default function CameraRig({ quality, reducedMotion }: Props) {
   }, []);
 
   useFrame((_, delta) => {
-    const t = reducedMotion ? 0 : getEasedJourney(journeyProgress.get());
-    cameraCurve.getPoint(t, tmpCam);
-    lookCurve.getPoint(t, tmpLook);
-    const damping = 1 - Math.exp(-2.4 * delta);
+    const inspecting = inspectTarget.get();
+    const body = inspecting ? BODY_MAP[inspecting as BodyId] : undefined;
+
+    if (body) {
+      const radius = body.radius * inspectPose.zoom;
+      tmpLook.set(body.position[0], body.position[1], body.position[2]);
+      tmpCam.set(
+        body.position[0] - radius * 1.65,
+        body.position[1] + radius * 0.55,
+        body.position[2] + radius * 3.4,
+      );
+    } else {
+      const t = reducedMotion ? 0 : journeyProgress.get();
+      cameraCurve.getPoint(t, tmpCam);
+      lookCurve.getPoint(t, tmpLook);
+    }
+
+    const damping = 1 - Math.exp(-(body ? 3.4 : 2.2) * delta);
     camera.position.lerp(tmpCam, damping);
     look.current.lerp(tmpLook, damping);
 
-    if (quality.pointerParallax && !reducedMotion) {
+    if (!body && quality.pointerParallax && !reducedMotion) {
       smoothPointer.current.lerp(targetPointer.current, 1 - Math.exp(-4 * delta));
       pointer.copy(smoothPointer.current);
-      camera.position.x += pointer.x * 0.18;
-      camera.position.y += pointer.y * 0.1;
+      camera.position.x += pointer.x * 0.16;
+      camera.position.y += pointer.y * 0.09;
     }
 
     lookMatrix.lookAt(camera.position, look.current, tmpUp);

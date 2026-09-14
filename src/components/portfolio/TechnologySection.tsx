@@ -12,7 +12,7 @@ export default function TechnologySection() {
   return (
     <section id="habilidades" ref={ref} className="chapter constellation reveal">
       <div className="chapter-copy">
-        <p className="hud-kicker">03 / CONSTELLATION</p>
+        <p className="hud-kicker">04 / BELT</p>
         <p className="chapter-index">TECHNOLOGY CONSTELLATION</p>
         <h2>Stack</h2>
         <p className="chapter-lead">

@@ -9,12 +9,12 @@ export default function MissionProfile() {
   return (
     <section id="quemsou" ref={ref} className="chapter mission reveal">
       <div className="chapter-copy">
-        <p className="hud-kicker">02 / PROFILE</p>
+        <p className="hud-kicker">03 / EARTH</p>
         <p className="chapter-index">MISSION PROFILE</p>
-        <h2>Identidade</h2>
+        <h2>Quem sou</h2>
         <p className="chapter-lead">
-          Um desenvolvedor fullstack em órbita entre produto, engenharia e a vontade de construir
-          o que ainda não existe.
+          Um desenvolvedor em órbita entre produto, engenharia e a vontade de construir o que ainda
+          não existe.
         </p>
         <article className="mission-body">
           <p>
@@ -28,7 +28,7 @@ export default function MissionProfile() {
         <ul className="mission-meta">
           <li>
             <span>STATUS</span>
-            AVAILABLE FOR MISSIONS
+            AVAILABLE FOR SELECTED MISSIONS
           </li>
           <li>
             <span>BASE</span>

@@ -7,58 +7,46 @@ export type QualityProfile = {
   starMid: number;
   starNear: number;
   dust: number;
-  planetSegments: number;
-  planetTexture: number;
-  clouds: boolean;
   nebula: boolean;
-  constellationLinks: boolean;
-  projectMoons: boolean;
-  spacecraft: boolean;
   pointerParallax: boolean;
+  asteroids: number;
+  probes: boolean;
+  labels: "all" | "current";
 };
 
 const PROFILES: Record<GraphicsQuality, Omit<QualityProfile, "quality" | "dpr">> = {
   high: {
-    starFar: 4200,
-    starMid: 1400,
-    starNear: 280,
-    dust: 160,
-    planetSegments: 96,
-    planetTexture: 1024,
-    clouds: true,
+    starFar: 3800,
+    starMid: 1200,
+    starNear: 220,
+    dust: 120,
     nebula: true,
-    constellationLinks: true,
-    projectMoons: true,
-    spacecraft: true,
     pointerParallax: true,
+    asteroids: 280,
+    probes: true,
+    labels: "all",
   },
   medium: {
-    starFar: 2200,
-    starMid: 800,
-    starNear: 140,
-    dust: 80,
-    planetSegments: 64,
-    planetTexture: 512,
-    clouds: true,
+    starFar: 2000,
+    starMid: 700,
+    starNear: 100,
+    dust: 60,
     nebula: true,
-    constellationLinks: true,
-    projectMoons: false,
-    spacecraft: true,
     pointerParallax: true,
+    asteroids: 120,
+    probes: true,
+    labels: "current",
   },
   low: {
-    starFar: 900,
-    starMid: 280,
+    starFar: 800,
+    starMid: 240,
     starNear: 0,
     dust: 0,
-    planetSegments: 32,
-    planetTexture: 256,
-    clouds: false,
     nebula: false,
-    constellationLinks: false,
-    projectMoons: false,
-    spacecraft: false,
     pointerParallax: false,
+    asteroids: 48,
+    probes: false,
+    labels: "current",
   },
 };
 
@@ -74,10 +62,13 @@ export function detectGraphicsQuality(): GraphicsQuality {
   const cores = navigator.hardwareConcurrency || 4;
   const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory;
 
-  if (touch || width < 768 || cores <= 4 || (memory !== undefined && memory <= 4)) {
+  if (width < 768 || (memory !== undefined && memory <= 2)) {
     return "low";
   }
-  if (width < 1200 || dpr >= 2.5 || cores <= 6) {
+  if (touch || width < 1200 || dpr >= 2.5 || cores <= 4 || (memory !== undefined && memory <= 4)) {
+    return "medium";
+  }
+  if (cores <= 6) {
     return "medium";
   }
   return "high";
