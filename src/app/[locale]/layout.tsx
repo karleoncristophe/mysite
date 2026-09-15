@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { siteConfig } from "@/config/site";
 import { htmlLang, ogLocale, routing, type AppLocale } from "@/i18n/routing";
 import { alternateLanguages, localePath } from "@/lib/i18n/metadata";
-import { robotsMetadata } from "@/lib/seo/seo";
+import { robotsMetadata, shareImages } from "@/lib/seo/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -82,16 +82,7 @@ export async function generateMetadata({
       siteName: siteConfig.name,
       title,
       description: t("description"),
-      images: siteConfig.ogImage
-        ? [
-            {
-              url: siteConfig.ogImage,
-              width: 1200,
-              height: 630,
-              alt: title,
-            },
-          ]
-        : undefined,
+      images: shareImages(title),
     },
     twitter: {
       card: "summary_large_image",
@@ -99,7 +90,7 @@ export async function generateMetadata({
       description: t("shortDescription"),
       creator: siteConfig.twitter,
       site: siteConfig.twitter,
-      images: siteConfig.ogImage ? [siteConfig.ogImage] : undefined,
+      images: [siteConfig.ogImage],
     },
     robots: robotsMetadata(),
     category: "technology",

@@ -5,7 +5,11 @@ const RESOLVED_SITE_URL = (
 )
   .trim()
   .replace(/\/$/, "");
-const RESOLVED_OG_IMAGE = (process.env.NEXT_PUBLIC_OG_IMAGE ?? "").trim();
+const RESOLVED_OG_IMAGE = (
+  process.env.NEXT_PUBLIC_OG_IMAGE ?? "/models/seo/seo-banner.png"
+)
+  .trim()
+  .replace(/\/$/, "") || "/models/seo/seo-banner.png";
 const GOOGLE_SITE_VERIFICATION = (
   process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? ""
 ).trim();
@@ -22,6 +26,8 @@ export const siteConfig = {
     "Programador web/mobile freelancer. Sites, aplicativos e landing pages com React, Next.js e Node.js.",
   url: RESOLVED_SITE_URL,
   ogImage: RESOLVED_OG_IMAGE,
+  ogImageWidth: 2238,
+  ogImageHeight: 1586,
   googleSiteVerification: GOOGLE_SITE_VERIFICATION,
   locale: "pt_BR",
   language: "pt-BR",

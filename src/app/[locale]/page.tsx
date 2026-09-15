@@ -6,7 +6,7 @@ import { siteConfig } from "@/config/site";
 import { routing, ogLocale, type AppLocale } from "@/i18n/routing";
 import { alternateLanguages, localePath } from "@/lib/i18n/metadata";
 import { localizeProjects } from "@/lib/i18n/projects";
-import { homeJsonLd, jsonLdScript, robotsMetadata } from "@/lib/seo/seo";
+import { homeJsonLd, jsonLdScript, robotsMetadata, shareImages } from "@/lib/seo/seo";
 import HomeExperience from "@/components/portfolio/HomeExperience";
 
 export async function generateMetadata({
@@ -40,6 +40,7 @@ export async function generateMetadata({
       firstName: siteConfig.givenName,
       lastName: siteConfig.familyName,
       username: "karleoncristophe",
+      images: shareImages(pageTitle),
     },
     twitter: {
       card: "summary_large_image",
@@ -47,6 +48,7 @@ export async function generateMetadata({
       description: t("shortDescription"),
       creator: siteConfig.twitter,
       site: siteConfig.twitter,
+      images: [siteConfig.ogImage],
     },
     robots: robotsMetadata(),
   };

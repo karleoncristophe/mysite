@@ -44,7 +44,19 @@ export function jsonLdScript(data: unknown): string {
 }
 
 export function ogImageUrl(): string {
-  return siteConfig.ogImage || absoluteUrl("/opengraph-image");
+  const image = siteConfig.ogImage || "/models/seo/seo-banner.png";
+  return image.startsWith("http") ? image : absoluteUrl(image);
+}
+
+export function shareImages(alt: string) {
+  return [
+    {
+      url: siteConfig.ogImage,
+      width: siteConfig.ogImageWidth,
+      height: siteConfig.ogImageHeight,
+      alt,
+    },
+  ];
 }
 
 type JsonLdCopy = {
