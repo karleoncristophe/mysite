@@ -337,7 +337,7 @@ function orbitAround(
   phase = 0,
   zScale = 1,
 ): [number, number, number] {
-  const angle = elapsed * speed + phase;
+  const angle = -elapsed * speed + phase;
   return [
     center[0] + Math.cos(angle) * radius,
     center[1] + Math.sin(angle) * yAmp,
