@@ -8,7 +8,7 @@ import { hoveredMission } from "@/lib/space/stores";
 import { useStore } from "@/hooks/useScrollJourney";
 import { useInViewOnce } from "@/hooks/useInViewOnce";
 
-const PREVIEW_COUNT = 5;
+const PREVIEW_COUNT = 4;
 
 function hasPlayStore(project: (typeof projects)[number]) {
   return project.links.some(
